@@ -1,1 +1,9 @@
-ad studio awsome project
+  ________________
+< Making a awesome game. >
+  ----------------
+         \   ^__^ 
+          \  (oo)\_______
+             (__)\       )\/\
+                 ||----w |
+                 ||     ||
+    
