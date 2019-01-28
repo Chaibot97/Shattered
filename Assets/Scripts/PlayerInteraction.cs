@@ -7,11 +7,13 @@ using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour {
 
+    private readonly int pickUpFOV=80;
     //[SerializeField] AudioClip takeItem;
     //[SerializeField] AudioClip teleport;
     private Transform target;
     private bool holding;
-    private Collider itemHolding; 
+    private Collider itemHolding;
+
     private int cd;
 
     private void Start()
@@ -43,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour {
         if (col.gameObject.tag.Contains("Pickupable"))
         {
             float angle = Vector3.Angle(col.transform.position-target.transform.position, target.transform.forward);
-            if (angle <= 80 * 0.5f)
+            if (angle <= pickUpFOV * 0.5f)
             {
                 if (cd >= 30 && Input.GetMouseButtonUp(0))
                 {
