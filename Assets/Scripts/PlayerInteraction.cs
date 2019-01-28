@@ -42,26 +42,30 @@ public class PlayerInteraction : MonoBehaviour {
     {
         if (col.gameObject.tag.Contains("Pickupable"))
         {
-            if ( cd>=10 && Input.GetMouseButtonUp(0))
+            float angle = Vector3.Angle(col.transform.position-target.transform.position, target.transform.forward);
+            if (angle <= 80 * 0.5f)
             {
-                cd = 0;
-                holding = !holding;
-                if (holding)
+                if (cd >= 30 && Input.GetMouseButtonUp(0))
                 {
-                    itemHolding = col;
-                    itemHolding.GetComponent<CapsuleCollider>().isTrigger = true;
+                    cd = 0;
+                    holding = !holding;
+                    if (holding)
+                    {
+                        itemHolding = col;
+                        itemHolding.GetComponent<CapsuleCollider>().isTrigger = true;
+
+                    }
+                    else
+                    {
+                        itemHolding.GetComponent<CapsuleCollider>().isTrigger = false;
+                        itemHolding.transform.forward = Vector3.Scale(itemHolding.transform.forward, new Vector3(1, 0, 1));
+                        itemHolding = null;
+                    }
+                    Debug.Log(holding);
 
                 }
-                else
-                {
-                    itemHolding.GetComponent<CapsuleCollider>().isTrigger =false;
-                    itemHolding.transform.forward = Vector3.Scale(itemHolding.transform.forward, new Vector3(1, 0, 1));
-                    itemHolding = null;
-                }
-                Debug.Log(holding);
-         
+                cd++;
             }
-            cd++;
         }
     }
 
@@ -73,7 +77,7 @@ public class PlayerInteraction : MonoBehaviour {
     {
         Vector3 offset = target.transform.forward;
         //offsetScale = (float)Mathf.Cos(Vector3.Angle(target.transform.forward, transform.forward) * Mathf.PI / 180);
-        col.transform.position= target.transform.position+offset;
+        col.transform.position= target.transform.position+offset*0.8f;
         //col.GetComponent<Rigidbody>().MovePosition(target.transform.position + offset);
         //col.transform.LookAt(target.transform.position+ target.transform.up*(col.transform.position.y- target.transform.position.y));
         col.transform.LookAt(target.transform.position);
