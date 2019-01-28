@@ -49,13 +49,13 @@ public class PlayerInteraction : MonoBehaviour {
                 if (holding)
                 {
                     itemHolding = col;
-                    itemHolding.GetComponent<CapsuleCollider>().isTrigger=true;
+                    itemHolding.GetComponent<CapsuleCollider>().isTrigger = true;
 
                 }
                 else
                 {
                     itemHolding.GetComponent<CapsuleCollider>().isTrigger =false;
-                    itemHolding.transform.forward= Vector3.Scale(itemHolding.transform.forward, new Vector3(1, 0, 1));
+                    itemHolding.transform.forward = Vector3.Scale(itemHolding.transform.forward, new Vector3(1, 0, 1));
                     itemHolding = null;
                 }
                 Debug.Log(holding);
