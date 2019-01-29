@@ -13,6 +13,9 @@ public class PlayerInteraction : MonoBehaviour {
     private Transform target;
     private bool holding;
     private Collider itemHolding;
+    private Shader shader1;
+    private Shader shader2;
+    private Renderer rend;
 
     private int cd;
 
@@ -21,6 +24,8 @@ public class PlayerInteraction : MonoBehaviour {
         holding = false;
         cd = 10;
         target = Camera.main.transform;
+        shader1 = Shader.Find("Diffuse");
+        shader2 = Shader.Find("Shader Learn/OutLighting");
     }
 
     private void Update()
@@ -47,6 +52,8 @@ public class PlayerInteraction : MonoBehaviour {
             float angle = Vector3.Angle(col.transform.position-target.transform.position, target.transform.forward);
             if (angle <= pickUpFOV * 0.5f)
             {
+                rend = col.GetComponent<Renderer>();
+                rend.material.shader = shader2;
                 if (cd >= 30 && Input.GetMouseButtonUp(0))
                 {
                     cd = 0;
@@ -68,12 +75,16 @@ public class PlayerInteraction : MonoBehaviour {
                 }
                 cd++;
             }
+            else
+            {
+                rend.material.shader = shader1;
+            }
         }
     }
 
     void OnTriggerExit(Collider col)
     {
-        
+        rend.material.shader = shader1;
     }
     private void HoldItem(Collider col)
     {
