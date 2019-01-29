@@ -8,6 +8,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+        public int fps = 60;
+
         [Serializable]
         public class MovementSettings
         {
@@ -120,6 +122,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Start()
         {
+            Application.targetFrameRate = fps;
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
