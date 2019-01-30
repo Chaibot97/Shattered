@@ -23,15 +23,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private List<GameObject> inventory;
         private bool inSight = false;
 
-        [SerializeField] public Canvas menuUI;
-        LayoutGroup inventoryUI;
+        [SerializeField] public Canvas inventoryUI;
+        private Animator inventoryAnim;
+        [SerializeField] public Canvas inspectorUI;
+        private Animator inspectorAnim;
+        [SerializeField] public Sprite UIMask;
+
+        //LayoutGroup inventoryUI;
         private int cd;
 
         private void Start()
         {
-            menuUI.enabled = false;
             holding = false;
-            //collider = GetComponent<Collider>();
             cd = 30;
             target = Camera.main.transform;
             shader1 = Shader.Find("Diffuse");
@@ -39,24 +42,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             inventory = new List<GameObject>(3);
             for (int i = 0; i < 3; i++) 
                 inventory.Add(new GameObject());
-            foreach (LayoutGroup lp in menuUI.GetComponentsInChildren<LayoutGroup>())
-            {
-                if (lp.name.Equals("Inventory"))
-                {
-                    inventoryUI = lp;
-                }
-            }
+
+            inventoryAnim = inventoryUI.GetComponent<Animator>();
+            inspectorAnim = inspectorUI.GetComponent<Animator>();
+
 
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
 
 
-            //if (itemHolding && holding)
-            //{
-            //    HoldItem(itemHolding);
-            //}
             if(cd<30)
                 cd++;
 
@@ -64,30 +60,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
-                menuUI.enabled = true;
+                inventoryAnim.SetBool("open",true);
+                inspectorAnim.SetBool("open", true);
                 GetComponent<RigidbodyFirstPersonController>().enabled=false;
             }
             else
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                menuUI.enabled = false;
+                inventoryAnim.SetBool("open", false);
+                inspectorAnim.SetBool("open", false);
                 GetComponent<RigidbodyFirstPersonController>().enabled = true;
 
             }
+
 
             if (Input.GetKeyUp(KeyCode.O))
             {
                 int i = 0;
                 foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
                 {
-                    if (lp == inventoryUI)
+                    if (lp.tag != "ItemUI")
                         continue;
                     Toggle checker = lp.GetComponentInChildren<Toggle>();
                     if (checker.isOn)
                     {
-                        lp.GetComponentInChildren<Text>().text = "empty";
-                        lp.GetComponentsInChildren<Image>()[1].sprite = null;
+                        lp.gameObject.name = "Empty";
+                        lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
                         checker.isOn = false;
 
                         GameObject item = inventory[i];
@@ -111,7 +110,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             inSight = false;
             if (itemChecking && col != itemChecking) return;
-            if (col.gameObject.tag.Contains("Pickupable"))
+            if (col.gameObject.tag.Equals("Pickupable")|| col.gameObject.tag.Equals("Interaction"))
             {
                 Vector3 direction = col.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -131,16 +130,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             int i = 0;
                             foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
                             {
-                                if (lp == inventoryUI)
+                                if (lp.tag != "ItemUI")
                                     continue;
                                 Toggle checker = lp.GetComponentInChildren<Toggle>();
                                 if (!checker.isOn)
                                 {
-                                    lp.GetComponentInChildren<Text>().text = col.gameObject.name;
-                                    lp.GetComponentsInChildren<Image>()[1].sprite = col.gameObject.GetComponent<Image>().sprite;
+                                    lp.gameObject.name = col.gameObject.name;
+                                    Image img = lp.GetComponentsInChildren<Image>()[1];
+                                    img.sprite = col.gameObject.GetComponent<Image>().sprite;
                                     checker.isOn = true;
                                     Debug.Log(i);
-                                    inventory[i]=col.gameObject;
+                                    inventory[i] = col.gameObject;
                                     col.gameObject.SetActive(false);
                                     inSight = false;
                                     itemChecking = null;
@@ -152,6 +152,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                     }
                 }
+
+
             }
 
             if (rend && !inSight)
@@ -176,6 +178,37 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //    //col.transform.LookAt(target.transform.position+ target.transform.up*(col.transform.position.y- target.transform.position.y));
         //    col.transform.LookAt(target.transform.position);
         //}
+
+        public void GetItOut(int index)
+        {
+            if (!inventory[index])
+                return;
+            int i = 0;
+            foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+            {
+                if (lp.tag != "ItemUI")
+                    continue;
+                if (i != index)
+                {
+                    i++;
+                    continue;
+                }
+                Toggle checker = lp.GetComponentInChildren<Toggle>();
+                if (checker.isOn)
+                {
+                    lp.gameObject.name = "empty";
+                    lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
+                    checker.isOn = false;
+
+                    GameObject item = inventory[i];
+                    inventory[i] = null;
+                    item.transform.position = transform.position + transform.forward * 3;
+                    item.SetActive(true);
+                    break;
+
+                }
+            }
+        }
 
     }
 }
