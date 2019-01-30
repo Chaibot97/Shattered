@@ -122,7 +122,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Start()
         {
-            //QualitySettings.vSyncCount = 0;
+            QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = fps;
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();

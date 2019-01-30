@@ -3,12 +3,12 @@
     // 属性
     Properties
     {
-        _MainTex("Texture(RGB)", 2D) = "grey" {} //表面贴图 默认灰色
+        _MainTex("Texture(RGB)", 2D) = "white" {} //表面贴图 默认灰色
         _Color("Color", Color) = (0, 0, 0, 1)    //为贴图附加的颜色 默认为白色
         _AtmoColor("Atmosphere Color", Color) = (0, 0.4, 1.0, 1)    //光晕颜色
         _Size("Size", Float) = 0.1 //光晕范围
         _OutLightPow("Falloff",Float) = 5 //光晕平方参数
-        _OutLightStrength("Transparency", Float) = 15 //光晕强度
+        _OutLightStrength("Transparency", Float) = 25 //光晕强度
     }
 
     SubShader
