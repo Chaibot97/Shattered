@@ -25,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour {
         cd = 10;
         target = Camera.main.transform;
         shader1 = Shader.Find("Diffuse");
-        shader2 = Shader.Find("Custom/NewSurfaceShader");
+        shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
     }
 
     private void Update()
