@@ -3,10 +3,10 @@
 	//-------------------------------【属性】-----------------------------------------
 	Properties
 	{
-		_MainTex("【纹理】Texture", 2D) = "white" {}
-		_BumpMap("【凹凸纹理】Bumpmap", 2D) = "bump" {}
-		_RimColor("【边缘颜色】Rim Color", Color) = (0.17,0.36,0.81,0.0)
-		_RimPower("【边缘颜色强度】Rim Power", Range(0.6,9.0)) = 1.0
+		_MainTex("Texture", 2D) = "white" {}
+		_BumpMap("Bumpmap", 2D) = "bump" {}
+		_RimColor("Rim Color", Color) = (0.17,0.36,0.81,0.0)
+		_RimPower("Rim Power", Range(0.6,9.0)) = 1.0
 	}
 
 		//----------------------------【开始一个子着色器】---------------------------
@@ -53,5 +53,5 @@
 		}
 
 			//“备胎”为普通漫反射
-			Fallback "Diffuse"
+			Fallback "Standard (Roughness setup)"
 }

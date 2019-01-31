@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             holding = false;
             cd = 30;
             target = Camera.main.transform;
-            shader1 = Shader.Find("Diffuse");
+            shader1 = Shader.Find("Standard (Roughness setup)");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
             inventory = new List<GameObject>(3);
             for (int i = 0; i < 3; i++) 
