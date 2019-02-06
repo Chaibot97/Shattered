@@ -91,6 +91,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
 
+        public bool enableXmove = true;
+        public bool enableYmove = true; 
+        public bool enableMouse = true;
 
         public Vector3 Velocity
         {
@@ -217,17 +220,29 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             
             Vector2 input = new Vector2
-                {
+                { 
                     x = CrossPlatformInputManager.GetAxis("Horizontal"),
                     y = CrossPlatformInputManager.GetAxis("Vertical")
                 };
-			movementSettings.UpdateDesiredTargetSpeed(input);
+            if (!enableXmove)
+            {
+                input[0] = 0;
+            }
+            if (!enableYmove)
+            {
+                input[1] = 0;
+            }
+            movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
 
 
         private void RotateView()
         {
+            if (!enableMouse)
+            {
+                return;
+            }
             //avoids the mouse looking if the game is effectively paused
             if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 
