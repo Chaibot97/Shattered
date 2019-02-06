@@ -23,11 +23,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private List<GameObject> inventory;
         private bool inSight = false;
 
+        private bool checkingMirror=false;
+
         [SerializeField] public Canvas inventoryUI;
         private Animator inventoryAnim;
         [SerializeField] public Canvas inspectorUI;
         private Animator inspectorAnim;
         [SerializeField] public Sprite UIMask;
+
+        [SerializeField] public Text prompt;
 
         //LayoutGroup inventoryUI;
         private int cd;
@@ -55,25 +59,39 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if(cd<30)
                 cd++;
-
-            if (Input.GetKey(KeyCode.Tab))
+            if (!checkingMirror)
             {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
-                inventoryAnim.SetBool("open",true);
-                inspectorAnim.SetBool("open", true);
-                GetComponent<RigidbodyFirstPersonController>().enabled=false;
+                if (Input.GetKey(KeyCode.Tab))
+                {
+                    PlayerEnable(false);
+                    inventoryAnim.SetBool("open", true);
+                    inspectorAnim.SetBool("open", true);
+                }
+                else
+                {
+                    PlayerEnable(true);
+                    inventoryAnim.SetBool("open", false);
+                    inspectorAnim.SetBool("open", false);
+                }
             }
             else
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                inventoryAnim.SetBool("open", false);
-                inspectorAnim.SetBool("open", false);
-                GetComponent<RigidbodyFirstPersonController>().enabled = true;
 
+                target.transform.LookAt(itemChecking.gameObject.transform);
+                Vector3 direction = transform.position- itemChecking.transform.position;
+                float angle = Vector3.SignedAngle(direction, itemChecking.transform.up,Vector3.up);
+                itemChecking.GetComponent<MirrorTrigger>().reveal(angle);
+                if (Input.GetKey(KeyCode.D)&& angle<35)
+                {
+                    GetComponent<Rigidbody>().AddForce(transform.right * 2f, ForceMode.Impulse);
+                }
+                if (Input.GetKey(KeyCode.A) && angle >- 35)
+                {
+                    GetComponent<Rigidbody>().AddForce(transform.right * -2f, ForceMode.Impulse);
+                }
+                //Debug.Log(angle);
+                
             }
-
 
             if (Input.GetKeyUp(KeyCode.O))
             {
@@ -110,7 +128,60 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             inSight = false;
             if (itemChecking && col != itemChecking) return;
-            if (col.gameObject.tag.Equals("Pickupable")|| col.gameObject.tag.Equals("Interaction"))
+            if (col.gameObject.tag.Equals("Mirror"))
+            {
+                itemChecking = col;
+                if (!checkingMirror)
+                {
+                    Vector3 direction = col.transform.position - target.transform.position;
+                    float angle = Vector3.Angle(direction, target.transform.forward);
+               
+                    if (angle <= pickUpFOV * 0.8f)
+                    {
+                        prompt.enabled = true;
+                        prompt.text = "Press E to inspect.";
+                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                        {
+                            cd = 0;
+                            itemChecking = col;
+                            //prompt.enabled = false;
+                            checkingMirror = true;
+
+                            //GetComponent<RigidbodyFirstPersonController>().enabled = false;
+                            transform.position=(col.gameObject.transform.position + col.gameObject.transform.up * 1);
+                            //transform.LookAt(col.gameObject.transform);
+                            target.transform.LookAt(col.gameObject.transform);
+                            GetComponent<RigidbodyFirstPersonController>().enableYmove = false;
+                            GetComponent<RigidbodyFirstPersonController>().enableXmove = false;
+                            GetComponent<RigidbodyFirstPersonController>().enableMouse = false;
+                            prompt.text = "Press A/D to change angle. Press E to quit.";
+                            return;
+
+                        }
+                    }
+                    else
+                    {
+                        prompt.enabled = false;
+                    }
+                }
+                else
+                {
+                    if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                    {
+                        cd = 0;
+                        prompt.enabled = false;
+                        checkingMirror = false;
+                        //GetComponent<RigidbodyFirstPersonController>().enabled = true;
+
+                        GetComponent<RigidbodyFirstPersonController>().enableYmove = true;
+                        GetComponent<RigidbodyFirstPersonController>().enableXmove = true;
+
+                        GetComponent<RigidbodyFirstPersonController>().enableMouse = true;
+
+                    }
+                }
+            }
+            if (col.gameObject.tag.Equals("Pickupable")|| col.gameObject.tag.Equals("Interactable"))
             {
                 Vector3 direction = col.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -152,22 +223,32 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                     }
                 }
+              
 
 
             }
 
             if (rend && !inSight)
             {
-                rend.material.shader = shader1;
-                itemChecking = null;
+                if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
+                {
+                    rend.material.shader = shader1;
+                    itemChecking = null;
+                }
+                if (col.gameObject.tag.Equals("Mirror"))
+                {
+                    prompt.enabled = false;
+                }
             }
-
         }
 
         void OnTriggerExit(Collider col)
         {
-            inSight = false;
-            itemChecking = null;
+            if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
+            {
+                inSight = false;
+                itemChecking = null;
+            }
         }
         //private void HoldItem(Collider col)
         //{
@@ -178,6 +259,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //    //col.transform.LookAt(target.transform.position+ target.transform.up*(col.transform.position.y- target.transform.position.y));
         //    col.transform.LookAt(target.transform.position);
         //}
+
+        public void PlayerEnable(bool enable)
+        {
+            Cursor.visible = !enable;
+            if (enable)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            GetComponent<RigidbodyFirstPersonController>().enabled = enable;
+
+        }
 
         public void GetItOut(int index)
         {
