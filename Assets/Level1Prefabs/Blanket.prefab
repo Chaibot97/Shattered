@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4080569652350788}
   - component: {fileID: 33013575343152984}
   - component: {fileID: 23418679779133046}
+  - component: {fileID: 64250496393567080}
   m_Layer: 0
   m_Name: polySurface398_blanket:Blanket
   m_TagString: Untagged
@@ -111,4 +112,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1185643554122522}
+  m_Mesh: {fileID: 4300000, guid: 0dd4ad167f8fffa418d6dc3ebc22aad1, type: 3}
+--- !u!64 &64250496393567080
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1185643554122522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0dd4ad167f8fffa418d6dc3ebc22aad1, type: 3}
