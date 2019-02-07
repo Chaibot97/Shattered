@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pickupable
+  - ItemUI
+  - Interactable
+  - Mirror
   layers:
   - Default
   - TransparentFX
@@ -14,12 +18,12 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Lighting
+  - Room
+  - Itself
+  - VisibleInMirror
+  - Ceiling
   - 
   - 
   - 
