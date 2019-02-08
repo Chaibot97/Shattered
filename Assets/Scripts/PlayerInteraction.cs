@@ -36,6 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //LayoutGroup inventoryUI;
         private int cd;
 
+        private int playerLayerMask=1<<9;
         private void Start()
         {
             holding = false;
@@ -179,15 +180,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }else if (col.gameObject.tag.Equals("Interactable"))
             {
+                
                 Vector3 direction = col.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
-                itemChecking = col;
-                if (angle <= pickUpFOV * 0.5f)
-                {
-                    RaycastHit hit;
-                    if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, 5))
-                    {
+                // Debug.Log(angle);
 
+                itemChecking = col;
+
+                RaycastHit hit;
+                if (Physics.Raycast(target.transform.position, target.transform.forward, out hit,playerLayerMask, 5))
+                {
+                    if(hit.collider.Equals(col)){
                         inSight = true;
                         rend = col.GetComponent<Renderer>();
                         rend.material.shader = shader2;
@@ -198,6 +201,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                     }
                 }
+            
             }
             else if (col.gameObject.tag.Equals("Pickupable"))
             {
@@ -207,37 +211,38 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (angle <= pickUpFOV * 0.5f)
                 {
                     RaycastHit hit;
-                    if (Physics.Raycast(target.transform.position, direction.normalized, out hit, 5))
+                    if (Physics.Raycast(target.transform.position, direction.normalized, out hit,playerLayerMask, 5))
                     {
-
-                        inSight = true;
-                        rend = col.GetComponent<Renderer>();
-                        rend.material.shader = shader2;
-                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
-                        {
-                            cd = 0;
-                            int i = 0;
-                            foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+                        if(hit.collider.Equals(col)){
+                            inSight = true;
+                            rend = col.GetComponent<Renderer>();
+                            rend.material.shader = shader2;
+                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                             {
-                                if (lp.tag != "ItemUI")
-                                    continue;
-                                Toggle checker = lp.GetComponentInChildren<Toggle>();
-                                if (!checker.isOn)
+                                cd = 0;
+                                int i = 0;
+                                foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
                                 {
-                                    lp.gameObject.name = col.gameObject.name;
-                                    Image img = lp.GetComponentsInChildren<Image>()[1];
-                                    if(col.gameObject.GetComponent<Image>())
-                                        img.sprite = col.gameObject.GetComponent<Image>().sprite;
-                                    checker.isOn = true;
-                                    Debug.Log(i);
-                                    inventory[i] = col.gameObject;
-                                    col.gameObject.SetActive(false);
-                                    inSight = false;
-                                    itemChecking = null;
-                                    break;
+                                    if (lp.tag != "ItemUI")
+                                        continue;
+                                    Toggle checker = lp.GetComponentInChildren<Toggle>();
+                                    if (!checker.isOn)
+                                    {
+                                        lp.gameObject.name = col.gameObject.name;
+                                        Image img = lp.GetComponentsInChildren<Image>()[1];
+                                        if(col.gameObject.GetComponent<Image>())
+                                            img.sprite = col.gameObject.GetComponent<Image>().sprite;
+                                        checker.isOn = true;
+                                        Debug.Log(i);
+                                        inventory[i] = col.gameObject;
+                                        col.gameObject.SetActive(false);
+                                        inSight = false;
+                                        itemChecking = null;
+                                        break;
 
+                                    }
+                                    i++;
                                 }
-                                i++;
                             }
                         }
                     }
