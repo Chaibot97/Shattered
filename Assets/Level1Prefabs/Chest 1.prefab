@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33639280846594236}
   - component: {fileID: 23639994718772844}
   - component: {fileID: 64639708134230300}
+  - component: {fileID: 95010610163977474}
   m_Layer: 0
   m_Name: chest:chest_pCube12
   m_TagString: Untagged
@@ -74,6 +75,7 @@ GameObject:
   - component: {fileID: 33925692897671094}
   - component: {fileID: 23385359968503914}
   - component: {fileID: 64074000529986692}
+  - component: {fileID: 95094548682229426}
   m_Layer: 0
   m_Name: chest:chest_pCube10
   m_TagString: Untagged
@@ -115,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045239541277324}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.307, y: 1.115, z: -4.087}
+  m_LocalPosition: {x: 1.307, y: 1.125, z: -4.087}
   m_LocalScale: {x: 19.559317, y: 19.559305, z: 19.559305}
   m_Children:
   - {fileID: 4397525974470802}
@@ -314,6 +316,42 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: dad33ff3c30606744babc1707d8f1f41, type: 3}
   m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95010610163977474
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080592561705430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: dad33ff3c30606744babc1707d8f1f41, type: 3}
+  m_Controller: {fileID: 9100000, guid: b3dcc8356bc06624992be08be66aa03e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95094548682229426
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1234388812075230}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: dad33ff3c30606744babc1707d8f1f41, type: 3}
+  m_Controller: {fileID: 9100000, guid: baba37c92e383da42a98934a7d786135, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
