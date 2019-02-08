@@ -177,10 +177,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //     m_Jumping = true;
                 // }
 
-                if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
-                {
-                    m_RigidBody.Sleep();
-                }
+                // if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
+                // {
+                //     m_RigidBody.Sleep();
+                // }
             }
             else
             {
