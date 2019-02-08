@@ -5,19 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
 
+    void Start(){   
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+     }
     public void LoadScene(String level)
     {
-        if (level == "MenuState")
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        SceneManager.LoadScene(level);
+        Time.timeScale=1f;
+        SceneManager.LoadScene(level);     
     }
 
     public void ExitGame()
