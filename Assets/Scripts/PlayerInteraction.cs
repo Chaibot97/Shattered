@@ -175,13 +175,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                         GetComponent<RigidbodyFirstPersonController>().enableYmove = true;
                         GetComponent<RigidbodyFirstPersonController>().enableXmove = true;
-
                         GetComponent<RigidbodyFirstPersonController>().enableMouse = true;
 
                     }
                 }
-            }
-            if (col.gameObject.tag.Equals("Pickupable")|| col.gameObject.tag.Equals("Interactable"))
+            }else if (col.gameObject.tag.Equals("Interactable"))
             {
                 Vector3 direction = col.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -189,7 +187,29 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (angle <= pickUpFOV * 0.5f)
                 {
                     RaycastHit hit;
-                    if (Physics.Raycast(transform.position + transform.up * 0.2f, direction.normalized, out hit, 5))
+                    if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, 5))
+                    {
+
+                        inSight = true;
+                        rend = col.GetComponent<Renderer>();
+                        rend.material.shader = shader2;
+                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
+                        {
+                            cd = 0;
+                            col.gameObject.GetComponent<Interactable>().interact();
+                        }
+                    }
+                }
+            }
+            else if (col.gameObject.tag.Equals("Pickupable"))
+            {
+                Vector3 direction = col.transform.position - target.transform.position;
+                float angle = Vector3.Angle(direction, target.transform.forward);
+                itemChecking = col;
+                if (angle <= pickUpFOV * 0.5f)
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(target.transform.position, direction.normalized, out hit, 5))
                     {
 
                         inSight = true;
@@ -208,7 +228,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     lp.gameObject.name = col.gameObject.name;
                                     Image img = lp.GetComponentsInChildren<Image>()[1];
-                                    img.sprite = col.gameObject.GetComponent<Image>().sprite;
+                                    if(col.gameObject.GetComponent<Image>())
+                                        img.sprite = col.gameObject.GetComponent<Image>().sprite;
                                     checker.isOn = true;
                                     Debug.Log(i);
                                     inventory[i] = col.gameObject;
@@ -269,7 +290,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.None;
             }
             GetComponent<RigidbodyFirstPersonController>().enabled = enable;
 
