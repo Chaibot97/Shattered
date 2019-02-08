@@ -53,6 +53,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
+      
         private void FixedUpdate()
         {
 
@@ -151,9 +152,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             transform.position=(col.gameObject.transform.position + col.gameObject.transform.up * 1);
                             //transform.LookAt(col.gameObject.transform);
                             target.transform.LookAt(col.gameObject.transform);
-                            GetComponent<RigidbodyFirstPersonController>().enableYmove = false;
-                            GetComponent<RigidbodyFirstPersonController>().enableXmove = false;
-                            GetComponent<RigidbodyFirstPersonController>().enableMouse = false;
+                            GetComponent<RigidbodyFirstPersonController>().enableInput = false;
+                       
                             prompt.text = "Press A/D to change angle. Press E to quit.";
                             return;
 
@@ -173,9 +173,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         checkingMirror = false;
                         //GetComponent<RigidbodyFirstPersonController>().enabled = true;
 
-                        GetComponent<RigidbodyFirstPersonController>().enableYmove = true;
-                        GetComponent<RigidbodyFirstPersonController>().enableXmove = true;
-                        GetComponent<RigidbodyFirstPersonController>().enableMouse = true;
+                        GetComponent<RigidbodyFirstPersonController>().enableInput = true;
 
                     }
                 }
@@ -287,12 +285,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (enable)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                GetComponent<RigidbodyFirstPersonController>().enableInput = true;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.None;
+                GetComponent<RigidbodyFirstPersonController>().enableInput = false;
             }
-            GetComponent<RigidbodyFirstPersonController>().enabled = enable;
+            
 
         }
 
