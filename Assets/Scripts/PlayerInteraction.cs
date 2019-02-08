@@ -195,7 +195,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         inSight = true;
                         rend = col.GetComponent<Renderer>();
                         rend.material.shader = shader2;
-                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                         {
                             cd = 0;
                             int i = 0;
