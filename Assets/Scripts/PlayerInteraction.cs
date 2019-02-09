@@ -201,7 +201,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                         {
                             cd = 0;
-                            col.gameObject.GetComponent<Interactable>().interact();
+                            Interactable i=col.gameObject.GetComponent<Interactable>();
+                            if (!i.requirement)
+                            {
+                                i.interact();
+                            }else if (inventory.Contains(i.requirement))
+                            {
+                                DestroyObj(inventory.IndexOf(i.requirement));
+                                i.interact();
+                            }
                         }
                     }
                 }
@@ -349,6 +357,34 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     inventory[i] = null;
                     item.transform.position = transform.position + transform.forward * 3;
                     item.SetActive(true);
+                    break;
+
+                }
+            }
+        }
+        public void DestroyObj(int index)
+        {
+            if (!inventory[index])
+                return;
+            int i = 0;
+            foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+            {
+                if (lp.tag != "ItemUI")
+                    continue;
+                if (i != index)
+                {
+                    i++;
+                    continue;
+                }
+                Toggle checker = lp.GetComponentInChildren<Toggle>();
+                if (checker.isOn)
+                {
+                    lp.gameObject.name = "empty";
+                    lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
+                    checker.isOn = false;
+
+                    GameObject item = inventory[i];
+                    inventory[i] = null;
                     break;
 
                 }
