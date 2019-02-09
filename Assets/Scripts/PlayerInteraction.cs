@@ -18,7 +18,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Collider itemChecking;
         private Shader shader1;
         private Shader shader2;
-        private Renderer rend;
+        private Renderer[] rend = { };
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -193,8 +193,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     if(hit.collider.Equals(col)){
                         inSight = true;
-                        rend = col.GetComponent<Renderer>();
-                        rend.material.shader = shader2;
+                        rend = col.GetComponentsInChildren<Renderer>();
+                        foreach(Renderer r in rend)
+                        {
+                            r.material.shader = shader2;
+                        }
                         if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                         {
                             cd = 0;
@@ -217,8 +220,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                   
                         if (hit.collider.tag=="Player"){
                             inSight = true;
-                            rend = col.GetComponent<Renderer>();
-                            rend.material.shader = shader2;
+                            rend = col.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rend)
+                            {
+                                r.material.shader = shader2;
+                            }
                             if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                             {
                                 cd = 0;
@@ -256,9 +262,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (!inSight)
             {
+                foreach (Renderer r in rend)
+                {
+                    r.material.shader = shader1;
+                }
                 if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
                 {
-                    if(rend) rend.material.shader = shader1;
+                    
                     itemChecking = null;
                 }
                 if (col.gameObject.tag.Equals("Mirror"))
@@ -270,13 +280,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
-            if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
+            foreach (Renderer r in rend)
             {
-                if(rend)
-                {
-                    rend.material.shader = shader1;
-                    itemChecking = null;
-                }
+                r.material.shader = shader1;
+            }
+            if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
+            {    
+
                 inSight = false;
                 itemChecking = null;
             }
