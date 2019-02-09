@@ -19,6 +19,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Shader shader1;
         private Shader shader2;
         private Renderer[] rend = { };
+        private AudioSource putin;
+        private AudioSource findpickup;
+        private bool soundplayed;
+        private bool alreadyfind;
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -35,12 +39,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         //LayoutGroup inventoryUI;
         private int cd;
+        private int cd_sound;
 
         private int playerLayerMask=1<<9;
         private void Start()
         {
             holding = false;
+            soundplayed = false;
+            alreadyfind = false;
             cd = 30;
+            cd_sound = 180;
             target = Camera.main.transform;
             shader1 = Shader.Find("Standard (Roughness setup)");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
@@ -50,6 +58,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             inventoryAnim = inventoryUI.GetComponent<Animator>();
             inspectorAnim = inspectorUI.GetComponent<Animator>();
+
+            AudioSource[] audios = GetComponents<AudioSource>();
+            putin = audios[2];
+            findpickup = audios[1];
 
 
         }
@@ -61,6 +73,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if(cd<30)
                 cd++;
+            if (cd_sound < 180)
+                cd_sound++;
             if (!checkingMirror)
             {
                 if (Input.GetKey(KeyCode.Tab))
@@ -181,7 +195,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }else if (col.gameObject.tag.Equals("Interactable"))
             {
-                
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 // Debug.Log(angle);
@@ -229,6 +242,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         if (hit.collider.tag=="Player"){
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
+                            if (!soundplayed && cd_sound == 180 && !alreadyfind)
+                            {
+                                findpickup.Play();
+                                cd_sound = 0;
+                                soundplayed = true;
+                            }
+                            alreadyfind = true;
                             foreach (Renderer r in rend)
                             {
                                 r.material.shader = shader2;
@@ -254,6 +274,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         col.gameObject.SetActive(false);
                                         inSight = false;
                                         itemChecking = null;
+                                        putin.Play();
                                         break;
 
                                     }
@@ -263,16 +284,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                     }
                 }
-              
+
 
 
             }
-
             if (!inSight)
             {
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
+                    soundplayed = false;
+                    alreadyfind = false; 
                 }
                 if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
                 {
@@ -291,6 +313,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;
+                soundplayed = false;
+                alreadyfind = false;
             }
             if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
             {    
