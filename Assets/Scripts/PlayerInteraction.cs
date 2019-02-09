@@ -140,6 +140,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                
                     if (angle <= pickUpFOV * 0.8f)
                     {
+                        inSight = true;
                         prompt.enabled = true;
                         prompt.text = "Press E to inspect.";
                         if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
@@ -181,7 +182,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }else if (col.gameObject.tag.Equals("Interactable"))
             {
                 
-                Vector3 direction = col.transform.position - target.transform.position;
+                Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 // Debug.Log(angle);
 
@@ -205,15 +206,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (col.gameObject.tag.Equals("Pickupable"))
             {
-                Vector3 direction = col.transform.position - target.transform.position;
+                Vector3 direction = col.gameObject.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 itemChecking = col;
                 if (angle <= pickUpFOV * 0.5f)
                 {
                     RaycastHit hit;
-                    if (Physics.Raycast(target.transform.position, direction.normalized, out hit,playerLayerMask, 5))
+                    if (Physics.Raycast(col.transform.position, direction.normalized*-1 , out hit, 5))
                     {
-                        if(hit.collider.Equals(col)){
+                  
+                        if (hit.collider.tag=="Player"){
                             inSight = true;
                             rend = col.GetComponent<Renderer>();
                             rend.material.shader = shader2;
@@ -252,11 +254,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
 
-            if (rend && !inSight)
+            if (!inSight)
             {
                 if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
                 {
-                    rend.material.shader = shader1;
+                    if(rend) rend.material.shader = shader1;
                     itemChecking = null;
                 }
                 if (col.gameObject.tag.Equals("Mirror"))
@@ -270,6 +272,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
             {
+                if(rend)
+                {
+                    rend.material.shader = shader1;
+                    itemChecking = null;
+                }
+                inSight = false;
+                itemChecking = null;
+            }
+            if (col.gameObject.tag.Equals("Mirror"))
+            {
+                prompt.enabled = false;
                 inSight = false;
                 itemChecking = null;
             }
