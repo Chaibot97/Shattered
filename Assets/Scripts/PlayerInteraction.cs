@@ -9,6 +9,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class PlayerInteraction : MonoBehaviour {
 
         public GameObject filled_water;
+        public Camera SecondCamera;
+        public Camera PrimaryCamera;
         private readonly int pickUpFOV = 60;
         //[SerializeField] AudioClip takeItem;
         //[SerializeField] AudioClip teleport;
@@ -24,6 +26,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool soundplayed;
         private bool alreadyfind;
         private bool filled;
+        private bool islooking;
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -50,6 +53,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             soundplayed = false;
             alreadyfind = false;
             filled = false;
+            islooking = false;
             cd = 30;
             cd_sound = 180;
             wait = 180;
@@ -230,10 +234,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             }
                             if(wait >= 180)
                             {
-                                filled_water.GetComponent<Renderer>().material.shader = shader2;
+                                if (!islooking)
+                                {
+                                    filled_water.GetComponent<Renderer>().material.shader = shader2;
+                                }
                                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                                 {
                                     cd = 0;
+                                    SecondCamera.gameObject.SetActive(true);
+                                    PrimaryCamera.gameObject.SetActive(false);
+                                    filled_water.GetComponent<Renderer>().material.shader = shader1;
+                                    islooking = true;
+
                                     Interactable i = col.gameObject.GetComponent<Interactable>();
                                     if (!i.requirement)
                                     {
