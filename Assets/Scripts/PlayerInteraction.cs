@@ -36,6 +36,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool checkingMirror=false;
         private bool checkingInventory = false;
 
+        public GameObject book;
         [SerializeField] public Canvas inventoryUI;
         private Animator inventoryAnim;
         [SerializeField] public Canvas inspectorUI;
@@ -507,13 +508,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 PlayerEnable(false);
                 inventoryAnim.SetBool("open", true);
-                inspectorAnim.SetBool("open", true);
+                //inspectorAnim.SetBool("open", true);
+
             }
             else
-            { 
+            {
+                if (book) book.SetActive(false);
                 PlayerEnable(true);
                 inventoryAnim.SetBool("open", false);
-                inspectorAnim.SetBool("open", false);
+                //inspectorAnim.SetBool("open", false);
 
             }
             //yield return new WaitForSeconds(1);

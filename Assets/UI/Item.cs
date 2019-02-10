@@ -7,11 +7,14 @@ using UnityEngine.EventSystems;
 public class Item : MonoBehaviour {
 
     private Text subtitle;
+    public GameObject book;
     public string objName="Empty";
     public bool isOn = false;
+   
     // Use this for initialization
     void Start () {
         subtitle = GameObject.Find("Subtitle").GetComponent<Text>();
+        
         EventTrigger trigger = GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerEnter;
@@ -21,12 +24,13 @@ public class Item : MonoBehaviour {
         entry.eventID = EventTriggerType.PointerExit;
         entry.callback.AddListener((data) => { OnPointerExitDelegate(); });
         trigger.triggers.Add(entry);
+        entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerUp;
+        entry.callback.AddListener((data) => { OnPointerUpDelegate(); });
+        trigger.triggers.Add(entry);
+        
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void OnPointerEnterDelegate()
     {
@@ -43,5 +47,18 @@ public class Item : MonoBehaviour {
     public void OnPointerExitDelegate()
     {
         subtitle.text = "";
+    }
+
+    public void OnPointerUpDelegate()
+    {
+        if (objName == "diary")
+        {
+            if(book)book.SetActive(true);
+        }
+        else
+        {
+            if (book)book.SetActive(false);
+        }
+            
     }
 }
