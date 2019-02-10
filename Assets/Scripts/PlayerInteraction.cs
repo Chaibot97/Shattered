@@ -29,6 +29,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool filled;
         private bool islooking;
         private bool photo_changed;
+        private bool photo_pickedup;
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -59,6 +60,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             filled = false;
             photo_changed = false;
             islooking = false;
+            photo_pickedup = false;
             cd = 30;
             cd_sound = 180;
             wait = 180;
@@ -253,8 +255,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     cd = 0;
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                                    Photo.gameObject.SetActive(true);
-                                    photo_changed = true;
+                                    var rotationVector = transform.rotation.eulerAngles;
+                                    rotationVector.x = 45;
+                                    target.transform.rotation = Quaternion.Euler(rotationVector);
+                                    var rotationVector1 = transform.rotation.eulerAngles;
+                                    rotationVector1.y = 180;
+                                    target.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
+                                    target.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
+                                    if (!photo_pickedup)
+                                    {
+                                        Photo.gameObject.SetActive(true);
+                                        photo_changed = true;
+                                    }
                                     SecondCamera.gameObject.SetActive(true);
                                     PrimaryCamera.gameObject.SetActive(false);
                                     filled_water.GetComponent<Renderer>().material.shader = shader1;
