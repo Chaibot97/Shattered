@@ -102,7 +102,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     prompt.enabled = false;
                     checkingMirror = false;
                     GetComponent<RigidbodyFirstPersonController>().enableInput = true;
-                    target.transform.LookAt(itemChecking.gameObject.transform);
+
+                    transform.LookAt(itemChecking.gameObject.transform);
+
+                    //target.transform.LookAt(itemChecking.gameObject.transform);
+                    itemChecking = null;
                 }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
