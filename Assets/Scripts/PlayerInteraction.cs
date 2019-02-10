@@ -258,6 +258,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     cd = 0;
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
+                                    var rotationVector = transform.rotation.eulerAngles;
+                                    rotationVector.x = 45;
+                                    target.transform.rotation = Quaternion.Euler(rotationVector);
+                                    var rotationVector1 = transform.rotation.eulerAngles;
+                                    rotationVector1.y = 180;
+                                    target.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
+                                    target.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
                                     if (!photo_pickedup)
                                     {
                                         Photo.gameObject.SetActive(true);
