@@ -2257,7 +2257,7 @@ Transform:
   - {fileID: 2026780670}
   - {fileID: 1543864385}
   - {fileID: 1647258575}
-  - {fileID: 851622035}
+  - {fileID: 945408418}
   - {fileID: 1863879995}
   - {fileID: 1840797958}
   - {fileID: 742413425}
@@ -2351,6 +2351,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594241278}
+--- !u!1 &601868414 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1193098334994854, guid: 098444618fede1c4195511f3af4965eb,
+    type: 2}
+  m_PrefabInternal: {fileID: 716501858}
+--- !u!65 &601868418
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601868414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000005, y: 0.32086736, z: 10.000002}
+  m_Center: {x: 0, y: 0.16043347, z: 3.5123153e-16}
 --- !u!1 &647857017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2767,18 @@ Prefab:
       propertyPath: m_Name
       value: MirrorBack
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 64951455124221964, guid: 098444618fede1c4195511f3af4965eb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64951455124221964, guid: 098444618fede1c4195511f3af4965eb,
+        type: 2}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64951455124221964, guid: 098444618fede1c4195511f3af4965eb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 098444618fede1c4195511f3af4965eb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &723975057
@@ -3238,11 +3266,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!4 &851622035 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4423201519012532, guid: c6c94ad2f0df6ae4dbd2b3e6a1eb55e3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1765720002}
 --- !u!1001 &853590018
 Prefab:
   m_ObjectHideFlags: 0
@@ -3352,6 +3375,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b56f31bcea59934f8f4a51a66ecabef, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &945408418 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224161292094476846, guid: c6c94ad2f0df6ae4dbd2b3e6a1eb55e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1765720002}
 --- !u!1 &950419327
 GameObject:
   m_ObjectHideFlags: 0
