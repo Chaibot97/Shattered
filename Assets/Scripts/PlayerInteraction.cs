@@ -33,6 +33,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool inSight = false;
 
         private bool checkingMirror=false;
+        private bool checkingInventory = false;
 
         [SerializeField] public Canvas inventoryUI;
         private Animator inventoryAnim;
@@ -76,7 +77,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
       
-        private void FixedUpdate()
+        private void LateUpdate()
         {
 
             if(cd<30)
@@ -89,18 +90,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 if (!islooking)
                 {
-                    if (Input.GetKey(KeyCode.Tab))
+                    if (Input.GetKeyDown(KeyCode.Tab))
                     {
-                        PlayerEnable(false);
-                        inventoryAnim.SetBool("open", true);
-                        inspectorAnim.SetBool("open", true);
+                        ToggleInventory();
                     }
-                    else
-                    {
-                        PlayerEnable(true);
-                        inventoryAnim.SetBool("open", false);
-                        inspectorAnim.SetBool("open", false);
-                    }
+                   
                 }
             }
             else
@@ -120,11 +114,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
-                    GetComponent<Rigidbody>().AddForce(transform.right * 2f, ForceMode.Impulse);
+                    GetComponent<Rigidbody>().AddForce(transform.right * 1f, ForceMode.Impulse);
                 }
                 if (Input.GetKey(KeyCode.A) && angle >- 35)
                 {
-                    GetComponent<Rigidbody>().AddForce(transform.right * -2f, ForceMode.Impulse);
+                    GetComponent<Rigidbody>().AddForce(transform.right * -1f, ForceMode.Impulse);
                 }
                 //Debug.Log(angle);
                 
@@ -163,6 +157,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
+            if (checkingInventory)
+                return;
             inSight = false;
             if (itemChecking && col != itemChecking) return;
             if (col.gameObject.tag.Equals("Mirror"))
@@ -179,7 +175,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
                         if (Physics.Raycast(col.transform.position, direction.normalized*-1, out hit, 5))
                         {
-                            Debug.Log(hit.collider.name);
+                            //Debug.Log(hit.collider.name);
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
@@ -320,7 +316,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     Debug.DrawRay(target.transform.position, direction.normalized*5, Color.red);
                     if (Physics.Raycast(target.transform.position, direction.normalized , out hit,playerLayerMask, 5))
                     {
-                        Debug.Log(hit.collider.tag);
+                        //Debug.Log(hit.collider.tag);
                         if (hit.collider.tag=="Pickupable"){
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
@@ -339,18 +335,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             {
                                 cd = 0;
                                 int i = 0;
-                                foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+                                foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
                                 {
-                                    if (lp.tag != "ItemUI")
+                                    if (img.tag != "ItemUI")
                                         continue;
-                                    Toggle checker = lp.GetComponentInChildren<Toggle>();
-                                    if (!checker.isOn)
+                                    Item item = img.GetComponentInChildren<Item>();
+                                    if (!item.isOn)
                                     {
-                                        lp.gameObject.name = col.gameObject.name;
-                                        Image img = lp.GetComponentsInChildren<Image>()[1];
+                                        item.objName = col.gameObject.name;
                                         if(col.gameObject.GetComponent<Image>())
                                             img.sprite = col.gameObject.GetComponent<Image>().sprite;
-                                        checker.isOn = true;
+                                        item.isOn = true;
                                         Debug.Log(i);
                                         inventory[i] = col.gameObject;
                                         col.gameObject.SetActive(false);
@@ -442,29 +437,30 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void GetItOut(int index)
         {
+
             if (!inventory[index])
                 return;
             int i = 0;
-            foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+            foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
             {
-                if (lp.tag != "ItemUI")
+                if (img.tag != "ItemUI")
                     continue;
                 if (i != index)
                 {
                     i++;
                     continue;
                 }
-                Toggle checker = lp.GetComponentInChildren<Toggle>();
-                if (checker.isOn)
+                Item item = img.GetComponent<Item>();
+                if (item.isOn)
                 {
-                    lp.gameObject.name = "empty";
-                    lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
-                    checker.isOn = false;
+                    img.gameObject.name = "empty";
+                    img.sprite = UIMask;
+                    item.isOn = false;
 
-                    GameObject item = inventory[i];
+                    GameObject it = inventory[i];
                     inventory[i] = null;
-                    item.transform.position = transform.position + transform.forward * 3;
-                    item.SetActive(true);
+                    it.transform.position = transform.position + transform.forward * 3;
+                    it.SetActive(true);
                     break;
 
                 }
@@ -475,28 +471,46 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!inventory[index])
                 return;
             int i = 0;
-            foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+            foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
             {
-                if (lp.tag != "ItemUI")
+                if (img.tag != "ItemUI")
                     continue;
                 if (i != index)
                 {
                     i++;
                     continue;
                 }
-                Toggle checker = lp.GetComponentInChildren<Toggle>();
-                if (checker.isOn)
+                Item item = img.GetComponent<Item>();
+                if (item.isOn)
                 {
-                    lp.gameObject.name = "empty";
-                    lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
-                    checker.isOn = false;
+                    img.gameObject.name = "empty";
+                    img.GetComponentsInChildren<Image>()[1].sprite = UIMask;
+                    item.isOn = false;
 
-                    GameObject item = inventory[i];
                     inventory[i] = null;
                     break;
 
                 }
             }
+        }
+
+        public void ToggleInventory()
+        {
+            checkingInventory = !checkingInventory;
+            if (checkingInventory)
+            {
+                PlayerEnable(false);
+                inventoryAnim.SetBool("open", true);
+                inspectorAnim.SetBool("open", true);
+            }
+            else
+            { 
+                PlayerEnable(true);
+                inventoryAnim.SetBool("open", false);
+                inspectorAnim.SetBool("open", false);
+
+            }
+            //yield return new WaitForSeconds(1);
         }
 
         private IEnumerator Delay(float sec)

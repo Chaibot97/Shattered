@@ -7,9 +7,10 @@ using UnityEngine.EventSystems;
 public class Item : MonoBehaviour {
 
     private Text subtitle;
-
-	// Use this for initialization
-	void Start () {
+    public string objName="Empty";
+    public bool isOn = false;
+    // Use this for initialization
+    void Start () {
         subtitle = GameObject.Find("Subtitle").GetComponent<Text>();
         EventTrigger trigger = GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
@@ -29,9 +30,9 @@ public class Item : MonoBehaviour {
 
     public void OnPointerEnterDelegate()
     {
-        if (!this.name.Equals("Empty"))
+        if (!objName.Equals("Empty"))
         {
-            subtitle.text = this.name;
+            subtitle.text = objName;
         }
         else 
         {
