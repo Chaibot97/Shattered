@@ -172,28 +172,37 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     Vector3 direction = col.transform.position - target.transform.position;
                     float angle = Vector3.Angle(direction, target.transform.forward);
-               
+                    
                     if (angle <= pickUpFOV * 0.8f)
                     {
-                        inSight = true;
-                        prompt.enabled = true;
-                        prompt.text = "Press E to inspect.";
-                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                        RaycastHit hit;
+                        Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
+                        if (Physics.Raycast(col.transform.position, direction.normalized*-1, out hit, 5))
                         {
-                            cd = 0;
-                            itemChecking = col;
-                            //prompt.enabled = false;
-                            checkingMirror = true;
+                            Debug.Log(hit.collider.name);
+                            if (hit.collider.tag.Contains("Player"))
+                            {
+                                inSight = true;
+                                prompt.enabled = true;
+                                prompt.text = "Press E to inspect.";
+                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                                {
+                                    cd = 0;
+                                    itemChecking = col;
+                                    //prompt.enabled = false;
+                                    checkingMirror = true;
 
-                            //GetComponent<RigidbodyFirstPersonController>().enabled = false;
-                            transform.position=(col.gameObject.transform.position + col.gameObject.transform.up * 1.3f);
-                            //transform.LookAt(col.gameObject.transform);
-                            target.transform.LookAt(col.gameObject.transform);
-                            GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                       
-                            prompt.text = "Press A/D to change angle. Press E to quit.";
-                            return;
+                                    //GetComponent<RigidbodyFirstPersonController>().enabled = false;
+                                    transform.position = (col.gameObject.transform.position + col.gameObject.transform.up * 1.3f);
+                                    //transform.LookAt(col.gameObject.transform);
+                                    target.transform.LookAt(col.gameObject.transform);
+                                    GetComponent<RigidbodyFirstPersonController>().enableInput = false;
 
+                                    prompt.text = "Press A/D to change angle. Press E to quit.";
+                                    return;
+
+                                }
+                            }
                         }
                     }
                     else

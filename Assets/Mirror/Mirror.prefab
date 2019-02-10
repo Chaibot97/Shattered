@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 64951455124221964}
   - component: {fileID: 114316177799673570}
   - component: {fileID: 114212895958928918}
+  - component: {fileID: 65391760468940224}
   m_Layer: 4
   m_Name: MirrorPlate
   m_TagString: Mirror
@@ -58,7 +59,7 @@ GameObject:
   - component: {fileID: 23830057018294226}
   - component: {fileID: 65456556360945938}
   m_Layer: 1
-  m_Name: Cube
+  m_Name: MirrorBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,12 +198,24 @@ MeshCollider:
   m_GameObject: {fileID: 1193098334994854}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65391760468940224
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193098334994854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000005, y: 0.09, z: 10.000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65456556360945938
 BoxCollider:
   m_ObjectHideFlags: 1
