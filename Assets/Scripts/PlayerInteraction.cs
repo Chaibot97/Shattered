@@ -296,11 +296,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (angle <= pickUpFOV * 0.5f)
                 {
                     RaycastHit hit;
-                    Debug.DrawLine(col.GetComponent<Renderer>().bounds.center , target.transform.position,Color.red);
-                    if (Physics.Raycast(col.GetComponent<Renderer>().bounds.center, direction.normalized*-1 , out hit, 5))
+                    Debug.DrawRay(target.transform.position, direction.normalized*5, Color.red);
+                    if (Physics.Raycast(target.transform.position, direction.normalized , out hit,playerLayerMask, 5))
                     {
-                  
-                        if (hit.collider.tag=="Player"){
+                        Debug.Log(hit.collider.tag);
+                        if (hit.collider.tag=="Pickupable"){
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
