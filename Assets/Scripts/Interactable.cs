@@ -42,9 +42,13 @@ public class Interactable : MonoBehaviour {
 		
         if (once)
         {
-            if(gameObject.name != "Sink")
-            gameObject.tag = "Untagged";
-            gameObject.GetComponent<Collider>().enabled = false;
+            if (gameObject.name != "Sink")
+            {
+
+                gameObject.tag = "Untagged";
+                gameObject.GetComponent<Collider>().enabled = false;
+            }
+            
         }
 	}
 }
