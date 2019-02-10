@@ -52,8 +52,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             target = Camera.main.transform;
             shader1 = Shader.Find("Standard (Roughness setup)");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
-            inventory = new List<GameObject>(3);
-            for (int i = 0; i < 3; i++) 
+            inventory = new List<GameObject>(5);
+            for (int i = 0; i < 5; i++) 
                 inventory.Add(new GameObject());
 
             inventoryAnim = inventoryUI.GetComponent<Animator>();
