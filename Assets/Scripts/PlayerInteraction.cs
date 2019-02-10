@@ -8,7 +8,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     public class PlayerInteraction : MonoBehaviour {
 
-
+        public GameObject filled_water;
         private readonly int pickUpFOV = 60;
         //[SerializeField] AudioClip takeItem;
         //[SerializeField] AudioClip teleport;
@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //LayoutGroup inventoryUI;
         private int cd;
         private int cd_sound;
+        private int wait;
 
         private int playerLayerMask=1<<9;
         private void Start()
@@ -51,6 +52,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             filled = false;
             cd = 30;
             cd_sound = 180;
+            wait = 180;
             target = Camera.main.transform;
             shader1 = Shader.Find("Standard (Roughness setup)");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
@@ -77,6 +79,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 cd++;
             if (cd_sound < 180)
                 cd_sound++;
+            if (wait < 180)
+                wait++;
             if (!checkingMirror)
             {
                 if (Input.GetKey(KeyCode.Tab))
@@ -195,37 +199,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     }
                 }
-            }else if(col.gameObject.tag.Equals("Water") && filled)
-            {
-                Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
-                float angle = Vector3.Angle(direction, target.transform.forward);
-                itemChecking = col;
-                
-                RaycastHit hit;
-                if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, playerLayerMask, 5))
-                {
-                    if (hit.collider.Equals(col))
-                    {
-                        inSight = true;
-                        col.GetComponent<Renderer>().material.shader = shader2;
-                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
-                        {
-                            cd = 0;
-                            Interactable i = col.gameObject.GetComponent<Interactable>();
-                            if (!i.requirement)
-                            {
-                                i.Interact();
-                            }
-                            else if (inventory.Contains(i.requirement))
-                            {
-
-                                DestroyObj(inventory.IndexOf(i.requirement));
-                                i.Interact();
-                            }
-                        }
-                    }
-                }
-                Debug.Log("1");
             }else if (col.gameObject.tag.Equals("Interactable"))
             {
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
@@ -233,34 +206,76 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 // Debug.Log(angle);
 
                 itemChecking = col;
+                
                 RaycastHit hit;
                 if (Physics.Raycast(target.transform.position, target.transform.forward, out hit,playerLayerMask, 5))
                 {
                     if(hit.collider.Equals(col)){
-                        inSight = true;
-                        rend = col.GetComponentsInChildren<Renderer>();
-                        foreach(Renderer r in rend)
+                        if (itemChecking.name.Equals("Sink") && filled)
                         {
-                            r.material.shader = shader2;
-                        }
-                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
-                        {
-                            cd = 0;
-                            Interactable i=col.gameObject.GetComponent<Interactable>();
-                            if (!i.requirement)
+                            inSight = true;
+                            
+                            rend = itemChecking.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rend)
                             {
-                                i.Interact();
-                            }else if (inventory.Contains(i.requirement))
+                                r.material.shader = shader1;
+                            }
+                            if(wait >= 180)
                             {
-                                if (col.gameObject.name.Equals("Sink"))
+                                filled_water.GetComponent<Renderer>().material.shader = shader2;
+                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                                 {
-                                    Debug.Log("filled");
-                                    filled = true;
+                                    cd = 0;
+                                    Interactable i = col.gameObject.GetComponent<Interactable>();
+                                    if (!i.requirement)
+                                    {
+                                        i.Interact();
+                                    }
+                                    else if (inventory.Contains(i.requirement))
+                                    {
+                                        if (col.gameObject.name.Equals("Sink"))
+                                        {
+                                            Debug.Log("filled");
+                                            wait = 0;
+                                            filled = true;
+                                        }
+                                        DestroyObj(inventory.IndexOf(i.requirement));
+                                        i.Interact();
+                                    }
                                 }
-                                DestroyObj(inventory.IndexOf(i.requirement));
-                                i.Interact();
+                            }
+                            
+                        }
+                        else
+                        {
+                            inSight = true;
+                            rend = col.GetComponentsInChildren<Renderer>();
+                            foreach (Renderer r in rend)
+                            {
+                                r.material.shader = shader2;
+                            }
+                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
+                            {
+                                cd = 0;
+                                Interactable i = col.gameObject.GetComponent<Interactable>();
+                                if (!i.requirement)
+                                {
+                                    i.Interact();
+                                }
+                                else if (inventory.Contains(i.requirement))
+                                {
+                                    if (col.gameObject.name.Equals("Sink"))
+                                    {
+                                        Debug.Log("filled");
+                                        wait = 0;
+                                        filled = true;
+                                    }
+                                    DestroyObj(inventory.IndexOf(i.requirement));
+                                    i.Interact();
+                                }
                             }
                         }
+                        
                     }
                 }
             
@@ -327,6 +342,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (!inSight)
             {
+                filled_water.GetComponent<Renderer>().material.shader = shader1;
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
@@ -347,6 +363,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
+            filled_water.GetComponent<Renderer>().material.shader = shader1;
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;

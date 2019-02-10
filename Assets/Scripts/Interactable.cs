@@ -42,6 +42,7 @@ public class Interactable : MonoBehaviour {
 		
         if (once)
         {
+            if(gameObject.name != "Sink")
             gameObject.tag = "Untagged";
         }
 	}
