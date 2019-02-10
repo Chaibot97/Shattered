@@ -11,6 +11,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject filled_water;
         public Camera SecondCamera;
         public Camera PrimaryCamera;
+        public GameObject Photo;
         private readonly int pickUpFOV = 60;
         //[SerializeField] AudioClip takeItem;
         //[SerializeField] AudioClip teleport;
@@ -77,7 +78,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
       
         private void FixedUpdate()
         {
-
 
             if(cd<30)
                 cd++;
@@ -254,6 +254,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     cd = 0;
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
+                                    Photo.gameObject.SetActive(true);
                                     SecondCamera.gameObject.SetActive(true);
                                     PrimaryCamera.gameObject.SetActive(false);
                                     filled_water.GetComponent<Renderer>().material.shader = shader1;
