@@ -23,6 +23,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource findpickup;
         private bool soundplayed;
         private bool alreadyfind;
+        private bool filled;
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -47,6 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             holding = false;
             soundplayed = false;
             alreadyfind = false;
+            filled = false;
             cd = 30;
             cd_sound = 180;
             target = Camera.main.transform;
@@ -193,6 +195,37 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     }
                 }
+            }else if(col.gameObject.tag.Equals("Water") && filled)
+            {
+                Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
+                float angle = Vector3.Angle(direction, target.transform.forward);
+                itemChecking = col;
+                
+                RaycastHit hit;
+                if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, playerLayerMask, 5))
+                {
+                    if (hit.collider.Equals(col))
+                    {
+                        inSight = true;
+                        col.GetComponent<Renderer>().material.shader = shader2;
+                        if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
+                        {
+                            cd = 0;
+                            Interactable i = col.gameObject.GetComponent<Interactable>();
+                            if (!i.requirement)
+                            {
+                                i.Interact();
+                            }
+                            else if (inventory.Contains(i.requirement))
+                            {
+
+                                DestroyObj(inventory.IndexOf(i.requirement));
+                                i.Interact();
+                            }
+                        }
+                    }
+                }
+                Debug.Log("1");
             }else if (col.gameObject.tag.Equals("Interactable"))
             {
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
@@ -200,7 +233,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 // Debug.Log(angle);
 
                 itemChecking = col;
-
                 RaycastHit hit;
                 if (Physics.Raycast(target.transform.position, target.transform.forward, out hit,playerLayerMask, 5))
                 {
@@ -220,6 +252,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 i.Interact();
                             }else if (inventory.Contains(i.requirement))
                             {
+                                if (col.gameObject.name.Equals("Sink"))
+                                {
+                                    Debug.Log("filled");
+                                    filled = true;
+                                }
                                 DestroyObj(inventory.IndexOf(i.requirement));
                                 i.Interact();
                             }
