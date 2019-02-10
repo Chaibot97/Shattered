@@ -290,7 +290,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (col.gameObject.tag.Equals("Pickupable"))
             {
-                Vector3 direction = col.gameObject.transform.position - target.transform.position;
+                Vector3 direction = col.GetComponent<Renderer>().bounds.center - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 itemChecking = col;
                 if (angle <= pickUpFOV * 0.5f)
