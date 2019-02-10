@@ -87,17 +87,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 wait++;
             if (!checkingMirror)
             {
-                if (Input.GetKey(KeyCode.Tab))
+                if (!islooking)
                 {
-                    PlayerEnable(false);
-                    inventoryAnim.SetBool("open", true);
-                    inspectorAnim.SetBool("open", true);
-                }
-                else
-                {
-                    PlayerEnable(true);
-                    inventoryAnim.SetBool("open", false);
-                    inspectorAnim.SetBool("open", false);
+                    if (Input.GetKey(KeyCode.Tab))
+                    {
+                        PlayerEnable(false);
+                        inventoryAnim.SetBool("open", true);
+                        inspectorAnim.SetBool("open", true);
+                    }
+                    else
+                    {
+                        PlayerEnable(true);
+                        inventoryAnim.SetBool("open", false);
+                        inspectorAnim.SetBool("open", false);
+                    }
                 }
             }
             else
@@ -238,30 +241,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     filled_water.GetComponent<Renderer>().material.shader = shader2;
                                 }
-                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
+                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && !islooking)
                                 {
                                     cd = 0;
+                                    GetComponent<RigidbodyFirstPersonController>().enableInput = false;
                                     SecondCamera.gameObject.SetActive(true);
                                     PrimaryCamera.gameObject.SetActive(false);
                                     filled_water.GetComponent<Renderer>().material.shader = shader1;
                                     islooking = true;
+                                    
 
-                                    Interactable i = col.gameObject.GetComponent<Interactable>();
-                                    if (!i.requirement)
-                                    {
-                                        i.Interact();
-                                    }
-                                    else if (inventory.Contains(i.requirement))
-                                    {
-                                        if (col.gameObject.name.Equals("Sink"))
-                                        {
-                                            Debug.Log("filled");
-                                            wait = 0;
-                                            filled = true;
-                                        }
-                                        DestroyObj(inventory.IndexOf(i.requirement));
-                                        i.Interact();
-                                    }
+                                }
+                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && islooking)
+                                {
+                                    cd = 0;
+                                    SecondCamera.gameObject.SetActive(false);
+                                    PrimaryCamera.gameObject.SetActive(true);
+                                    filled_water.GetComponent<Renderer>().material.shader = shader1;
+                                    islooking = false;
+                                    GetComponent<RigidbodyFirstPersonController>().enableInput = true;
+
                                 }
                             }
                             
