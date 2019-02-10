@@ -28,6 +28,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool alreadyfind;
         private bool filled;
         private bool islooking;
+        private bool photo_changed;
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -54,6 +55,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             soundplayed = false;
             alreadyfind = false;
             filled = false;
+            photo_changed = false;
             islooking = false;
             cd = 30;
             cd_sound = 180;
@@ -255,6 +257,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     cd = 0;
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
                                     Photo.gameObject.SetActive(true);
+                                    photo_changed = true;
                                     SecondCamera.gameObject.SetActive(true);
                                     PrimaryCamera.gameObject.SetActive(false);
                                     filled_water.GetComponent<Renderer>().material.shader = shader1;
@@ -357,6 +360,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         inSight = false;
                                         itemChecking = null;
                                         putin.Play();
+                                        if(col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
+                                            col.gameObject.transform.parent.gameObject.SetActive(false);
+                                        }
                                         break;
 
                                     }
