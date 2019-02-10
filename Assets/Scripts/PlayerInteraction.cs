@@ -296,7 +296,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (angle <= pickUpFOV * 0.5f)
                 {
                     RaycastHit hit;
-                    if (Physics.Raycast(col.transform.position, direction.normalized*-1 , out hit, 5))
+                    Debug.DrawLine(col.GetComponent<Renderer>().bounds.center , target.transform.position,Color.red);
+                    if (Physics.Raycast(col.GetComponent<Renderer>().bounds.center, direction.normalized*-1 , out hit, 5))
                     {
                   
                         if (hit.collider.tag=="Player"){

@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Interactable
   - Pickupable
+  - ItemUI
+  - Interactable
+  - Mirror
+  - TAZOFX
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,15 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - PostProcessing
+  - Player
+  - Lighting
+  - Room
+  - Itself
+  - VisibleInMirror
+  - Ceiling
+  - Nottobelight
+  - VisibleInMirror
   - 
   - 
   - 
