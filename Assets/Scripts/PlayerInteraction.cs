@@ -29,6 +29,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool filled;
         private bool islooking;
         private bool photo_changed;
+        private bool photo_pickedup;
 
         private List<GameObject> inventory;
         private bool inSight = false;
@@ -57,6 +58,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             filled = false;
             photo_changed = false;
             islooking = false;
+            photo_pickedup = false;
             cd = 30;
             cd_sound = 180;
             wait = 180;
@@ -256,8 +258,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     cd = 0;
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                                    Photo.gameObject.SetActive(true);
-                                    photo_changed = true;
+                                    if (!photo_pickedup)
+                                    {
+                                        Photo.gameObject.SetActive(true);
+                                        photo_changed = true;
+                                    }
                                     SecondCamera.gameObject.SetActive(true);
                                     PrimaryCamera.gameObject.SetActive(false);
                                     filled_water.GetComponent<Renderer>().material.shader = shader1;
@@ -361,6 +366,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         itemChecking = null;
                                         putin.Play();
                                         if(col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
+                                            photo_pickedup = true;
                                             col.gameObject.transform.parent.gameObject.SetActive(false);
                                         }
                                         break;
