@@ -217,11 +217,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             Interactable i=col.gameObject.GetComponent<Interactable>();
                             if (!i.requirement)
                             {
-                                i.interact();
+                                i.Interact();
                             }else if (inventory.Contains(i.requirement))
                             {
                                 DestroyObj(inventory.IndexOf(i.requirement));
-                                i.interact();
+                                i.Interact();
                             }
                         }
                     }

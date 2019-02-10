@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour {
+    public GameObject target=null;
+    public GameObject requirement = null;
     public enum InteractOptions
     {
         Toggle,
@@ -12,17 +14,26 @@ public class Interactable : MonoBehaviour {
     public GameObject ObjToReveal;
 
     public bool once = false;
-    public GameObject requirement = null;
-    
 
-	public void interact(){
+    private void Start()
+    {
+        if (!target)
+        {
+            target = gameObject;
+        }
+    }
+
+    public void Interact(){
+        Animator anim = target.GetComponent<Animator>();
+
         switch (interactOption)
         {
             case InteractOptions.Toggle:
-                GetComponent<Animator>().SetBool("open", !GetComponent<Animator>().GetBool("open"));
+                if(anim)anim.SetBool("open", !GetComponent<Animator>().GetBool("open"));
                 break;
             case InteractOptions.Reveal:
                 if(ObjToReveal)ObjToReveal.SetActive(true);
+                if (anim)anim.SetBool("check", true);
                 break;
         }
       
