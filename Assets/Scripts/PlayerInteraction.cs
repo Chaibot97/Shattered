@@ -56,8 +56,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             target = Camera.main.transform;
             shader1 = Shader.Find("Standard (Roughness setup)");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
-            inventory = new List<GameObject>(3);
-            for (int i = 0; i < 3; i++) 
+            inventory = new List<GameObject>(5);
+            for (int i = 0; i < 5; i++) 
                 inventory.Add(new GameObject());
 
             inventoryAnim = inventoryUI.GetComponent<Animator>();
@@ -101,8 +101,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 target.transform.LookAt(itemChecking.gameObject.transform);
                 Vector3 direction = transform.position- itemChecking.transform.position;
-                float angle = Vector3.SignedAngle(direction, itemChecking.transform.up,Vector3.up);
-                itemChecking.GetComponent<MirrorTrigger>().reveal(angle);
+                float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), itemChecking.transform.up, Vector3.up);
+                if (itemChecking.GetComponent<MirrorTrigger>().reveal(angle))
+                {
+                    itemChecking.tag = "Untagged";
+                    prompt.enabled = false;
+                    checkingMirror = false;
+                    GetComponent<RigidbodyFirstPersonController>().enableInput = true;
+                    target.transform.LookAt(itemChecking.gameObject.transform);
+                }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
                     GetComponent<Rigidbody>().AddForce(transform.right * 2f, ForceMode.Impulse);
@@ -171,7 +178,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             checkingMirror = true;
 
                             //GetComponent<RigidbodyFirstPersonController>().enabled = false;
-                            transform.position=(col.gameObject.transform.position + col.gameObject.transform.up * 1);
+                            transform.position=(col.gameObject.transform.position + col.gameObject.transform.up * 1.3f);
                             //transform.LookAt(col.gameObject.transform);
                             target.transform.LookAt(col.gameObject.transform);
                             GetComponent<RigidbodyFirstPersonController>().enableInput = false;
@@ -467,6 +474,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 }
             }
+        }
+
+        private IEnumerator Delay(float sec)
+        {
+            yield return new WaitForSeconds(sec);
+             
         }
 
     }
