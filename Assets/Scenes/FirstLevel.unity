@@ -334,6 +334,11 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 1
+--- !u!1 &29038753 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1645872270876098, guid: 38f7c1e00955736409a47923c7906970,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367701378}
 --- !u!1001 &32117351
 Prefab:
   m_ObjectHideFlags: 0
@@ -1406,37 +1411,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1851514479377676, guid: c97b254e5bdc92d479069698da0b9e0d,
     type: 2}
   m_PrefabInternal: {fileID: 1845153162}
---- !u!64 &387777684
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 387777679}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300006, guid: ce8d79c79d11b8f9d00076e98d76c639, type: 3}
---- !u!114 &387777685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 387777679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptForRequirement: 
-  target: {fileID: 0}
-  requirement: {fileID: 0}
-  interactOption: 0
-  ObjToReveal: {fileID: 0}
-  once: 0
 --- !u!4 &420714889 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4135282912422576, guid: 048bffbdd54e98a44a83274758b02195,
@@ -5055,10 +5029,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1851514479377676, guid: c97b254e5bdc92d479069698da0b9e0d, type: 2}
-      propertyPath: m_TagString
-      value: Water
-      objectReference: {fileID: 0}
+    - target: {fileID: 114186382903359206, guid: c97b254e5bdc92d479069698da0b9e0d,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1440224555}
+    - target: {fileID: 114186382903359206, guid: c97b254e5bdc92d479069698da0b9e0d,
+        type: 2}
+      propertyPath: requirement
+      value: 
+      objectReference: {fileID: 29038753}
+    - target: {fileID: 114186382903359206, guid: c97b254e5bdc92d479069698da0b9e0d,
+        type: 2}
+      propertyPath: ObjToReveal
+      value: 
+      objectReference: {fileID: 1440224555}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c97b254e5bdc92d479069698da0b9e0d, type: 2}
   m_IsPrefabParent: 0
