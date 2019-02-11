@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private bool checkingMirror=false;
         private bool checkingInventory = false;
-
+        private bool checkingSafe;
         public GameObject book;
         [SerializeField] public Canvas inventoryUI;
         private Animator inventoryAnim;
@@ -46,12 +46,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] public Sprite UIMask;
 
         [SerializeField] public Text prompt;
-
+        public GameObject lockUI;
         //LayoutGroup inventoryUI;
         private int cd;
         private int cd_sound;
         private int wait;
-
+        
         private int playerLayerMask=1<<9;
         private Lv1Progress lv1_p;
         private void Start()
@@ -97,7 +97,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 cd_sound++;
             if (wait < 180)
                 wait++;
-            if (!checkingMirror)
+            if (checkingSafe)
+            {
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    checkingSafe = false;
+                    lockUI.SetActive(false);
+                    PlayerEnable(true);
+                }
+                if (lockUI.GetComponent<Lock>().unlocked)
+                {
+                    checkingSafe = false;
+                    lockUI.SetActive(false);
+                    PlayerEnable(true);
+                    itemChecking.GetComponent<Collider>().enabled = false;
+                    itemChecking.GetComponent<Animator>().SetBool("lock", true);
+                }
+            }
+            else if (!checkingMirror)
             {
                 if (!islooking)
                 {
@@ -164,11 +181,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         void OnTriggerStay(Collider col)
         {
             
-            if (checkingInventory)
+            if (checkingInventory|| checkingSafe)
                 return;
             inSight = false;
             
             if (itemChecking && col != itemChecking) return;
+
             if (col.gameObject.tag.Equals("Mirror"))
             {
                 itemChecking = col;
@@ -223,7 +241,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     }
                 }
-            }else if (col.gameObject.tag.Equals("Interactable"))
+            }else if (col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe") )
             {
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -300,32 +318,42 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                             {
                                 cd = 0;
-                                Interactable i = col.gameObject.GetComponent<Interactable>();
-                                if (!i.requirement)
+                                if (col.gameObject.tag.Equals("Safe"))
                                 {
-                                    i.Interact();
-                                    if (itemChecking.gameObject.name.Equals("Chest"))
-                                    {
-                                        itemChecking = null;
-                                    }
-                                }
-                                else if (inventory.Contains(i.requirement))
-                                {
-                                    if (col.gameObject.name.Equals("Sink"))
-                                    {
-                                        Debug.Log("filled");
-                                        wait = 0;
-                                        filled = true;
-                                    }
-                                    DestroyObj(inventory.IndexOf(i.requirement));
-                                    i.Interact();
-                                    i.requirement = null;
+                                    lockUI.SetActive(true);
+                                    PlayerEnable(false);
+                                    checkingSafe = true;
                                 }
                                 else
                                 {
 
-                                    StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
+                                    Interactable i = col.gameObject.GetComponent<Interactable>();
+                                    if (!i.requirement)
+                                    {
+                                        i.Interact();
+                                        if (itemChecking.gameObject.name.Equals("Chest"))
+                                        {
+                                            itemChecking = null;
+                                        }
+                                    }
+                                    else if (inventory.Contains(i.requirement))
+                                    {
+                                        if (col.gameObject.name.Equals("Sink"))
+                                        {
+                                            Debug.Log("filled");
+                                            wait = 0;
+                                            filled = true;
+                                        }
+                                        DestroyObj(inventory.IndexOf(i.requirement));
+                                        i.Interact();
+                                        i.requirement = null;
+                                    }
+                                    else
+                                    {
 
+                                        StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
+
+                                    }
                                 }
                             }
                         }
@@ -436,7 +464,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     soundplayed = false;
                     alreadyfind = false; 
                 }
-                if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
+                if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable") || col.gameObject.tag.Equals("Safe"))
                 {
                     
                     itemChecking = null;
@@ -457,7 +485,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 soundplayed = false;
                 alreadyfind = false;
             }
-            if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable"))
+            if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe"))
             {    
 
                 inSight = false;
