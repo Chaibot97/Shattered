@@ -262,8 +262,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     rotationVector1.y = 180;
                                     target.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
                                     target.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
-                                    if (!photo_pickedup)
+                                    Interactable i = filled_water.gameObject.GetComponent<Interactable>();
+                                    if (!photo_pickedup && inventory.Contains(i.requirement))
                                     {
+                                        i.Interact();
+                                        DestroyObj(inventory.IndexOf(i.requirement));
                                         Photo.gameObject.SetActive(true);
                                         photo_changed = true;
                                     }
@@ -368,8 +371,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         inSight = false;
                                         itemChecking = null;
                                         putin.Play();
-                                        StartCoroutine(ShowPrompt("Found a "+ item.objName , 2));
-                                        if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
+                                        if(col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
+                                            photo_pickedup = true;
                                             col.gameObject.transform.parent.gameObject.SetActive(false);
                                         }
                                         break;
