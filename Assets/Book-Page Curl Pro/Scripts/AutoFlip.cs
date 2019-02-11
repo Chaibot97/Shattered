@@ -19,7 +19,7 @@ public class AutoFlip : MonoBehaviour
     void Start () {
         if (!ControledBook)
             ControledBook = GetComponent<BookPro>();
-        ControledBook.interactable = false;
+        //ControledBook.interactable = false;
         if (AutoStartFlip)
             StartFlipping();
     }
