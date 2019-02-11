@@ -107,9 +107,10 @@ GameObject:
   - component: {fileID: 33329210786292234}
   - component: {fileID: 23239504060389720}
   - component: {fileID: 95318194624453936}
+  - component: {fileID: 65944477780941462}
   m_Layer: 0
   m_Name: safebox 1
-  m_TagString: Untagged
+  m_TagString: Safe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,6 +552,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700712372183238}
   m_Mesh: {fileID: 4300006, guid: 957727163907a684b94cd0c9084b150d, type: 3}
+--- !u!65 &65944477780941462
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596442640302812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2008092, y: 1.5010107, z: 1.2008088}
+  m_Center: {x: -0.0000006854536, y: 0.750304, z: 0.0000009536743}
 --- !u!95 &95318194624453936
 Animator:
   serializedVersion: 3
