@@ -110,12 +110,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), itemChecking.transform.up, Vector3.up);
                 if (itemChecking.GetComponent<MirrorTrigger>().reveal(angle))
                 {
-                    itemChecking.tag = "Untagged";
-                    prompt.text="";
-                    checkingMirror = false;
-                    GetComponent<RigidbodyFirstPersonController>().enableInput = true;
-                    target.transform.LookAt(itemChecking.gameObject.transform);
-                    itemChecking=null;
+                    StartCoroutine(MirrorDone(itemChecking,1));
                 }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
@@ -125,34 +120,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     GetComponent<Rigidbody>().AddForce(transform.right * -1f, ForceMode.Impulse);
                 }
-                //Debug.Log(angle);
                 
             }
 
-            if (Input.GetKeyUp(KeyCode.O))
-            {
-                int i = 0;
-                foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
-                {
-                    if (lp.tag != "ItemUI")
-                        continue;
-                    Toggle checker = lp.GetComponentInChildren<Toggle>();
-                    if (checker.isOn)
-                    {
-                        lp.gameObject.name = "Empty";
-                        lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
-                        checker.isOn = false;
+            //if (Input.GetKeyUp(KeyCode.O))
+            //{
+            //    int i = 0;
+            //    foreach (LayoutGroup lp in inventoryUI.GetComponentsInChildren<LayoutGroup>())
+            //    {
+            //        if (lp.tag != "ItemUI")
+            //            continue;
+            //        Toggle checker = lp.GetComponentInChildren<Toggle>();
+            //        if (checker.isOn)
+            //        {
+            //            lp.gameObject.name = "Empty";
+            //            lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
+            //            checker.isOn = false;
 
-                        GameObject item = inventory[i];
-                        inventory[i] = null;
-                        item.transform.position = transform.position + transform.forward * 3;
-                        item.SetActive(true);
-                        break;
+            //            GameObject item = inventory[i];
+            //            inventory[i] = null;
+            //            item.transform.position = transform.position + transform.forward * 3;
+            //            item.SetActive(true);
+            //            break;
 
-                    }
-                    i++;
-                }
-            }
+            //        }
+            //        i++;
+            //    }
+            //}
         }
 
         void OnTriggerEnter(Collider col)
@@ -190,12 +184,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     cd = 0;
                                     itemChecking = col;
-                                    //prompt.enabled = false;
                                     checkingMirror = true;
-
-                                    //GetComponent<RigidbodyFirstPersonController>().enabled = false;
-                                    transform.position = (col.gameObject.transform.position + col.gameObject.transform.up * 1.3f);
-                                    //transform.LookAt(col.gameObject.transform);
+                                    Vector3 tmp = col.gameObject.transform.position + col.gameObject.transform.up * 1.3f;
+                                    transform.position = ( new Vector3(tmp.x,transform.position.y,tmp.z));
                                     target.transform.LookAt(col.gameObject.transform);
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
 
@@ -538,12 +529,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //yield return new WaitForSeconds(1);
         }
 
+        private IEnumerator MirrorDone(Collider mirror, float sec)
+        {
+            mirror.tag = "Untagged";
+            prompt.text = "";
+            checkingMirror = false;
+            target.transform.LookAt(mirror.gameObject.transform);
+            StartCoroutine(ShowPrompt("Something happened...", sec));
+            yield return new WaitForSeconds(sec);
+            GetComponent<RigidbodyFirstPersonController>().enableInput = true;
+            itemChecking = null;
+
+        }
+
         private IEnumerator ShowPrompt(string text, float sec)
         {
             prompt.text = text;
             yield return new WaitForSeconds(sec);
             prompt.text = "";
         }
+
 
         private IEnumerator Delay(float sec)
         {

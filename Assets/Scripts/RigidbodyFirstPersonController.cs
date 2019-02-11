@@ -222,8 +222,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     x = CrossPlatformInputManager.GetAxis("Horizontal"),
                     y = CrossPlatformInputManager.GetAxis("Vertical")
                 };
-            if(!enableInput)
-                input = new Vector2(0,0);
+            if (!enableInput)
+            {
+                input = new Vector2(0, 0);
+            }
             movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
@@ -237,13 +239,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
-            if(enableInput)
-            {
-                mouseLook.LookRotation (transform, cam.transform);
+            if (!enableInput)
+                return;
+            mouseLook.LookRotation (transform, cam.transform);
 
-            }
             
-            if (m_IsGrounded || advancedSettings.airControl)
+            if ( m_IsGrounded || advancedSettings.airControl)
             {
                 // Rotate the rigidbody velocity to match the new direction that the character is looking
                 Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRotation, Vector3.up);
