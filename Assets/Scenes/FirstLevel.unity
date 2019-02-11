@@ -188,7 +188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &26241315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5083,6 +5083,12 @@ MonoBehaviour:
   note3Found: 0
   newspaperFound: 0
   photoFound: 0
+  page3content: {fileID: 1822701123}
+  page4content: {fileID: 26241314}
+  page5content: {fileID: 0}
+  page6content: {fileID: 0}
+  page7content: {fileID: 0}
+  page8content: {fileID: 0}
 --- !u!1001 &1512460250
 Prefab:
   m_ObjectHideFlags: 0
@@ -6529,7 +6535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1822701124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6554,7 +6560,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1822701123}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
