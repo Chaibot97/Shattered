@@ -313,6 +313,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     }
                                     DestroyObj(inventory.IndexOf(i.requirement));
                                     i.Interact();
+                                    i.requirement = null;
                                 }
                                 else
                                 {
