@@ -165,6 +165,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (checkingInventory)
                 return;
             inSight = false;
+            
             if (itemChecking && col != itemChecking) return;
             if (col.gameObject.tag.Equals("Mirror"))
             {
@@ -173,14 +174,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     Vector3 direction = col.transform.position - target.transform.position;
                     float angle = Vector3.Angle(direction, target.transform.forward);
-                    
+                    prompt.enabled = false;
                     if (angle <= pickUpFOV * 0.8f)
                     {
                         RaycastHit hit;
-                        Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
-                        if (Physics.Raycast(col.transform.position, direction.normalized*-1, out hit, 5))
+                        Debug.DrawRay(col.transform.position , col.transform.up, Color.red);
+                        if (Physics.Raycast(col.transform.position, col.transform.up, out hit, 1))
                         {
-                            //Debug.Log(hit.collider.name);
+                            Debug.Log(hit.collider.name);
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
@@ -503,7 +504,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (item.isOn)
                 {
                     img.gameObject.name = "empty";
-                    img.GetComponentsInChildren<Image>()[1].sprite = UIMask;
+                    img.sprite = UIMask;
                     item.isOn = false;
 
                     inventory[i] = null;
