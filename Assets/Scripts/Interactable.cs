@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour {
+
+    public string promptForRequirement = "";
+
     public GameObject target=null;
     public GameObject requirement = null;
     public enum InteractOptions

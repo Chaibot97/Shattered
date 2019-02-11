@@ -175,7 +175,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         Debug.DrawRay(col.transform.position , col.transform.up, Color.red);
                         if (Physics.Raycast(col.transform.position, col.transform.up, out hit, 1))
                         {
-                            Debug.Log(hit.collider.name);
+                            //Debug.Log(hit.collider.name);
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
@@ -254,7 +254,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     target.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
                                     target.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
                                     Interactable i = filled_water.gameObject.GetComponent<Interactable>();
-                                    if (!photo_pickedup && inventory.Contains(i.requirement))
+                                    if (!photo_pickedup&& inventory.Contains(i.requirement))
                                     {
                                         i.Interact();
                                         DestroyObj(inventory.IndexOf(i.requirement));
@@ -308,6 +308,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     DestroyObj(inventory.IndexOf(i.requirement));
                                     i.Interact();
                                 }
+                                else
+                                {
+
+                                    StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
+
+                                }
                             }
                         }
                         
@@ -360,6 +366,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         inventory[i] = col.gameObject;
                                         col.gameObject.SetActive(false);
                                         inSight = false;
+                                        StartCoroutine(ShowPrompt(item.objName + " found", 2));
                                         itemChecking = null;
                                         putin.Play();
                                         if(col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){

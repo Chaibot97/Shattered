@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptForRequirement: 
   target: {fileID: 0}
   requirement: {fileID: 0}
   interactOption: 0
@@ -1430,6 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptForRequirement: 
   target: {fileID: 0}
   requirement: {fileID: 0}
   interactOption: 0
@@ -1874,6 +1876,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &594903765 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1311122534167946, guid: 8695387e58952ee4eb62786209b30246,
+    type: 2}
+  m_PrefabInternal: {fileID: 1080418768}
 --- !u!1 &601868414 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1193098334994854, guid: 098444618fede1c4195511f3af4965eb,
@@ -2977,6 +2984,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7e4cd324ba01be4eb0aff67d813e046, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1053311960 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1670937798994676, guid: 0924abceea041a34388affa690d54601,
+    type: 2}
+  m_PrefabInternal: {fileID: 1479795906}
 --- !u!1001 &1070523845
 Prefab:
   m_ObjectHideFlags: 0
@@ -3220,6 +3232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptForRequirement: Something's missing on the board.
   target: {fileID: 811812029}
   requirement: {fileID: 32775702}
   interactOption: 1
@@ -3834,6 +3847,16 @@ Prefab:
     - target: {fileID: 4599712455959112, guid: cfa114d9309bed04ab2e67ab9ed6335d, type: 2}
       propertyPath: m_LocalScale.x
       value: 633.90497
+      objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: requirement
+      value: 
+      objectReference: {fileID: 594903765}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: promptForRequirement
+      value: I need to find a key...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfa114d9309bed04ab2e67ab9ed6335d, type: 2}
@@ -4655,6 +4678,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 618.0418
       objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: promptForRequirement
+      value: It's locked.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: requirement
+      value: 
+      objectReference: {fileID: 1053311960}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfa114d9309bed04ab2e67ab9ed6335d, type: 2}
   m_IsPrefabParent: 0
