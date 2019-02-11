@@ -51,7 +51,7 @@ public class Item : MonoBehaviour {
 
     public void OnPointerUpDelegate()
     {
-        if (objName == "diary")
+        if (objName == "Diary")
         {
             if(book)book.SetActive(true);
         }

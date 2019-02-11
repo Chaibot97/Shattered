@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -52,6 +53,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private int wait;
 
         private int playerLayerMask=1<<9;
+        private Lv1Progress lv1_p;
         private void Start()
         {
             holding = false;
@@ -78,7 +80,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             putin = audios[2];
             findpickup = audios[1];
 
-
+            if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
+            {
+                lv1_p = GetComponent<Lv1Progress>();
+            }
+            book.SetActive(false);
         }
 
       
@@ -328,7 +334,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             
             }
-            else if (col.gameObject.tag.Equals("Pickupable"))
+            else if (col.gameObject.tag.Equals("Pickupable")|| col.gameObject.tag.Equals("Note"))
             {
                 Vector3 direction = col.GetComponent<Renderer>().bounds.center - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -339,8 +345,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     Debug.DrawRay(target.transform.position, direction.normalized*5, Color.red);
                     if (Physics.Raycast(target.transform.position, direction.normalized , out hit,playerLayerMask, 5))
                     {
-                        //Debug.Log(hit.collider.tag);
-                        if (hit.collider.tag=="Pickupable"){
+                        //Debug.Log(hit.collider.name);
+                        if (hit.collider.Equals(col)){
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
@@ -357,33 +363,61 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                             {
                                 cd = 0;
-                                int i = 0;
-                                foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
+                                if (col.gameObject.tag.Equals("Pickupable"))
                                 {
-                                    if (img.tag != "ItemUI")
-                                        continue;
-                                    Item item = img.GetComponentInChildren<Item>();
-                                    if (!item.isOn)
+                                    int i = 0;
+                                    foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
                                     {
-                                        item.objName = col.gameObject.name;
-                                        if(col.gameObject.GetComponent<Image>())
-                                            img.sprite = col.gameObject.GetComponent<Image>().sprite;
-                                        item.isOn = true;
-                                        Debug.Log(i);
-                                        inventory[i] = col.gameObject;
-                                        col.gameObject.SetActive(false);
-                                        inSight = false;
-                                        StartCoroutine(ShowPrompt(item.objName + " found", 2));
-                                        itemChecking = null;
-                                        putin.Play();
-                                        if(col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
-                                            photo_pickedup = true;
-                                            col.gameObject.transform.parent.gameObject.SetActive(false);
+                                        if (img.tag != "ItemUI")
+                                            continue;
+                                        Item item = img.GetComponentInChildren<Item>();
+                                        if (!item.isOn)
+                                        {
+                                            item.objName = col.gameObject.name;
+                                            if (col.gameObject.GetComponent<Image>())
+                                                img.sprite = col.gameObject.GetComponent<Image>().sprite;
+                                            item.isOn = true;
+                                            Debug.Log(i);
+                                            inventory[i] = col.gameObject;
+                                            col.gameObject.SetActive(false);
+                                            inSight = false;
+                                            StartCoroutine(ShowPrompt(item.objName + " found", 2));
+                                            itemChecking = null;
+                                            putin.Play();
+                                            if (item.objName == "Diary")
+                                            {
+                                                lv1_p.diaryFound = true;
+                                            }
+                                                if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
+                                            {
+                                                photo_pickedup = true;
+                                                col.gameObject.transform.parent.gameObject.SetActive(false);
+                                            }
+                                            break;
+
                                         }
-                                        break;
+                                        i++;
+                                    }
+                                }
+                                else if (col.gameObject.tag.Equals("Note"))
+                                {
+                                    if (!lv1_p.diaryFound)
+                                    {
+                                        StartCoroutine(ShowPrompt("A paper scrap, I should something to hold it."));
+                                    }
+                                    else
+                                    {
+                                        if (col.gameObject.name == "Note2")
+                                            lv1_p.note2Found = true;
+                                        else if (col.gameObject.name == "Note3")
+                                            lv1_p.note3Found = true;
+                                        else if (col.gameObject.name == "Newspaper")
+                                            lv1_p.newspaperFound = true;
+                                        col.gameObject.SetActive(false);
+                                        StartCoroutine(ShowPrompt("A paper scrap, added it to the diary."));
 
                                     }
-                                    i++;
+
                                 }
                             }
                         }
@@ -556,7 +590,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
-        private IEnumerator ShowPrompt(string text, float sec)
+        private IEnumerator ShowPrompt(string text, float sec=2)
         {
             prompt.text = text;
             yield return new WaitForSeconds(sec);
