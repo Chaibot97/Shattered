@@ -46,6 +46,11 @@ public class Interactable : MonoBehaviour {
             {
 
                 gameObject.tag = "Untagged";
+                Renderer[] rend = gameObject.GetComponentsInChildren<Renderer>();
+                foreach (Renderer r in rend)
+                {
+                    r.material.shader = Shader.Find("Standard (Roughness setup)");
+                }
                 gameObject.GetComponent<Collider>().enabled = false;
             }
             

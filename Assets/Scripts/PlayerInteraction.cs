@@ -123,6 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
             }
 
+
             //if (Input.GetKeyUp(KeyCode.O))
             //{
             //    int i = 0;
@@ -156,6 +157,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
+            Debug.Log(col.gameObject.name);
             if (checkingInventory)
                 return;
             inSight = false;
