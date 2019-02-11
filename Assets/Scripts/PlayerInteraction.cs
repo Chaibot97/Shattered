@@ -157,7 +157,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
-            Debug.Log(col.gameObject.name);
+            
             if (checkingInventory)
                 return;
             inSight = false;
@@ -298,6 +298,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 if (!i.requirement)
                                 {
                                     i.Interact();
+                                    if (itemChecking.gameObject.name.Equals("Chest"))
+                                    {
+                                        itemChecking = null;
+                                    }
                                 }
                                 else if (inventory.Contains(i.requirement))
                                 {
