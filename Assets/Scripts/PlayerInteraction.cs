@@ -123,6 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
             }
 
+
             //if (Input.GetKeyUp(KeyCode.O))
             //{
             //    int i = 0;
@@ -156,6 +157,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
+            
             if (checkingInventory)
                 return;
             inSight = false;
@@ -296,6 +298,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 if (!i.requirement)
                                 {
                                     i.Interact();
+                                    if (itemChecking.gameObject.name.Equals("Chest"))
+                                    {
+                                        itemChecking = null;
+                                    }
                                 }
                                 else if (inventory.Contains(i.requirement))
                                 {
