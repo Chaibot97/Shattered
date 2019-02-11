@@ -111,7 +111,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (itemChecking.GetComponent<MirrorTrigger>().reveal(angle))
                 {
                     itemChecking.tag = "Untagged";
-                    prompt.enabled = false;
+                    prompt.text="";
                     checkingMirror = false;
                     GetComponent<RigidbodyFirstPersonController>().enableInput = true;
                     target.transform.LookAt(itemChecking.gameObject.transform);
@@ -174,7 +174,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     Vector3 direction = col.transform.position - target.transform.position;
                     float angle = Vector3.Angle(direction, target.transform.forward);
-                    prompt.enabled = false;
+                    prompt.text="";
                     if (angle <= pickUpFOV * 0.8f)
                     {
                         RaycastHit hit;
@@ -185,7 +185,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
-                                prompt.enabled = true;
                                 prompt.text = "Press E to inspect.";
                                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                                 {
@@ -209,7 +208,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     }
                     else
                     {
-                        prompt.enabled = false;
+                        prompt.text="";
                     }
                 }
                 else
@@ -217,7 +216,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                     {
                         cd = 0;
-                        prompt.enabled = false;
+                        prompt.text = "";
                         checkingMirror = false;
                         //GetComponent<RigidbodyFirstPersonController>().enabled = true;
 
@@ -369,7 +368,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         inSight = false;
                                         itemChecking = null;
                                         putin.Play();
-                                        if(col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
+                                        StartCoroutine(ShowPrompt("Found a "+ item.objName , 2));
+                                        if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1")){
                                             col.gameObject.transform.parent.gameObject.SetActive(false);
                                         }
                                         break;
@@ -401,7 +401,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 if (col.gameObject.tag.Equals("Mirror"))
                 {
-                    prompt.enabled = false;
+                    prompt.text="";
                 }
             }
         }
@@ -423,7 +423,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (col.gameObject.tag.Equals("Mirror"))
             {
-                prompt.enabled = false;
+                prompt.text = "";
                 inSight = false;
                 itemChecking = null;
             }
@@ -533,6 +533,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
             //yield return new WaitForSeconds(1);
+        }
+
+        private IEnumerator ShowPrompt(string text, float sec)
+        {
+            prompt.text = text;
+            yield return new WaitForSeconds(sec);
+            prompt.text = "";
         }
 
         private IEnumerator Delay(float sec)
