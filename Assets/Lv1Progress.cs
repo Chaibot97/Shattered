@@ -8,6 +8,8 @@ public class Lv1Progress : MonoBehaviour {
     [SerializeField] public bool note3Found;
     [SerializeField] public bool newspaperFound;
     [SerializeField] public bool photoFound;
+    [SerializeField] public bool safeUnlocked;
+
     public GameObject page3content;
     public GameObject page4content;
     public GameObject page5content;
@@ -21,6 +23,19 @@ public class Lv1Progress : MonoBehaviour {
         {
             page3content.SetActive(true);
             page4content.SetActive(true);
+        }
+        if (note3Found)
+        {
+            page5content.SetActive(true);
+            page6content.SetActive(true);
+        }
+        if (newspaperFound)
+        {
+            page7content.SetActive(true);
+        }
+        if (photoFound)
+        {
+            page8content.SetActive(true);
         }
     }
 }
