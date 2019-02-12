@@ -31,11 +31,11 @@ public class Lv1Progress : MonoBehaviour {
         }
         if (newspaperFound)
         {
-            page7content.SetActive(true);
+            page8content.SetActive(true);
         }
         if (photoFound)
         {
-            page8content.SetActive(true);
+            page7content.SetActive(true);
         }
     }
 }
