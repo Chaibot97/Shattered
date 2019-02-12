@@ -49,9 +49,6 @@ public class Lv1Progress : MonoBehaviour {
             firePlace.GetComponent<Collider>().enabled = true;
             diaryComplete = true;
         }
-        if (safeFound)
-        {
-            firePlace.GetComponent<Collider>().enabled = false;
-        }
+        
     }
 }
