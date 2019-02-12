@@ -391,7 +391,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                             {
                                 cd = 0;
-                                if (col.gameObject.tag.Equals("Pickupable"))
+                                if (col.gameObject.tag.Equals("Pickupable") && !col.gameObject.name.Equals("Photo_changed"))
                                 {
                                     int i = 0;
                                     foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
@@ -416,11 +416,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             {
                                                 lv1_p.diaryFound = true;
                                             }
-                                                if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
-                                            {
-                                                photo_pickedup = true;
-                                                col.gameObject.transform.parent.gameObject.SetActive(false);
-                                            }
+                                            //    if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
+                                            //{
+                                            //    photo_pickedup = true;
+                                            //    col.gameObject.transform.parent.gameObject.SetActive(false);
+                                            //}
                                             break;
 
                                         }
@@ -442,6 +442,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         else if (col.gameObject.name == "Newspaper")
                                             lv1_p.newspaperFound = true;
                                         col.gameObject.SetActive(false);
+                                        StartCoroutine(ShowPrompt("A paper scrap, added it to the diary."));
+
+                                    }
+
+                                }
+                                else if (col.gameObject.name.Equals("Photo_changed"))
+                                {
+                                    if (!lv1_p.diaryFound)
+                                    {
+                                        StartCoroutine(ShowPrompt("A photo, I should something to hold it."));
+                                    }
+                                    else
+                                    {
+                                        photo_pickedup = true;
+                                        lv1_p.photoFound = true;
+                                        col.gameObject.transform.parent.gameObject.SetActive(false);
                                         StartCoroutine(ShowPrompt("A paper scrap, added it to the diary."));
 
                                     }
