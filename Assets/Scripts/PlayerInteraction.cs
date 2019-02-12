@@ -13,6 +13,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Camera SecondCamera;
         public Camera PrimaryCamera;
         public GameObject Photo;
+
         private readonly int pickUpFOV = 60;
         //[SerializeField] AudioClip takeItem;
         //[SerializeField] AudioClip teleport;
@@ -52,10 +53,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private int cd_sound;
         private int wait;
         
-        private int playerLayerMask=1<<9;
+        private int playerLayerMask= 1<<9;
         private Lv1Progress lv1_p;
         private void Start()
         {
+            Debug.Log(LayerMask.GetMask("Room"));
             holding = false;
             soundplayed = false;
             alreadyfind = false;
@@ -90,7 +92,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
       
         private void LateUpdate()
         {
-
             if(cd<30)
                 cd++;
             if (cd_sound < 180)
@@ -146,6 +147,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
             }
 
+            if (!inSight)
+                itemChecking = null;
 
             //if (Input.GetKeyUp(KeyCode.O))
             //{
@@ -180,7 +183,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
-            
+            if(col.tag=="Note"|| col.tag == "Pickupable")
+            {
+                Debug.Log(col.name + " "+ itemChecking + " " + checkingInventory + " " + checkingSafe);
+            }
             if (checkingInventory|| checkingSafe)
                 return;
             inSight = false;
@@ -250,9 +256,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 itemChecking = col;
                 
                 RaycastHit hit;
-                if (Physics.Raycast(target.transform.position, target.transform.forward, out hit,playerLayerMask, 5))
+                Debug.DrawRay(target.transform.position, target.transform.forward*5, Color.blue);
+
+                if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, 5))
                 {
-                    if(hit.collider.Equals(col)){
+                    Debug.Log(hit.collider.name);
+                    if (hit.collider.Equals(col)){
                         if (itemChecking.name.Equals("Sink") && filled)
                         {
                             inSight = true;
@@ -344,9 +353,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             wait = 0;
                                             filled = true;
                                         }
+                                        if (col.gameObject.name.Equals("Fireplace")) {
+                                            if (!lv1_p.DiaryComplete)
+                                            {
+                                                StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
+                                                return;
+                                            }
+                                                
+                                            lv1_p.safeFound = true;
+                                        }
+
+
                                         DestroyObj(inventory.IndexOf(i.requirement));
                                         i.Interact();
                                         i.requirement = null;
+                                        itemChecking = null;
                                     }
                                     else
                                     {
@@ -367,8 +388,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Vector3 direction = col.GetComponent<Renderer>().bounds.center - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 itemChecking = col;
+                //Debug.Log(angle);
+
                 if (angle <= pickUpFOV * 0.5f)
                 {
+
                     RaycastHit hit;
                     Debug.DrawRay(target.transform.position, direction.normalized*5, Color.red);
                     if (Physics.Raycast(target.transform.position, direction.normalized , out hit,playerLayerMask, 5))
@@ -431,7 +455,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     if (!lv1_p.diaryFound)
                                     {
-                                        StartCoroutine(ShowPrompt("A paper scrap, I should something to hold it."));
+                                        StartCoroutine(ShowPrompt("A paper scrap, I should find something to hold it."));
                                     }
                                     else
                                     {
@@ -451,12 +475,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 {
                                     if (!lv1_p.diaryFound)
                                     {
-                                        StartCoroutine(ShowPrompt("A photo, I should something to hold it."));
+                                        StartCoroutine(ShowPrompt("A photo, I should find something to hold it."));
                                     }
                                     else
                                     {
                                         photo_pickedup = true;
-                                        lv1_p.photoFound = true;
+                                        lv1_p.photoWashed = true;
                                         col.gameObject.transform.parent.gameObject.SetActive(false);
                                         StartCoroutine(ShowPrompt("A paper scrap, added it to the diary."));
 

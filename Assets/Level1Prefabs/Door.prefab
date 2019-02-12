@@ -58,9 +58,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527720663040506}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.098, y: 2.084, z: 0.836}
-  m_LocalScale: {x: 91.95767, y: 100.69929, z: 100.17193}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 24.497164, y: 9.330057, z: -15.36242}
+  m_LocalScale: {x: 528.307, y: 578.5283, z: 575.4994}
   m_Children:
   - {fileID: 4510129626481226}
   m_Father: {fileID: 0}
@@ -421,4 +421,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptForRequirement: 
+  target: {fileID: 0}
+  requirement: {fileID: 0}
+  objToHide: {fileID: 0}
+  interactOption: 0
+  ObjToReveal: {fileID: 0}
   once: 0
+  disableCollider: 1
