@@ -26,6 +26,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Renderer[] rend = { };
         private AudioSource putin;
         private AudioSource findpickup;
+        private AudioSource locked;
         private bool soundplayed;
         private bool alreadyfind;
         private bool filled;
@@ -81,6 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             AudioSource[] audios = GetComponents<AudioSource>();
             putin = audios[2];
             findpickup = audios[1];
+            locked = audios[3];
 
             if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
             {
@@ -373,7 +375,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     {
 
                                         StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-
+                                        if(i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
+                                        locked.Play();
                                     }
                                 }
                             }
