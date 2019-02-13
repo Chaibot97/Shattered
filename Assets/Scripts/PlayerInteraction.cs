@@ -436,6 +436,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             StartCoroutine(ShowPrompt(item.objName + " found", 2));
                                             itemChecking = null;
                                             putin.Play();
+
+                                            StartCoroutine(PopInventory());
                                             if (item.objName == "Diary")
                                             {
                                                 lv1_p.diaryFound = true;
@@ -515,6 +517,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
         }
+
 
         void OnTriggerExit(Collider col)
         {
@@ -663,6 +666,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             prompt.text = text;
             yield return new WaitForSeconds(sec);
             prompt.text = "";
+        }
+
+        private IEnumerator PopInventory( float sec = 2)
+        {
+            inventoryAnim.SetBool("pop", true);
+            yield return new WaitForSeconds(sec);
+            inventoryAnim.SetBool("pop", false);
         }
 
 
