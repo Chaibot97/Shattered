@@ -221,7 +221,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     transform.position = ( new Vector3(tmp.x,transform.position.y,tmp.z));
                                     target.transform.LookAt(col.gameObject.transform);
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-
                                     prompt.text = "Press A/D to change angle. Press E to quit.";
                                     return;
 
