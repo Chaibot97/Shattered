@@ -221,6 +221,11 @@ Prefab:
       propertyPath: m_Name
       value: CorridorWalls
       objectReference: {fileID: 0}
+    - target: {fileID: 23155746255777124, guid: aad941ec63d5cfb41a0b5cdf7963fed0,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fac4991cd50626849a64beb31a906bcb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aad941ec63d5cfb41a0b5cdf7963fed0, type: 2}
   m_IsPrefabParent: 0
@@ -239,10 +244,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1c90356c58c4495a51e2123a99719a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filled_water: {fileID: 0}
+  SecondCamera: {fileID: 0}
+  PrimaryCamera: {fileID: 0}
+  Photo: {fileID: 0}
+  book: {fileID: 0}
   inventoryUI: {fileID: 0}
   inspectorUI: {fileID: 0}
   UIMask: {fileID: 0}
   prompt: {fileID: 0}
+  lockUI: {fileID: 0}
 --- !u!136 &90174879
 CapsuleCollider:
   m_ObjectHideFlags: 0
