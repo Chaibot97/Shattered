@@ -441,6 +441,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             StartCoroutine(ShowPrompt(item.objName + " found", 2));
                                             itemChecking = null;
                                             putin.Play();
+                                            StartCoroutine(PopInventory());
                                             if (item.objName == "Diary")
                                             {
                                                 lv1_p.diaryFound = true;
