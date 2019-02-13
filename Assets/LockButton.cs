@@ -36,6 +36,10 @@ public class LockButton : MonoBehaviour {
         {
             l.unlocked = true;
         }
+        else
+        {
+            l.c_input = "";
+        }
     }
     private void CLRClicker()
     {
