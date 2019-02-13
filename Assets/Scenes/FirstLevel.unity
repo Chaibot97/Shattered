@@ -1261,6 +1261,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4077781377328986, guid: efaff0227e194134b975df4bb88251cd,
     type: 2}
   m_PrefabInternal: {fileID: 1263004840}
+--- !u!1 &238948815 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1812889404814966, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+    type: 2}
+  m_PrefabInternal: {fileID: 996035594}
 --- !u!1001 &240072050
 Prefab:
   m_ObjectHideFlags: 0
@@ -3621,6 +3626,24 @@ Prefab:
     - target: {fileID: 1203694245208522, guid: 1b29a0f1eac0c354f845083f7d0fd271, type: 2}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412275909676086, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+        type: 2}
+      propertyPath: interactOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412275909676086, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+        type: 2}
+      propertyPath: ObjToReveal
+      value: 
+      objectReference: {fileID: 238948815}
+    - target: {fileID: 1812889404814966, guid: 1b29a0f1eac0c354f845083f7d0fd271, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812889404814966, guid: 1b29a0f1eac0c354f845083f7d0fd271, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b29a0f1eac0c354f845083f7d0fd271, type: 2}
