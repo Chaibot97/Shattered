@@ -521,6 +521,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+
         void OnTriggerExit(Collider col)
         {
             filled_water.GetComponent<Renderer>().material.shader = shader1;
@@ -668,6 +669,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             prompt.text = text;
             yield return new WaitForSeconds(sec);
             prompt.text = "";
+        }
+
+        private IEnumerator PopInventory( float sec = 2)
+        {
+            inventoryAnim.SetBool("pop", true);
+            yield return new WaitForSeconds(sec);
+            inventoryAnim.SetBool("pop", false);
         }
 
 
