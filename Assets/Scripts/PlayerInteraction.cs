@@ -374,36 +374,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     {
 
                                         StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-
-                                    }
-                                    else if (inventory.Contains(i.requirement))
-                                    {
-                                        if (col.gameObject.name.Equals("Sink"))
+                                        if(i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
                                         {
-                                            Debug.Log("filled");
-                                            wait = 0;
-                                            filled = true;
+                                            locked.Play();
                                         }
-                                        if (col.gameObject.name.Equals("Fireplace")) {
-                                            if (!lv1_p.DiaryComplete)
-                                            {
-                                                StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                                return;
-                                            }
-                                                
-                                            lv1_p.safeFound = true;
-                                        }
-
-
-                                        DestroyObj(inventory.IndexOf(i.requirement));
-                                        i.Interact();
-                                        i.requirement = null;
-                                        itemChecking = null;
-                                    }
-                                    else
-                                    {
-
-                                        StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
 
                                     }
                                 }
@@ -706,51 +680,4 @@ namespace UnityStandardAssets.Characters.FirstPerson
     }
 }
 
-                                if (col.gameObject.tag.Equals("Safe"))
-                                {
-                                    lockUI.SetActive(true);
-                                    PlayerEnable(false);
-                                    checkingSafe = true;
-                                }
-                                else
-                                {
-
-                                    Interactable i = col.gameObject.GetComponent<Interactable>();
-                                    if (!i.requirement)
-                                    {
-                                        i.Interact();
-                                        if (itemChecking.gameObject.name.Equals("Chest"))
-                                        {
-                                            itemChecking = null;
-                                        }
-                                    }
-                                    else if (inventory.Contains(i.requirement))
-                                    {
-                                        if (col.gameObject.name.Equals("Sink"))
-                                        {
-                                            Debug.Log("filled");
-                                            wait = 0;
-                                            filled = true;
-                                        }
-                                        if (col.gameObject.name.Equals("Fireplace")) {
-                                            if (!lv1_p.DiaryComplete)
-                                            {
-                                                StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                                return;
-                                            }
-                                                
-                                            lv1_p.safeFound = true;
-                                        }
-
-
-                                        DestroyObj(inventory.IndexOf(i.requirement));
-                                        i.Interact();
-                                        i.requirement = null;
-                                        itemChecking = null;
-                                    }
-                                    else
-                                    {
-
-                                        StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                        if(i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
-                                        locked.Play();
+ 
