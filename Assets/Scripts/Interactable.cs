@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour {
 
@@ -8,6 +9,9 @@ public class Interactable : MonoBehaviour {
 
     public GameObject target=null;
     public GameObject requirement = null;
+    public GameObject objToHide = null;
+    private Lv1Progress lv1_p;
+
     public enum InteractOptions
     {
         Toggle,
@@ -16,13 +20,19 @@ public class Interactable : MonoBehaviour {
     public InteractOptions interactOption;
     public GameObject ObjToReveal;
 
+
     public bool once = false;
+    public bool disableCollider = true;
 
     private void Start()
     {
         if (!target)
         {
             target = gameObject;
+        }
+        if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
+        {
+            lv1_p = GetComponent<Lv1Progress>();
         }
     }
 
@@ -39,22 +49,32 @@ public class Interactable : MonoBehaviour {
                 if (anim)anim.SetBool("check", true);
                 break;
         }
-      
+        if (objToHide)
+        {
+            objToHide.SetActive(false);
+        }
 
 
-		
+
+
+
         if (once)
         {
             if (gameObject.name != "Sink")
             {
 
                 gameObject.tag = "Untagged";
+
                 Renderer[] rend = gameObject.GetComponentsInChildren<Renderer>();
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = Shader.Find("Standard (Roughness setup)");
                 }
-                gameObject.GetComponent<Collider>().enabled = false;
+                if (disableCollider)
+                {
+                   gameObject.GetComponent<Collider>().enabled = false;
+
+                }
             }
             
         }
