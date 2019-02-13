@@ -38,6 +38,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool inSight = false;
 
         private bool checkingMirror=false;
+        private Collider mirror;
+
         private bool checkingInventory = false;
         private bool checkingSafe;
         public GameObject book;
@@ -130,13 +132,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
-
-                target.transform.LookAt(itemChecking.gameObject.transform);
-                Vector3 direction = transform.position- itemChecking.transform.position;
-                float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), itemChecking.transform.up, Vector3.up);
-                if (itemChecking.GetComponent<MirrorTrigger>().reveal(angle))
+                prompt.text = "Press A/D to change angle. Press E to quit.";
+                target.transform.LookAt(mirror.gameObject.transform);
+                Vector3 direction = transform.position- mirror.transform.position;
+                float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), mirror.transform.up, Vector3.up);
+                if (mirror.GetComponent<MirrorTrigger>().reveal(angle))
                 {
-                    StartCoroutine(MirrorDone(itemChecking,1));
+                    StartCoroutine(MirrorDone(mirror,1));
                 }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
@@ -146,7 +148,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     GetComponent<Rigidbody>().AddForce(transform.right * -1f, ForceMode.Impulse);
                 }
-                
+
+                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                {
+                    cd = 0;
+                    prompt.text = "";
+                    checkingMirror = false;
+                    //GetComponent<RigidbodyFirstPersonController>().enabled = true;
+
+                    GetComponent<RigidbodyFirstPersonController>().enableInput = true;
+
+                }
+    
+
             }
 
             if (!inSight)
@@ -197,7 +211,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (col.gameObject.tag.Equals("Mirror"))
             {
-                itemChecking = col;
+                mirror=itemChecking = col;
                 if (!checkingMirror)
                 {
                     Vector3 direction = col.transform.position - target.transform.position;
@@ -235,19 +249,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         prompt.text="";
                     }
                 }
-                else
-                {
-                    if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
-                    {
-                        cd = 0;
-                        prompt.text = "";
-                        checkingMirror = false;
-                        //GetComponent<RigidbodyFirstPersonController>().enabled = true;
-
-                        GetComponent<RigidbodyFirstPersonController>().enableInput = true;
-
-                    }
-                }
+                
             }else if (col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe") )
             {
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
@@ -590,7 +592,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Item item = img.GetComponent<Item>();
                 if (item.isOn)
                 {
-                    img.gameObject.name = "empty";
+                    item.objName = "Empty";
                     img.sprite = UIMask;
                     item.isOn = false;
 
@@ -620,7 +622,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Item item = img.GetComponent<Item>();
                 if (item.isOn)
                 {
-                    img.gameObject.name = "empty";
+                    item.objName = "Empty";
                     img.sprite = UIMask;
                     item.isOn = false;
 
