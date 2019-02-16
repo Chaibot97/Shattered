@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 224844672616875362}
   - component: {fileID: 33997239634684948}
   - component: {fileID: 23491595790698428}
-  - component: {fileID: 64891040697660924}
   - component: {fileID: 222898317775058104}
-  - component: {fileID: 114114613413104584}
+  - component: {fileID: 65889766957394826}
+  - component: {fileID: 114937244399402182}
   m_Layer: 0
   m_Name: Queen
   m_TagString: Pickupable
@@ -102,8 +102,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611193539388992}
   m_Mesh: {fileID: 4300000, guid: 064deeef9ca934668800bf0b826fc64a, type: 3}
---- !u!64 &64891040697660924
-MeshCollider:
+--- !u!65 &65889766957394826
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -111,12 +111,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 064deeef9ca934668800bf0b826fc64a, type: 3}
---- !u!114 &114114613413104584
+  serializedVersion: 2
+  m_Size: {x: 397.15765, y: 430.79498, z: 401.95248}
+  m_Center: {x: -561.258, y: 220.96924, z: -74.48505}
+--- !u!114 &114937244399402182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,25 +122,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1611193539388992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 07a22842341e4a84f8168b7da1c746ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 31aae7bd19bf44a26b75445187b534c2, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  smallSprite: {fileID: 21300000, guid: 31aae7bd19bf44a26b75445187b534c2, type: 3}
+  largeSprite: {fileID: 21300000, guid: 52b273514d3e74dd2a09d6d3eaa68741, type: 3}
 --- !u!222 &222898317775058104
 CanvasRenderer:
   m_ObjectHideFlags: 1

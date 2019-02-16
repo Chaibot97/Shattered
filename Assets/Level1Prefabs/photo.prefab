@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23478328120783530}
   - component: {fileID: 64099045340983742}
   - component: {fileID: 222907950924313332}
-  - component: {fileID: 114780323390139262}
+  - component: {fileID: 114202806573116710}
   m_Layer: 0
   m_Name: Photo
   m_TagString: Pickupable
@@ -116,7 +116,7 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8b8c98912164a7d4c80df949f37279a4, type: 3}
---- !u!114 &114780323390139262
+--- !u!114 &114202806573116710
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,25 +124,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645872270876098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 07a22842341e4a84f8168b7da1c746ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: da966f52d8fe0d145a1cec8bc35358b5, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  smallSprite: {fileID: 21300000, guid: da966f52d8fe0d145a1cec8bc35358b5, type: 3}
+  largeSprite: {fileID: 0}
 --- !u!222 &222907950924313332
 CanvasRenderer:
   m_ObjectHideFlags: 1
