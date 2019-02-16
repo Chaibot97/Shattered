@@ -43,6 +43,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool checkingInventory = false;
         private bool checkingSafe;
         public GameObject book;
+        public Image inspector;
         [SerializeField] public Canvas inventoryUI;
         private Animator inventoryAnim;
         [SerializeField] public Canvas inspectorUI;
@@ -176,7 +177,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //        Toggle checker = lp.GetComponentInChildren<Toggle>();
             //        if (checker.isOn)
             //        {
-            //            lp.gameObject.name = "Empty";
+            //            lp.gameObject.name = "";
             //            lp.GetComponentsInChildren<Image>()[1].sprite = UIMask;
             //            checker.isOn = false;
 
@@ -429,21 +430,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     {
                                         if (img.tag != "ItemUI")
                                             continue;
-                                        Item item = img.GetComponentInChildren<Item>();
+                                        ItemUI item = img.GetComponentInChildren<ItemUI>();
                                         if (!item.isOn)
                                         {
                                             item.objName = col.gameObject.name;
-                                            if (col.gameObject.GetComponent<Image>())
-                                                img.sprite = col.gameObject.GetComponent<Image>().sprite;
                                             item.isOn = true;
-                                            Debug.Log(i);
+                                            item.item = col.GetComponent<Item>();
+                                            item.GetComponent<Image>().sprite = item.item.smallSprite;
                                             inventory[i] = col.gameObject;
+
                                             col.gameObject.SetActive(false);
                                             inSight = false;
                                             StartCoroutine(ShowPrompt(item.objName + " found", 2));
-                                            itemChecking = null;
-                                            putin.Play();
-                                            StartCoroutine(PopInventory());
+                                            
                                             if (item.objName == "Diary")
                                             {
                                                 lv1_p.diaryFound = true;
@@ -453,6 +452,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             //    photo_pickedup = true;
                                             //    col.gameObject.transform.parent.gameObject.SetActive(false);
                                             //}
+
+                                            itemChecking = null;
+                                            putin.Play();
+                                            StartCoroutine(PopInventory());
                                             break;
 
                                         }
@@ -589,10 +592,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     i++;
                     continue;
                 }
-                Item item = img.GetComponent<Item>();
+                ItemUI item = img.GetComponent<ItemUI>();
                 if (item.isOn)
                 {
-                    item.objName = "Empty";
+                    item.objName = "";
                     img.sprite = UIMask;
                     item.isOn = false;
 
@@ -619,12 +622,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     i++;
                     continue;
                 }
-                Item item = img.GetComponent<Item>();
-                if (item.isOn)
+                ItemUI itemUI = img.GetComponent<ItemUI>();
+                if (itemUI.isOn)
                 {
-                    item.objName = "Empty";
+                    itemUI.objName = "";
                     img.sprite = UIMask;
-                    item.isOn = false;
+                    itemUI.isOn = false;
+                    itemUI.item = null;
 
                     inventory[i] = null;
                     break;
@@ -646,6 +650,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             else
             {
                 if (book) book.SetActive(false);
+                inspector.enabled = false;
                 PlayerEnable(true);
                 inventoryAnim.SetBool("open", false);
                 //inspectorAnim.SetBool("open", false);
