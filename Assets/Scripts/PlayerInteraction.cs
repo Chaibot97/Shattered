@@ -517,9 +517,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
-                    soundplayed = false;
-                    alreadyfind = false; 
                 }
+                soundplayed = false;
+                alreadyfind = false;
                 if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable") || col.gameObject.tag.Equals("Safe"))
                 {
                     
@@ -539,9 +539,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;
-                soundplayed = false;
-                alreadyfind = false;
             }
+            soundplayed = false;
+            alreadyfind = false;
             if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe"))
             {    
 
