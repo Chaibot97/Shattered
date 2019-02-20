@@ -105,7 +105,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 wait++;
             if (checkingSafe)
             {
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && cd > 20)
                 {
                     checkingSafe = false;
                     lockUI.SetActive(false);
