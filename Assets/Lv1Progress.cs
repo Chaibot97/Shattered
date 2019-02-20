@@ -10,8 +10,8 @@ public class Lv1Progress : MonoBehaviour {
     [SerializeField] public bool photoWashed;
     [SerializeField] public bool safeFound;
     [SerializeField] public bool safeUnlocked;
+    [SerializeField] public bool finished;
 
-   
     public GameObject page3content;
     public GameObject page4content;
     public GameObject page5content;
@@ -20,6 +20,7 @@ public class Lv1Progress : MonoBehaviour {
     public GameObject page8content;
     public GameObject firePlace;
 
+    public SceneLoader sl;
 
     private bool diaryComplete;
     public bool DiaryComplete { get { return diaryComplete; } }
@@ -49,6 +50,12 @@ public class Lv1Progress : MonoBehaviour {
             firePlace.GetComponent<Collider>().enabled = true;
             diaryComplete = true;
         }
-        
+        if (finished)
+        {
+            //sl.LoadScene("level_1");
+            StartCoroutine(sl.LoadSceneWithFading("level_1"));
+
+        }
+
     }
 }

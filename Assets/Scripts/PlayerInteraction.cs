@@ -105,7 +105,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 wait++;
             if (checkingSafe)
             {
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && cd > 20)
                 {
                     checkingSafe = false;
                     lockUI.SetActive(false);
@@ -348,6 +348,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         {
                                             itemChecking = null;
                                         }
+
                                     }
                                     else if (inventory.Contains(i.requirement))
                                     {
@@ -366,7 +367,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                                 
                                             lv1_p.safeFound = true;
                                         }
-
+                                        if (col.gameObject.name.Equals("MainDoor"))
+                                        {
+                                            lv1_p.finished = true;
+                                        }
 
                                         DestroyObj(inventory.IndexOf(i.requirement));
                                         i.Interact();
@@ -381,6 +385,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         {
                                             locked.Play();
                                         }
+                                       
 
                                     }
                                 }
