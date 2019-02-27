@@ -45,11 +45,11 @@ public class Lv1Progress : MonoBehaviour {
         {
             page7content.SetActive(true);
         }
-        if(!safeFound && note2Found && note3Found && newspaperFound && paintFound)
-        {
-            firePlace.GetComponent<Collider>().enabled = true;
-            diaryComplete = true;
-        }
+        //if(!safeFound && note2Found && note3Found && newspaperFound && paintFound)
+        //{
+        //    firePlace.GetComponent<Collider>().enabled = true;
+        //    diaryComplete = true;
+        //}
         if (finished)
         {
             //sl.LoadScene("level_1");

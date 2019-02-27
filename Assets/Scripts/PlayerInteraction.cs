@@ -359,11 +359,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             filled = true;
                                         }
                                         if (col.gameObject.name.Equals("Fireplace")) {
-                                            if (!lv1_p.DiaryComplete)
-                                            {
-                                                StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                                return;
-                                            }
+                                            //if (!lv1_p.DiaryComplete)
+                                            //{
+                                            //    StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
+                                            //    return;
+                                            //}
                                                 
                                             lv1_p.safeFound = true;
                                         }
@@ -452,11 +452,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             {
                                                 lv1_p.diaryFound = true;
                                             }
-                                            //    if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
-                                            //{
-                                            //    photo_pickedup = true;
-                                            //    col.gameObject.transform.parent.gameObject.SetActive(false);
-                                            //}
+
+
+                                            if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
+                                            {
+                                                photo_pickedup = true;
+                                                col.gameObject.transform.parent.gameObject.SetActive(false);
+                                            }
 
                                             itemChecking = null;
                                             putin.Play();
