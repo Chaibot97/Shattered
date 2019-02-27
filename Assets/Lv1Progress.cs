@@ -7,7 +7,7 @@ public class Lv1Progress : MonoBehaviour {
     [SerializeField] public bool note2Found;
     [SerializeField] public bool note3Found;
     [SerializeField] public bool newspaperFound;
-    [SerializeField] public bool photoWashed;
+    [SerializeField] public bool paintFound;
     [SerializeField] public bool safeFound;
     [SerializeField] public bool safeUnlocked;
     [SerializeField] public bool finished;
@@ -41,15 +41,15 @@ public class Lv1Progress : MonoBehaviour {
         {
             page8content.SetActive(true);
         }
-        if (photoWashed)
+        if (paintFound)
         {
             page7content.SetActive(true);
         }
-        if(!safeFound && note2Found && note3Found && newspaperFound && photoWashed)
-        {
-            firePlace.GetComponent<Collider>().enabled = true;
-            diaryComplete = true;
-        }
+        //if(!safeFound && note2Found && note3Found && newspaperFound && paintFound)
+        //{
+        //    firePlace.GetComponent<Collider>().enabled = true;
+        //    diaryComplete = true;
+        //}
         if (finished)
         {
             //sl.LoadScene("level_1");

@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
     //public Filter filter;
-
+    public Canvas canvas;
     void Start(){   
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -19,6 +21,13 @@ public class SceneLoader : MonoBehaviour {
     {
         float t = GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(t);
+        SceneManager.LoadScene(level);
+    }
+
+    public IEnumerator LoadSceneWithMovieHelper(String level,float time)
+    {
+
+        yield return new WaitForSeconds(time);
         SceneManager.LoadScene(level);
     }
 
