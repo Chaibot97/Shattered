@@ -32,7 +32,7 @@ public class MirrorTrigger : MonoBehaviour {
         int diff = (int)Mathf.Min(Mathf.Abs(ang + angle), 30);
         GetComponent<MirrorReflection>().m_TextureSize = Mathf.Max((int)120 * (10 - diff/3), 32);
 
-        if(!done&& Mathf.Max((int)120 * (10 - diff/2), 128)>=1020)
+        if(!done&& GetComponent<MirrorReflection>().m_TextureSize >= 1020)
         {
             //obj.SetActive(true);
             obj.layer = 0;

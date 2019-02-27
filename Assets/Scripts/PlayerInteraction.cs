@@ -133,7 +133,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
-                prompt.text = "Press A/D to change angle. Press E to quit.";
+                if (lv1_p.note2Found)
+                    prompt.text = "Press A/D to change angle. Press E to quit.";
+                else
+                    prompt.text = "Press E to quit.";
                 target.transform.LookAt(mirror.gameObject.transform);
                 Vector3 direction = transform.position- mirror.transform.position;
                 float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), mirror.transform.up, Vector3.up);
@@ -155,8 +158,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     cd = 0;
                     prompt.text = "";
                     checkingMirror = false;
-                    //GetComponent<RigidbodyFirstPersonController>().enabled = true;
-
+                    mirror.GetComponent<MirrorReflection>().m_TextureSize = 32;
                     GetComponent<RigidbodyFirstPersonController>().enableInput = true;
 
                 }
@@ -228,7 +230,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
-                                prompt.text = "Press E to inspect.";
+                                if(lv1_p.note2Found)
+                                    prompt.text = "Press E to inspect.";
                                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                                 {
                                     cd = 0;
@@ -238,7 +241,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     transform.position = ( new Vector3(tmp.x,transform.position.y,tmp.z));
                                     target.transform.LookAt(col.gameObject.transform);
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                                    prompt.text = "Press A/D to change angle. Press E to quit.";
+                                    if (lv1_p.note2Found)
+                                        prompt.text = "Press A/D to change angle. Press E to quit.";
+                                    else
+                                        prompt.text = "Press E to quit.";
                                     return;
 
                                 }
@@ -358,13 +364,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             wait = 0;
                                             filled = true;
                                         }
-                                        if (col.gameObject.name.Equals("Fireplace")) {
-                                            //if (!lv1_p.DiaryComplete)
-                                            //{
-                                            //    StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                            //    return;
-                                            //}
-                                                
+                                        if (col.gameObject.name.Equals("Fireplace")) {                                                
                                             lv1_p.safeFound = true;
                                         }
                                         if (col.gameObject.name.Equals("MainDoor"))
