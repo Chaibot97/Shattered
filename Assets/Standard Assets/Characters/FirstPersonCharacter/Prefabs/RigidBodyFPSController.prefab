@@ -144,7 +144,7 @@ MonoBehaviour:
   fps: 60
   cam: {fileID: 2000000}
   movementSettings:
-    ForwardSpeed: 4
+    ForwardSpeed: 5
     BackwardSpeed: 4
     StrafeSpeed: 3
     RunMultiplier: 1
@@ -702,9 +702,10 @@ MonoBehaviour:
   note2Found: 0
   note3Found: 0
   newspaperFound: 0
-  photoWashed: 0
+  paintFound: 0
   safeFound: 0
   safeUnlocked: 0
+  finished: 0
   page3content: {fileID: 0}
   page4content: {fileID: 0}
   page5content: {fileID: 0}
@@ -712,6 +713,7 @@ MonoBehaviour:
   page7content: {fileID: 0}
   page8content: {fileID: 0}
   firePlace: {fileID: 0}
+  sl: {fileID: 0}
 --- !u!114 &114679657335661932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -747,6 +749,7 @@ MonoBehaviour:
   PrimaryCamera: {fileID: 2000000}
   Photo: {fileID: 0}
   book: {fileID: 0}
+  inspector: {fileID: 0}
   inventoryUI: {fileID: 0}
   inspectorUI: {fileID: 0}
   UIMask: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
