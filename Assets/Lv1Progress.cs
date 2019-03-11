@@ -25,6 +25,7 @@ public class Lv1Progress : MonoBehaviour
     public Camera SecondCamera;
     public Camera PrimaryCamera;
     public GameObject Photo;
+    [HideInInspector] public int freeze;
 
     public SceneLoader sl;
 
@@ -34,9 +35,14 @@ public class Lv1Progress : MonoBehaviour
     private void Start()
     {
         PInteract = GetComponent<UnityStandardAssets.Characters.FirstPerson.PlayerInteraction>();
+        freeze = 360;
     }
     private void Update()
     {
+        if(freeze <= 360)
+        {
+            freeze++;
+        }
         if (note2Found)
         {
             page3content.SetActive(true);
@@ -76,6 +82,10 @@ public class Lv1Progress : MonoBehaviour
             if (PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && !PInteract.islooking)
             {
                 PInteract.cd = 0;
+                if (!PInteract.photo_changed)
+                {
+                    freeze = 0;
+                }
                 GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().enableInput = false;
                 var rotationVector = transform.rotation.eulerAngles;
                 rotationVector.x = 55;
@@ -106,7 +116,7 @@ public class Lv1Progress : MonoBehaviour
 
 
             }
-            if (PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && PInteract.islooking)
+            if (freeze >= 360 && PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && PInteract.islooking)
             {
                 foreach (Transform child in Photo.transform)
                 {
