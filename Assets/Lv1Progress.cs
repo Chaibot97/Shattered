@@ -84,6 +84,13 @@ public class Lv1Progress : MonoBehaviour
                 rotationVector1.y = 180;
                 PrimaryCamera.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
                 PrimaryCamera.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
+                foreach (Transform child in Photo.transform)
+                {
+                    if (child.gameObject.tag != "Untagged")
+                    {
+                        child.gameObject.tag = "Untagged";
+                    }
+                }
                 Interactable i = filled_water.gameObject.GetComponent<Interactable>();
                 if (!PInteract.photo_pickedup && PInteract.inventory.Contains(i.requirement))
                 {
@@ -101,6 +108,13 @@ public class Lv1Progress : MonoBehaviour
             }
             if (PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && PInteract.islooking)
             {
+                foreach (Transform child in Photo.transform)
+                {
+                    if (child.gameObject.name == "Photo_changed")
+                    {
+                        child.gameObject.tag = "Pickupable";
+                    }
+                }
                 PInteract.cd = 0;
                 SecondCamera.gameObject.SetActive(false);
                 PrimaryCamera.gameObject.SetActive(true);
