@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lv1Progress : MonoBehaviour {
+public class Lv1Progress : MonoBehaviour
+{
     [SerializeField] public bool diaryFound;
     [SerializeField] public bool note2Found;
     [SerializeField] public bool note3Found;
@@ -11,6 +12,7 @@ public class Lv1Progress : MonoBehaviour {
     [SerializeField] public bool safeFound;
     [SerializeField] public bool safeUnlocked;
     [SerializeField] public bool finished;
+    [SerializeField] public bool changephoto;
 
     public GameObject page3content;
     public GameObject page4content;
@@ -19,12 +21,20 @@ public class Lv1Progress : MonoBehaviour {
     public GameObject page7content;
     public GameObject page8content;
     public GameObject firePlace;
+    public GameObject filled_water;
+    public Camera SecondCamera;
+    public Camera PrimaryCamera;
+    public GameObject Photo;
 
     public SceneLoader sl;
 
+    private UnityStandardAssets.Characters.FirstPerson.PlayerInteraction PInteract;
     private bool diaryComplete;
     public bool DiaryComplete { get { return diaryComplete; } }
-
+    private void Start()
+    {
+        PInteract = GetComponent<UnityStandardAssets.Characters.FirstPerson.PlayerInteraction>();
+    }
     private void Update()
     {
         if (note2Found)
@@ -57,5 +67,50 @@ public class Lv1Progress : MonoBehaviour {
 
         }
 
+        if (changephoto)
+        {
+            if (!PInteract.islooking)
+            {
+                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Shader_highlight/0.TheFirstShader");
+            }
+            if (PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && !PInteract.islooking)
+            {
+                PInteract.cd = 0;
+                GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().enableInput = false;
+                var rotationVector = transform.rotation.eulerAngles;
+                rotationVector.x = 55;
+                PrimaryCamera.transform.rotation = Quaternion.Euler(rotationVector);
+                var rotationVector1 = transform.rotation.eulerAngles;
+                rotationVector1.y = 180;
+                PrimaryCamera.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
+                PrimaryCamera.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
+                Interactable i = filled_water.gameObject.GetComponent<Interactable>();
+                if (!PInteract.photo_pickedup && PInteract.inventory.Contains(i.requirement))
+                {
+                    i.Interact();
+                    PInteract.DestroyObj(PInteract.inventory.IndexOf(i.requirement));
+                    Photo.gameObject.SetActive(true);
+                    PInteract.photo_changed = true;
+                }
+                SecondCamera.gameObject.SetActive(true);
+                PrimaryCamera.gameObject.SetActive(false);
+                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Standard (Roughness setup)");
+                PInteract.islooking = true;
+
+
+            }
+            if (PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && PInteract.islooking)
+            {
+                PInteract.cd = 0;
+                SecondCamera.gameObject.SetActive(false);
+                PrimaryCamera.gameObject.SetActive(true);
+                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Standard (Roughness setup)");
+                PInteract.islooking = false;
+                GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().enableInput = true;
+
+            }
+            changephoto = false;
+        }
     }
 }
+

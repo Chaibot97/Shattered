@@ -9,11 +9,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     public class PlayerInteraction : MonoBehaviour {
 
-        public GameObject filled_water;
-        public Camera SecondCamera;
-        public Camera PrimaryCamera;
-        public GameObject Photo;
-
         private readonly int pickUpFOV = 60;
         //[SerializeField] AudioClip takeItem;
         //[SerializeField] AudioClip teleport;
@@ -30,11 +25,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool soundplayed;
         private bool alreadyfind;
         private bool filled;
-        private bool islooking;
-        private bool photo_changed;
-        private bool photo_pickedup;
+        [HideInInspector] public bool islooking;
+        [HideInInspector] public bool photo_changed;
+        [HideInInspector] public bool photo_pickedup;
 
-        private List<GameObject> inventory;
+        [HideInInspector] public List<GameObject> inventory;
         private bool inSight = false;
 
         private bool checkingMirror=false;
@@ -53,7 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] public Text prompt;
         public GameObject lockUI;
         //LayoutGroup inventoryUI;
-        private int cd;
+        [HideInInspector] public int cd;
         private int cd_sound;
         private int wait;
         
@@ -202,7 +197,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
-            if(col.tag=="Note"|| col.tag == "Pickupable")
+            if (col.tag=="Note"|| col.tag == "Pickupable")
             {
                 Debug.Log(col.name + " "+ itemChecking + " " + checkingInventory + " " + checkingSafe);
             }
@@ -283,48 +278,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             }
                             if(wait >= 180)
                             {
-                                if (!islooking)
-                                {
-                                    filled_water.GetComponent<Renderer>().material.shader = shader2;
-                                }
-                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && !islooking)
-                                {
-                                    cd = 0;
-                                    GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                                    var rotationVector = transform.rotation.eulerAngles;
-                                    rotationVector.x = 45;
-                                    target.transform.rotation = Quaternion.Euler(rotationVector);
-                                    var rotationVector1 = transform.rotation.eulerAngles;
-                                    rotationVector1.y = 180;
-                                    target.gameObject.transform.parent.rotation = Quaternion.Euler(rotationVector1);
-                                    target.gameObject.transform.parent.position = new Vector3(6.7f, 1.407f, 7.002f);
-                                    Interactable i = filled_water.gameObject.GetComponent<Interactable>();
-                                    if (!photo_pickedup&& inventory.Contains(i.requirement))
-                                    {
-                                        i.Interact();
-                                        DestroyObj(inventory.IndexOf(i.requirement));
-                                        Photo.gameObject.SetActive(true);
-                                        photo_changed = true;
-                                    }
-                                    SecondCamera.gameObject.SetActive(true);
-                                    PrimaryCamera.gameObject.SetActive(false);
-                                    filled_water.GetComponent<Renderer>().material.shader = shader1;
-                                    islooking = true;
-                                    
-
-                                }
-                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && islooking)
-                                {
-                                    cd = 0;
-                                    SecondCamera.gameObject.SetActive(false);
-                                    PrimaryCamera.gameObject.SetActive(true);
-                                    filled_water.GetComponent<Renderer>().material.shader = shader1;
-                                    islooking = false;
-                                    GetComponent<RigidbodyFirstPersonController>().enableInput = true;
-
-                                }
-                            }
-                            
+                                lv1_p.changephoto = true;
+                            }    
                         }
                         else
                         {
@@ -517,7 +472,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (!inSight)
             {
-                filled_water.GetComponent<Renderer>().material.shader = shader1;
+                lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
@@ -539,7 +494,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
-            filled_water.GetComponent<Renderer>().material.shader = shader1;
+            lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;
