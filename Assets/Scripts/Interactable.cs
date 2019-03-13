@@ -52,7 +52,6 @@ public class Interactable : MonoBehaviour {
 
     public void Interact(){
         anim = target.GetComponent<Animator>();
-        float t = anim.GetNextAnimatorStateInfo(0).length;
 
 
 
