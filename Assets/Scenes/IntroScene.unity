@@ -195,7 +195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4871313690368206, guid: aad941ec63d5cfb41a0b5cdf7963fed0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.016
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4871313690368206, guid: aad941ec63d5cfb41a0b5cdf7963fed0, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2041,6 +2041,11 @@ Prefab:
       propertyPath: m_Name
       value: walls
       objectReference: {fileID: 0}
+    - target: {fileID: 23241307176847768, guid: 223427502a4c8d3459e3e68dfaffc740,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d713ca55ae05a246b2929a039728b20, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 223427502a4c8d3459e3e68dfaffc740, type: 2}
   m_IsPrefabParent: 0
