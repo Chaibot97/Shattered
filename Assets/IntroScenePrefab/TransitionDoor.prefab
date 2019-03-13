@@ -26,13 +26,14 @@ GameObject:
   - component: {fileID: 82702935341131434}
   - component: {fileID: 82847753835564638}
   - component: {fileID: 114367596811120540}
+  - component: {fileID: 114901134121948940}
   m_Layer: 0
   m_Name: TransitionDoor
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1690328040584426
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,3 +410,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc52a982e749b8478fc1cfda87b9e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114901134121948940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233060236183052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptForRequirement: There's something in the corrider.
+  target: {fileID: 0}
+  requirement: {fileID: 0}
+  objToHide: {fileID: 0}
+  interactOption: 0
+  objToReveal: {fileID: 0}
+  once: 0
+  disableCollider: 1
+  delay: 0
