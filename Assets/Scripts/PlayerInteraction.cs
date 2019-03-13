@@ -53,7 +53,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private int wait;
         
         private int playerLayerMask= 1<<9;
-        private Lv1Progress lv1_p;
+        public Lv1Progress lv1_p;
         private void Start()
         {
             Debug.Log(LayerMask.GetMask("Room"));
@@ -82,10 +82,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             findpickup = audios[1];
             locked = audios[3];
 
-            if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
-            {
-                lv1_p = GetComponent<Lv1Progress>();
-            }
+            //if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
+            //{
+            //    lv1_p = GetComponent<Lv1Progress>();
+            //}
             book.SetActive(false);
         }
 
@@ -275,14 +275,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             foreach (Renderer r in rend)
                             {
                                 r.material.shader = shader1;
-                            }
-                            if(wait >= 180)
+                            }   
+                            if (wait >= 180)
                             {
+                                lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader2;
                                 lv1_p.changephoto = true;
                             }    
                         }
                         else
                         {
+                            lv1_p.changephoto = false;
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)

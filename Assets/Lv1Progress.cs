@@ -29,12 +29,12 @@ public class Lv1Progress : MonoBehaviour
 
     public SceneLoader sl;
 
-    private UnityStandardAssets.Characters.FirstPerson.PlayerInteraction PInteract;
+    public UnityStandardAssets.Characters.FirstPerson.PlayerInteraction PInteract;
+    public UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController Player;
     private bool diaryComplete;
     public bool DiaryComplete { get { return diaryComplete; } }
     private void Start()
     {
-        PInteract = GetComponent<UnityStandardAssets.Characters.FirstPerson.PlayerInteraction>();
         freeze = 360;
     }
     private void Update()
@@ -75,10 +75,10 @@ public class Lv1Progress : MonoBehaviour
 
         if (changephoto)
         {
-            if (!PInteract.islooking)
-            {
-                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Shader_highlight/0.TheFirstShader");
-            }
+            //if (!PInteract.islooking)
+            //{
+            //    filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Shader_highlight/0.TheFirstShader");
+            //}
             if (PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && !PInteract.islooking)
             {
                 PInteract.cd = 0;
@@ -86,7 +86,7 @@ public class Lv1Progress : MonoBehaviour
                 {
                     freeze = 0;
                 }
-                GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().enableInput = false;
+                Player.enableInput = false;
                 var rotationVector = transform.rotation.eulerAngles;
                 rotationVector.x = 55;
                 PrimaryCamera.transform.rotation = Quaternion.Euler(rotationVector);
@@ -130,10 +130,10 @@ public class Lv1Progress : MonoBehaviour
                 PrimaryCamera.gameObject.SetActive(true);
                 filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Standard (Roughness setup)");
                 PInteract.islooking = false;
-                GetComponent<UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController>().enableInput = true;
+                Player.enableInput = true;
 
             }
-            changephoto = false;
+            //changephoto = false;
         }
     }
 }
