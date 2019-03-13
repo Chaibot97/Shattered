@@ -61,9 +61,10 @@ public class ItemUI : MonoBehaviour {
 
     public void OnPointerUpDelegate()
     {
+        Debug.Log("ui");
         if (objName == "")
             return;
-        if (objName == "Diary")
+        if (objName == "Diary" || objName == "Folder")
         {
             if(book)book.SetActive(true);
             inspector.enabled = false;

@@ -41,7 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Image inspector;
         [SerializeField] public Canvas inventoryUI;
         private Animator inventoryAnim;
-        [SerializeField] public Canvas inspectorUI;
+        //[SerializeField] public Canvas inspectorUI;
         private Animator inspectorAnim;
         [SerializeField] public Sprite UIMask;
 
@@ -75,7 +75,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 inventory.Add(new GameObject());
 
             inventoryAnim = inventoryUI.GetComponent<Animator>();
-            inspectorAnim = inspectorUI.GetComponent<Animator>();
+            //inspectorAnim = inspectorUI.GetComponent<Animator>();
 
             AudioSource[] audios = GetComponents<AudioSource>();
             putin = audios[2];
@@ -197,7 +197,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
-            if (col.tag=="Note"|| col.tag == "Pickupable")
+            if (col.tag=="Note"|| col.tag.Contains("Pickupable"))
             {
                 Debug.Log(col.name + " "+ itemChecking + " " + checkingInventory + " " + checkingSafe);
             }
@@ -353,7 +353,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             
             }
-            else if (col.gameObject.tag.Equals("Pickupable")|| col.gameObject.tag.Equals("Note"))
+            else if (col.gameObject.tag.Contains("Pickupable")|| col.gameObject.tag.Equals("Note"))
             {
                 Vector3 direction = col.GetComponent<Renderer>().bounds.center - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -373,7 +373,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
                             {
-                                findpickup.Play();
+                                //findpickup.Play();
                                 cd_sound = 0;
                                 soundplayed = true;
                             }
@@ -385,7 +385,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
                             {
                                 cd = 0;
-                                if (col.gameObject.tag.Equals("Pickupable"))
+                                if (col.gameObject.tag.Contains("Pickupable"))
                                 {
                                     int i = 0;
                                     foreach (Image img in inventoryUI.GetComponentsInChildren<Image>())
@@ -418,7 +418,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             }
 
                                             itemChecking = null;
-                                            putin.Play();
+                                            //putin.Play();
                                             StartCoroutine(PopInventory());
                                             break;
 
@@ -474,14 +474,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (!inSight)
             {
-                lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
+                //lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
                 }
                 soundplayed = false;
                 alreadyfind = false;
-                if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable") || col.gameObject.tag.Equals("Safe"))
+                if (col.gameObject.tag.Contains("Pickupable") || col.gameObject.tag.Equals("Interactable") || col.gameObject.tag.Equals("Safe"))
                 {
                     
                     itemChecking = null;
@@ -503,7 +503,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             soundplayed = false;
             alreadyfind = false;
-            if (col.gameObject.tag.Equals("Pickupable") || col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe"))
+            if (col.gameObject.tag.Contains("Pickupable") || col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe"))
             {    
 
                 inSight = false;

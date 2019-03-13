@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33504016190800078}
   - component: {fileID: 23348095793587760}
   - component: {fileID: 64551479665641358}
+  - component: {fileID: 114988995758295688}
   m_Layer: 0
-  m_Name: Folder_NoTurboSmooth1:Page_04
-  m_TagString: Untagged
+  m_Name: Folder
+  m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +40,7 @@ GameObject:
   - component: {fileID: 4162599364712408}
   m_Layer: 0
   m_Name: Folder
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,14 +51,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1711038374800126}
-  m_LocalRotation: {x: -0, y: -0, z: -0.640928, w: 0.767601}
-  m_LocalPosition: {x: -1.96, y: -2.512, z: -1.2280002}
+  m_LocalRotation: {x: 0.30812457, y: -0.41711903, z: -0.57726103, w: 0.6307461}
+  m_LocalPosition: {x: 2.816, y: -2.403, z: 3.651}
   m_LocalScale: {x: 0.008829554, y: 0.0088295555, z: 0.0088295555}
   m_Children:
   - {fileID: 4543878734636108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -79.722}
+  m_LocalEulerAnglesHint: {x: -5.3290005, y: -62.345, z: -81.704}
 --- !u!4 &4543878734636108
 Transform:
   m_ObjectHideFlags: 1
@@ -127,3 +128,16 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e7aa6bd0491e2324483f04a2663932d1, type: 3}
+--- !u!114 &114988995758295688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436860602398210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a22842341e4a84f8168b7da1c746ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallSprite: {fileID: 21300000, guid: 7f6a45c8d9ab94a72a11709eba9de8ad, type: 3}
+  largeSprite: {fileID: 0}
