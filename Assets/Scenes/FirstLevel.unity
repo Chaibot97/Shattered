@@ -1395,9 +1395,10 @@ MonoBehaviour:
   requirement: {fileID: 0}
   objToHide: {fileID: 0}
   interactOption: 0
-  ObjToReveal: {fileID: 0}
+  objToReveal: {fileID: 0}
   once: 0
   disableCollider: 1
+  delay: 0
 --- !u!1001 &149304858
 Prefab:
   m_ObjectHideFlags: 0
@@ -3889,6 +3890,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930437881059852, guid: c6453f8e1f814744d8b94e5a6d1f9942,
+        type: 2}
+      propertyPath: Scene_num
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}

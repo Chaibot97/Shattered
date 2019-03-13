@@ -37,6 +37,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private bool checkingInventory = false;
         private bool checkingSafe;
+        public int Scene_num;
         public GameObject book;
         public Image inspector;
         [SerializeField] public Canvas inventoryUI;
@@ -284,7 +285,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                         else
                         {
-                            //lv1_p.changephoto = false;
+                            if(Scene_num == 1)
+                            {
+                                lv1_p.changephoto = false;
+                            }
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)
@@ -474,9 +478,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
             if (!inSight)
-            {
-                //lv1_p.changephoto = false;
-                //lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
+            {   
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
@@ -498,8 +500,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
-            //lv1_p.changephoto = false;
-            //lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
+            if(Scene_num == 1)
+            {
+                lv1_p.changephoto = false;
+                lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
+            }
+
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;
