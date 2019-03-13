@@ -24,6 +24,12 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene(level);
     }
 
+    public IEnumerator LoadNextSceneWithFading()
+    {
+        float t = GetComponent<Fading>().BeginFade(1);
+        yield return new WaitForSeconds(t);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public IEnumerator LoadSceneWithMovieHelper(String level,float time)
     {
 

@@ -18,14 +18,17 @@ public class Interactable : MonoBehaviour {
         Reveal
     }
     public InteractOptions interactOption;
-    public GameObject ObjToReveal;
+    public GameObject objToReveal;
 
 
     public bool once = false;
     public bool disableCollider = true;
+    Animator anim;
+    public float delay;
 
     private void Start()
     {
+
         if (!target)
         {
             target = gameObject;
@@ -36,8 +39,22 @@ public class Interactable : MonoBehaviour {
         }
     }
 
+    private IEnumerator Hide()
+    {
+        yield return new WaitForSeconds(delay);
+        objToHide.SetActive(false);
+    }
+    private IEnumerator Reveal()
+    {
+        yield return new WaitForSeconds(delay);
+        objToReveal.SetActive(true);
+    }
+
     public void Interact(){
-        Animator anim = target.GetComponent<Animator>();
+        anim = target.GetComponent<Animator>();
+        float t = anim.GetNextAnimatorStateInfo(0).length;
+
+
 
         switch (interactOption)
         {
@@ -45,13 +62,15 @@ public class Interactable : MonoBehaviour {
                 if(anim)anim.SetBool("open", !GetComponent<Animator>().GetBool("open"));
                 break;
             case InteractOptions.Reveal:
-                if(ObjToReveal)ObjToReveal.SetActive(true);
                 if (anim)anim.SetBool("check", true);
+                if (objToReveal) StartCoroutine(Reveal());
                 break;
         }
+
+
         if (objToHide)
         {
-            objToHide.SetActive(false);
+            StartCoroutine(Hide());
         }
 
 

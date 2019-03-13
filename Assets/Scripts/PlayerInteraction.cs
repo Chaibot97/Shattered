@@ -324,7 +324,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         }
                                         if (col.gameObject.name.Equals("MainDoor"))
                                         {
-                                            lv1_p.finished = true;
+                                            //lv1_p.finished = true;
+                                            StartCoroutine(FindObjectOfType<SceneLoader>().LoadNextSceneWithFading());
                                         }
 
                                         DestroyObj(inventory.IndexOf(i.requirement));
@@ -494,7 +495,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
-            lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
+            //lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;
