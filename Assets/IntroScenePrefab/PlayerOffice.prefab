@@ -552,6 +552,7 @@ MonoBehaviour:
   safeFound: 0
   safeUnlocked: 0
   finished: 0
+  changephoto: 0
   page3content: {fileID: 0}
   page4content: {fileID: 0}
   page5content: {fileID: 0}
@@ -559,6 +560,11 @@ MonoBehaviour:
   page7content: {fileID: 0}
   page8content: {fileID: 0}
   firePlace: {fileID: 0}
+  filled_water: {fileID: 0}
+  SecondCamera: {fileID: 0}
+  PrimaryCamera: {fileID: 0}
+  Photo: {fileID: 0}
+  freeze: 0
   sl: {fileID: 0}
 --- !u!114 &114215477671032704
 MonoBehaviour:
@@ -724,17 +730,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1c90356c58c4495a51e2123a99719a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filled_water: {fileID: 0}
-  SecondCamera: {fileID: 0}
-  PrimaryCamera: {fileID: 20739635884184174}
-  Photo: {fileID: 0}
+  islooking: 0
+  photo_changed: 0
+  photo_pickedup: 0
+  inventory: []
   book: {fileID: 0}
   inspector: {fileID: 0}
   inventoryUI: {fileID: 0}
-  inspectorUI: {fileID: 0}
   UIMask: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   prompt: {fileID: 0}
   lockUI: {fileID: 0}
+  cd: 0
 --- !u!124 &124654622036626208
 Behaviour:
   m_ObjectHideFlags: 1
