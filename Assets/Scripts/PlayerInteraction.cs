@@ -284,7 +284,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                         else
                         {
-                            lv1_p.changephoto = false;
+                            //lv1_p.changephoto = false;
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)
@@ -498,8 +498,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
-            lv1_p.changephoto = false;
-            lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
+            //lv1_p.changephoto = false;
+            //lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
             foreach (Renderer r in rend)
             {
                 r.material.shader = shader1;
