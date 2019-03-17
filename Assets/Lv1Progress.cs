@@ -69,7 +69,7 @@ public class Lv1Progress : MonoBehaviour
         if (finished)
         {
             //sl.LoadScene("level_1");
-            StartCoroutine(sl.LoadSceneWithFading("Corridor1"));
+            //StartCoroutine(sl.LoadSceneWithFading("Corridor1"));
 
         }
 
