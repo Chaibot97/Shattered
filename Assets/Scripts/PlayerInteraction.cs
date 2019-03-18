@@ -405,6 +405,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             item.item = col.GetComponent<Item>();
                                             item.GetComponent<Image>().sprite = item.item.smallSprite;
                                             inventory[i] = col.gameObject;
+                                            item.item.Trigger();
 
                                             col.gameObject.SetActive(false);
                                             inSight = false;

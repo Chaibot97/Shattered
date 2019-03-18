@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 82847753835564638}
   - component: {fileID: 114367596811120540}
   - component: {fileID: 114901134121948940}
+  - component: {fileID: 114582942855922966}
   m_Layer: 0
   m_Name: TransitionDoor
   m_TagString: Interactable
@@ -388,7 +389,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233060236183052}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 9d109ba56793d8d42a6f3008587c4e87, type: 3}
   m_Controller: {fileID: 9100000, guid: d945bf072954c7e46ba27f5536e4f12d, type: 2}
   m_CullingMode: 0
@@ -408,6 +409,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddc52a982e749b8478fc1cfda87b9e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114582942855922966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233060236183052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114901134121948940

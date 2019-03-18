@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour {
         GameObject g = GameObject.Find("_GM");
         if (!g)
         {
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
         else
         {

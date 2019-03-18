@@ -62,6 +62,7 @@ public class Interactable : MonoBehaviour {
                 break;
             case InteractOptions.Reveal:
                 if (anim)anim.SetBool("check", true);
+                //if (anim) anim.SetBool("open", true);
                 if (objToReveal) StartCoroutine(Reveal());
                 break;
         }

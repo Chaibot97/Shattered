@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114200254080071438}
   - component: {fileID: 82604642460593466}
   - component: {fileID: 82362696468416684}
+  - component: {fileID: 114656117513132650}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -424,9 +425,21 @@ MonoBehaviour:
   promptForRequirement: It's locked
   target: {fileID: 0}
   requirement: {fileID: 0}
-  objToHide: {fileID: 1527720663040506}
+  objToHide: {fileID: 0}
   interactOption: 1
   objToReveal: {fileID: 0}
   once: 1
-  disableCollider: 1
+  disableCollider: 0
   delay: 4
+--- !u!114 &114656117513132650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527720663040506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20124434c6037984fbcc6ab75eb555a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainDoor: {fileID: 0}
