@@ -9,74 +9,74 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1939747205578412}
+  m_RootGameObject: {fileID: 1859595443923908}
   m_IsPrefabParent: 1
---- !u!1 &1516465385002302
+--- !u!1 &1765366173481006
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4522129857128026}
-  - component: {fileID: 33711750776895886}
-  - component: {fileID: 23156980300451718}
-  - component: {fileID: 64995090331176262}
+  - component: {fileID: 4323307519083296}
+  - component: {fileID: 33147043816843272}
+  - component: {fileID: 23612555527953274}
+  - component: {fileID: 64030128380811636}
   m_Layer: 0
-  m_Name: CorridorWalls:pCube241
+  m_Name: wall1:window_blinds:window_blinds1window_blinds2_window_blinds_openBoole_92
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1939747205578412
+--- !u!1 &1859595443923908
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4816657162583858}
+  - component: {fileID: 4646397153756084}
   m_Layer: 0
-  m_Name: wall
+  m_Name: blind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4522129857128026
+--- !u!4 &4323307519083296
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516465385002302}
+  m_GameObject: {fileID: 1765366173481006}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4816657162583858}
+  m_Father: {fileID: 4646397153756084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4816657162583858
+--- !u!4 &4646397153756084
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1939747205578412}
+  m_GameObject: {fileID: 1859595443923908}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.053, z: 0.016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4522129857128026}
+  - {fileID: 4323307519083296}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!23 &23156980300451718
+--- !u!23 &23612555527953274
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516465385002302}
+  m_GameObject: {fileID: 1765366173481006}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,7 +86,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: bab426be0087985459f21e4e9080c329, type: 2}
+  - {fileID: 2100000, guid: 46ca6fd1f0af1e34894e689b386691a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,19 +106,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33711750776895886
+--- !u!33 &33147043816843272
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516465385002302}
-  m_Mesh: {fileID: 4300004, guid: 39a2d82b0e94af34b937f7f947ea6709, type: 3}
---- !u!64 &64995090331176262
+  m_GameObject: {fileID: 1765366173481006}
+  m_Mesh: {fileID: 4300000, guid: 12109f9839b93b841a79ed6fec192b27, type: 3}
+--- !u!64 &64030128380811636
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1516465385002302}
+  m_GameObject: {fileID: 1765366173481006}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -126,4 +126,4 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: 39a2d82b0e94af34b937f7f947ea6709, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 12109f9839b93b841a79ed6fec192b27, type: 3}
