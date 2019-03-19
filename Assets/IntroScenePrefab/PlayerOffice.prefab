@@ -64,7 +64,7 @@ Transform:
   m_GameObject: {fileID: 1890867145186996}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 6.904, y: 1.398, z: -5.847}
-  m_LocalScale: {x: 1, y: 1.6, z: 1}
+  m_LocalScale: {x: 1, y: 1.85, z: 1}
   m_Children:
   - {fileID: 4991571645980260}
   m_Father: {fileID: 0}
@@ -566,6 +566,8 @@ MonoBehaviour:
   Photo: {fileID: 0}
   freeze: 0
   sl: {fileID: 0}
+  PInteract: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &114215477671032704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,6 +736,7 @@ MonoBehaviour:
   photo_changed: 0
   photo_pickedup: 0
   inventory: []
+  Scene_num: 0
   book: {fileID: 0}
   inspector: {fileID: 0}
   inventoryUI: {fileID: 0}
@@ -741,6 +744,7 @@ MonoBehaviour:
   prompt: {fileID: 0}
   lockUI: {fileID: 0}
   cd: 0
+  lv1_p: {fileID: 0}
 --- !u!124 &124654622036626208
 Behaviour:
   m_ObjectHideFlags: 1
