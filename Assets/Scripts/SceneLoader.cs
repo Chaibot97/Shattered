@@ -21,8 +21,6 @@ public class SceneLoader : MonoBehaviour {
         {
             _GM = g.GetComponent<GameManager>();
         }
-        Debug.Log("aa");
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
     }
     public void LoadScene(int level)
     {
