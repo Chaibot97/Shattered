@@ -21,6 +21,8 @@ public class SceneLoader : MonoBehaviour {
         {
             _GM = g.GetComponent<GameManager>();
         }
+        Debug.Log("aa");
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
     }
     public void LoadScene(int level)
     {
@@ -42,7 +44,14 @@ public class SceneLoader : MonoBehaviour {
     {
         float t = GetComponent<Fading>().BeginFade(1);
         yield return new WaitForSeconds(t);
-        LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
+        {
+            LoadScene(0);
+        }
+        else
+        {
+            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
     public IEnumerator LoadSceneWithMovieHelper(int level,float time)
     {
