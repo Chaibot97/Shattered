@@ -7201,6 +7201,21 @@ Prefab:
       propertyPath: m_Name
       value: SideDoor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: interactOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: once
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: disableCollider
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfa114d9309bed04ab2e67ab9ed6335d, type: 2}
   m_IsPrefabParent: 0
@@ -8010,6 +8025,11 @@ Prefab:
     - target: {fileID: 114890701102862722, guid: 36aed18a8b7bc8748a59d06282fc25ef,
         type: 2}
       propertyPath: ObjToReveal
+      value: 
+      objectReference: {fileID: 511758175}
+    - target: {fileID: 114890701102862722, guid: 36aed18a8b7bc8748a59d06282fc25ef,
+        type: 2}
+      propertyPath: objToReveal
       value: 
       objectReference: {fileID: 511758175}
     m_RemovedComponents: []
