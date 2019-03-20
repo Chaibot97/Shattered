@@ -282,7 +282,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader2;
                                 lv1_p.changephoto = true;
                             }
-                            //itemChecking = null;
+                            itemChecking = null;
                         }
                         else
                         {
