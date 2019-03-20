@@ -15,7 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Transform target;
         private bool holding;
 
-        private Collider itemChecking;
+        public Collider itemChecking;
         private Shader shader1;
         private Shader shader2;
         private Renderer[] rend = { };
@@ -270,7 +270,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (hit.collider.Equals(col)){
                         if (itemChecking.name.Equals("Sink") && filled)
                         {
-                            inSight = true;
+                            //inSight = true;
                             
                             rend = itemChecking.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)
@@ -281,11 +281,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             {
                                 lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader2;
                                 lv1_p.changephoto = true;
-                            }    
+                            }
+                            //itemChecking = null;
                         }
                         else
                         {
-                            if(Scene_num == 1)
+                            if(Scene_num == 1 && !islooking)
                             {
                                 lv1_p.changephoto = false;
                             }
@@ -416,6 +417,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                                 lv1_p.diaryFound = true;
                                             }
 
+                                            if(item.objName == "Photo")
+                                            {
+                                                lv1_p.photoFound = true;
+                                            }
+
 
                                             if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
                                             {
@@ -501,7 +507,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerExit(Collider col)
         {
-            if(Scene_num == 1)
+            if(Scene_num == 1 && !islooking)
             {
                 lv1_p.changephoto = false;
                 lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader1;
