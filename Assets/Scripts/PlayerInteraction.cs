@@ -198,35 +198,35 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
-            if (col.tag=="Note"|| col.tag.Contains("Pickupable"))
+            if (col.tag == "Note" || col.tag.Contains("Pickupable"))
             {
-                Debug.Log(col.name + " "+ itemChecking + " " + checkingInventory + " " + checkingSafe);
+                Debug.Log(col.name + " " + itemChecking + " " + checkingInventory + " " + checkingSafe);
             }
-            if (checkingInventory|| checkingSafe)
+            if (checkingInventory || checkingSafe)
                 return;
             inSight = false;
-            
+
             if (itemChecking && col != itemChecking) return;
 
             if (col.gameObject.tag.Equals("Mirror"))
             {
-                mirror=itemChecking = col;
+                mirror = itemChecking = col;
                 if (!checkingMirror)
                 {
                     Vector3 direction = col.transform.position - target.transform.position;
                     float angle = Vector3.Angle(direction, target.transform.forward);
-                    prompt.text="";
+                    prompt.text = "";
                     if (angle <= pickUpFOV * 0.8f)
                     {
                         RaycastHit hit;
-                        Debug.DrawRay(col.transform.position , col.transform.up, Color.red);
+                        Debug.DrawRay(col.transform.position, col.transform.up, Color.red);
                         if (Physics.Raycast(col.transform.position, col.transform.up, out hit, 1))
                         {
                             //Debug.Log(hit.collider.name);
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
-                                if(lv1_p.note2Found)
+                                if (lv1_p.note2Found)
                                     prompt.text = "Press E to inspect.";
                                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                                 {
@@ -234,7 +234,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     itemChecking = col;
                                     checkingMirror = true;
                                     Vector3 tmp = col.gameObject.transform.position + col.gameObject.transform.up * 1.3f;
-                                    transform.position = ( new Vector3(tmp.x,transform.position.y,tmp.z));
+                                    transform.position = (new Vector3(tmp.x, transform.position.y, tmp.z));
                                     target.transform.LookAt(col.gameObject.transform);
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
                                     if (lv1_p.note2Found)
@@ -249,34 +249,34 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     }
                     else
                     {
-                        prompt.text="";
+                        prompt.text = "";
                     }
                 }
-                
-            }else if (col.gameObject.tag.Equals("Interactable")|| col.gameObject.tag.Equals("Safe") )
+
+            } else if (col.gameObject.tag.Equals("Interactable") || col.gameObject.tag.Equals("Safe"))
             {
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 // Debug.Log(angle);
 
                 itemChecking = col;
-                
+
                 RaycastHit hit;
-                Debug.DrawRay(target.transform.position, target.transform.forward*5, Color.blue);
+                Debug.DrawRay(target.transform.position, target.transform.forward * 5, Color.blue);
 
                 if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, 5))
                 {
                     Debug.Log(hit.collider.name);
-                    if (hit.collider.Equals(col)){
+                    if (hit.collider.Equals(col)) {
                         if (itemChecking.name.Equals("Sink") && filled)
                         {
                             //inSight = true;
-                            
+
                             rend = itemChecking.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)
                             {
                                 r.material.shader = shader1;
-                            }   
+                            }
                             if (wait >= 180)
                             {
                                 lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader2;
@@ -286,7 +286,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         }
                         else
                         {
-                            if(Scene_num == 1 && !islooking)
+                            if (Scene_num == 1 && !islooking)
                             {
                                 lv1_p.changephoto = false;
                             }
@@ -326,7 +326,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             wait = 0;
                                             filled = true;
                                         }
-                                        if (col.gameObject.name.Equals("Fireplace")) {                                                
+                                        if (col.gameObject.name.Equals("Fireplace")) {
                                             lv1_p.safeFound = true;
                                         }
                                         if (col.gameObject.name.Equals("MainDoor"))
@@ -344,22 +344,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     {
 
                                         StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                        if(i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
+                                        if (i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
                                         {
                                             locked.Play();
                                         }
-                                       
+
 
                                     }
                                 }
                             }
                         }
-                        
+
                     }
                 }
-            
+
             }
-            else if (col.gameObject.tag.Contains("Pickupable")|| col.gameObject.tag.Equals("Note"))
+            else if (col.gameObject.tag.Contains("Pickupable") || col.gameObject.tag.Equals("Note"))
             {
                 Vector3 direction = col.GetComponent<Renderer>().bounds.center - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
@@ -370,11 +370,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
 
                     RaycastHit hit;
-                    Debug.DrawRay(target.transform.position, direction.normalized*5, Color.red);
-                    if (Physics.Raycast(target.transform.position, direction.normalized , out hit,playerLayerMask, 5))
+                    Debug.DrawRay(target.transform.position, direction.normalized * 5, Color.red);
+                    if (Physics.Raycast(target.transform.position, direction.normalized, out hit, playerLayerMask, 5))
                     {
                         //Debug.Log(hit.collider.name);
-                        if (hit.collider.Equals(col)){
+                        if (hit.collider.Equals(col)) {
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
@@ -411,13 +411,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             col.gameObject.SetActive(false);
                                             inSight = false;
                                             StartCoroutine(ShowPrompt(item.objName + " found", 2));
-                                            
+
                                             if (item.objName == "Diary")
                                             {
                                                 lv1_p.diaryFound = true;
                                             }
 
-                                            if(item.objName == "Photo")
+                                            if (item.objName == "Photo")
                                             {
                                                 lv1_p.photoFound = true;
                                             }
@@ -484,8 +484,47 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
             }
+            else if (col.gameObject.tag.Contains("Teleport"))
+            {
+                itemChecking = col;
+
+                Vector3 direction = col.transform.position - target.transform.position;
+                float angle = Vector3.Angle(direction, target.transform.forward);
+                prompt.text = "";
+                if (angle <= pickUpFOV * 0.8f)
+                {
+                    RaycastHit hit;
+                    Debug.DrawRay(col.transform.position, col.transform.up, Color.red);
+                    if (Physics.Raycast(col.transform.position, col.transform.up, out hit, 1))
+                    {
+                        //Debug.Log(hit.collider.name);
+                        if (hit.collider.tag.Contains("Player"))
+                        {
+                            inSight = true;
+
+                            prompt.text = "Press E to inspect.";
+                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                            {
+                                cd = 0;
+                                itemChecking = null;
+                                inSight = false;
+                                prompt.text = "";
+                                col.GetComponent<Teleporter>().Teleport();
+
+
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    prompt.text = "";
+                }
+
+            }
+
             if (!inSight)
-            {   
+            {
                 foreach (Renderer r in rend)
                 {
                     r.material.shader = shader1;
@@ -494,10 +533,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 alreadyfind = false;
                 if (col.gameObject.tag.Contains("Pickupable") || col.gameObject.tag.Equals("Interactable") || col.gameObject.tag.Equals("Safe"))
                 {
-                    
+
                     itemChecking = null;
                 }
-                if (col.gameObject.tag.Equals("Mirror"))
+                if (col.gameObject.tag.Equals("Mirror")|| col.gameObject.tag.Contains("Teleport"))
                 {
                     prompt.text="";
                 }
@@ -525,7 +564,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 inSight = false;
                 itemChecking = null;
             }
-            if (col.gameObject.tag.Equals("Mirror"))
+            if (col.gameObject.tag.Equals("Mirror") || col.gameObject.tag.Contains("Teleport"))
             {
                 prompt.text = "";
                 inSight = false;
