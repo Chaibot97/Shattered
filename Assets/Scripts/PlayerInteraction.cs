@@ -316,7 +316,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                         {
                                             itemChecking = null;
                                         }
-
+                                        if (col.gameObject.name.Equals("MainDoor"))
+                                        {
+                                            StartCoroutine(FindObjectOfType<SceneLoader>().LoadNextSceneWithFading());
+                                        }
                                     }
                                     else if (inventory.Contains(i.requirement))
                                     {
