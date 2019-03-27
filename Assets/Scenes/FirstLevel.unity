@@ -4823,7 +4823,28 @@ Prefab:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114515962148806958, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+        type: 2}
+      propertyPath: delay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114515962148806958, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+        type: 2}
+      propertyPath: interactOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114515962148806958, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412275909676086, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+        type: 2}
+      propertyPath: objToReveal
+      value: 
+      objectReference: {fileID: 1223163931}
+    m_RemovedComponents:
+    - {fileID: 114515962148806958, guid: 1b29a0f1eac0c354f845083f7d0fd271, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1b29a0f1eac0c354f845083f7d0fd271, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1000119841
@@ -6413,6 +6434,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   l: {fileID: 1795579158}
+--- !u!1 &1223163931 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1812889404814966, guid: 1b29a0f1eac0c354f845083f7d0fd271,
+    type: 2}
+  m_PrefabInternal: {fileID: 996035594}
 --- !u!224 &1242921928 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224345559696385274, guid: 8695387e58952ee4eb62786209b30246,
@@ -8995,11 +9021,6 @@ Prefab:
       propertyPath: requirement
       value: 
       objectReference: {fileID: 29038753}
-    - target: {fileID: 114186382903359206, guid: c97b254e5bdc92d479069698da0b9e0d,
-        type: 2}
-      propertyPath: ObjToReveal
-      value: 
-      objectReference: {fileID: 1440224555}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c97b254e5bdc92d479069698da0b9e0d, type: 2}
   m_IsPrefabParent: 0
@@ -10279,6 +10300,40 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010894660052, guid: 3b11136cfd0d23540940791a20f3e1de, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010791821140, guid: 3b11136cfd0d23540940791a20f3e1de,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012674509358, guid: 3b11136cfd0d23540940791a20f3e1de,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012674509358, guid: 3b11136cfd0d23540940791a20f3e1de,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011848633014, guid: 3b11136cfd0d23540940791a20f3e1de,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011848633014, guid: 3b11136cfd0d23540940791a20f3e1de,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012848874552, guid: 3b11136cfd0d23540940791a20f3e1de,
+        type: 2}
+      propertyPath: interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b11136cfd0d23540940791a20f3e1de, type: 2}

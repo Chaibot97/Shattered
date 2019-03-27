@@ -177,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203694245208522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.27, y: 1.16, z: -54.87}
+  m_LocalPosition: {x: -17.18, y: 1.204, z: -54.87}
   m_LocalScale: {x: 156.0348, y: 156.03448, z: 156.03448}
   m_Children:
   - {fileID: 4811192360075820}
@@ -463,9 +463,10 @@ MonoBehaviour:
   requirement: {fileID: 0}
   objToHide: {fileID: 0}
   interactOption: 1
-  ObjToReveal: {fileID: 1812889404814966}
+  objToReveal: {fileID: 0}
   once: 1
   disableCollider: 1
+  delay: 1
 --- !u!114 &114515962148806958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,6 +483,7 @@ MonoBehaviour:
   requirement: {fileID: 0}
   objToHide: {fileID: 0}
   interactOption: 0
-  ObjToReveal: {fileID: 0}
+  objToReveal: {fileID: 1812889404814966}
   once: 0
   disableCollider: 1
+  delay: 0
