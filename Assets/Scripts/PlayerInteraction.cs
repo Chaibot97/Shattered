@@ -266,7 +266,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 if (Physics.Raycast(target.transform.position, target.transform.forward, out hit, 5))
                 {
-                    Debug.Log(hit.collider.name);
+                    //Debug.Log(hit.collider.name);
                     if (hit.collider.Equals(col)) {
                         if (itemChecking.name.Equals("Sink") && filled)
                         {

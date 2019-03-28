@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour {
     public GameObject requirement = null;
     public GameObject objToHide = null;
     private Lv1Progress lv1_p;
+    
 
     public enum InteractOptions
     {
@@ -25,6 +26,9 @@ public class Interactable : MonoBehaviour {
     public bool disableCollider = true;
     Animator anim;
     public float delay;
+
+    public GameObject[] TriggerObjs;
+    public string[] TriggerFunctions;
 
     private void Start()
     {
@@ -66,6 +70,7 @@ public class Interactable : MonoBehaviour {
                 if (objToReveal) StartCoroutine(Reveal());
                 break;
         }
+        Trigger();
 
 
         if (objToHide)
@@ -98,4 +103,15 @@ public class Interactable : MonoBehaviour {
             
         }
 	}
+
+    public void Trigger()
+    {
+        if (TriggerObjs.Length != 0 && TriggerObjs.Length == TriggerFunctions.Length)
+        {
+            for (int i = 0; i < TriggerObjs.Length; i++)
+            {
+                TriggerObjs[i].BroadcastMessage(TriggerFunctions[i]);
+            }
+        }
+    }
 }
