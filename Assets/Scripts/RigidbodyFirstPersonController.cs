@@ -159,13 +159,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_RigidBody.velocity.sqrMagnitude <
                     (movementSettings.CurrentTargetSpeed*movementSettings.CurrentTargetSpeed))
                 {
-                    m_RigidBody.AddForce(desiredMove*SlopeMultiplier(), ForceMode.Impulse);
+                    m_RigidBody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
                 }
             }
 
             if (m_IsGrounded)
             {
-                m_RigidBody.drag = 8f;
+                m_RigidBody.drag = 7f;
 
                 // if (m_Jump)
                 // {
@@ -182,7 +182,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
-                //m_RigidBody.drag = 0f;
+                m_RigidBody.drag = 0f;
                 if (m_PreviouslyGrounded && !m_Jumping)
                 {
                     StickToGroundHelper();
