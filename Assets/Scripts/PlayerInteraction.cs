@@ -696,6 +696,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         }
 
+        public void Prompt(string text)
+        {
+            StartCoroutine(ShowPrompt(text));
+        }
+
         private IEnumerator ShowPrompt(string text, float sec=2)
         {
             prompt.text = text;

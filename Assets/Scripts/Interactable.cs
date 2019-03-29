@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Interactable : MonoBehaviour {
 
     public string promptForRequirement = "";
+    public string promptAfter = "";
 
     public GameObject target=null;
     public GameObject requirement = null;
@@ -69,6 +70,10 @@ public class Interactable : MonoBehaviour {
                 //if (anim) anim.SetBool("open", true);
                 if (objToReveal) StartCoroutine(Reveal());
                 break;
+        }
+        if (promptAfter.Length != 0) 
+        {
+            GameObject.FindGameObjectWithTag("Player").BroadcastMessage("Prompt", promptAfter);
         }
         Trigger();
 
