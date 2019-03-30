@@ -1396,6 +1396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptForRequirement: 
+  promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 0}
   objToHide: {fileID: 0}
@@ -1404,6 +1405,8 @@ MonoBehaviour:
   once: 0
   disableCollider: 1
   delay: 0
+  TriggerObjs: []
+  TriggerFunctions: []
 --- !u!1001 &149304858
 Prefab:
   m_ObjectHideFlags: 0
@@ -4398,6 +4401,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4762849220525854, guid: 4b56f31bcea59934f8f4a51a66ecabef,
     type: 2}
   m_PrefabInternal: {fileID: 1327686438}
+--- !u!1 &897687780 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1878760383542708, guid: 441a6c907d1b3d74b8f2663e6c7b6c24,
+    type: 2}
+  m_PrefabInternal: {fileID: 1755612767}
 --- !u!4 &899630577 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4486344932697066, guid: f69a38e7058d9a24883aa2355dc179b0,
@@ -9663,6 +9671,10 @@ Prefab:
       propertyPath: m_Name
       value: Photo_changed
       objectReference: {fileID: 0}
+    - target: {fileID: 1909089551969788, guid: 729f6317ffa8d1947bd9885c9f39ecc4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 729f6317ffa8d1947bd9885c9f39ecc4, type: 2}
   m_IsPrefabParent: 0
@@ -10755,6 +10767,7 @@ MonoBehaviour:
   page7content: {fileID: 922273456}
   page8content: {fileID: 1832562810}
   firePlace: {fileID: 41825994}
+  sink: {fileID: 897687780}
   filled_water: {fileID: 387777679}
   SecondCamera: {fileID: 1342594819}
   PrimaryCamera: {fileID: 951398810}
