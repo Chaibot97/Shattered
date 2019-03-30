@@ -347,7 +347,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     {
 
                                         StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                        if (i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
+                                        if (i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key") || i.requirement.gameObject.name.Equals("Office key"))
                                         {
                                             locked.Play();
                                         }
@@ -382,7 +382,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
                             {
-                                //findpickup.Play();
+                                findpickup.Play();
                                 cd_sound = 0;
                                 soundplayed = true;
                             }
@@ -433,7 +433,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             }
 
                                             itemChecking = null;
-                                            //putin.Play();
+                                            putin.Play();
                                             StartCoroutine(PopInventory());
                                             break;
 
