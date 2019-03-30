@@ -22,6 +22,7 @@ public class Lv1Progress : MonoBehaviour
     public GameObject page7content;
     public GameObject page8content;
     public GameObject firePlace;
+    public GameObject sink;
     public GameObject filled_water;
     public Camera SecondCamera;
     public Camera PrimaryCamera;
@@ -133,7 +134,11 @@ public class Lv1Progress : MonoBehaviour
                 filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Standard (Roughness setup)");
                 PInteract.islooking = false;
                 Player.enableInput = true;
-
+                if (PInteract.photo_changed)
+                {
+                    sink.gameObject.GetComponent<Collider>().enabled = false;
+                }
+                
             }
             //changephoto = false;
         }

@@ -270,7 +270,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (hit.collider.Equals(col)) {
                         if (itemChecking.name.Equals("Sink") && filled)
                         {
-                            //inSight = true;
+                            inSight = true;
 
                             rend = itemChecking.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)
@@ -282,6 +282,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader2;
                                 lv1_p.changephoto = true;
                             }
+
                             itemChecking = null;
                         }
                         else
@@ -430,6 +431,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             {
                                                 photo_pickedup = true;
                                                 col.gameObject.transform.parent.gameObject.SetActive(false);
+                                                if (Scene_num == 1)
+                                                {
+                                                    lv1_p.sink.gameObject.GetComponent<Collider>().enabled = true;
+                                                }
                                             }
 
                                             itemChecking = null;
