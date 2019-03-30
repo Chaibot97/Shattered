@@ -129,10 +129,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
-                if (lv1_p.note2Found)
-                    prompt.text = "Press A/D to change angle. Press E to quit.";
-                else
+                if (lv1_p && !lv1_p.note2Found)
                     prompt.text = "Press E to quit.";
+                else
+                    prompt.text = "Press A/D to change angle. Press E to quit.";
                 target.transform.LookAt(mirror.gameObject.transform);
                 Vector3 direction = transform.position- mirror.transform.position;
                 float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), mirror.transform.up, Vector3.up);
@@ -226,7 +226,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
-                                if (lv1_p.note2Found)
+                                if (lv1_p && !lv1_p.note2Found)
+                                    Debug.Log("press E");
+                                else
                                     prompt.text = "Press E to inspect.";
                                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                                 {
@@ -237,10 +239,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     transform.position = (new Vector3(tmp.x, transform.position.y, tmp.z));
                                     target.transform.LookAt(col.gameObject.transform);
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                                    if (lv1_p.note2Found)
-                                        prompt.text = "Press A/D to change angle. Press E to quit.";
+                                    if (lv1_p && !lv1_p.note2Found)
+                                        prompt.text = "Press E to quit."; 
                                     else
-                                        prompt.text = "Press E to quit.";
+                                        prompt.text = "Press A/D to change angle. Press E to quit.";
                                     return;
 
                                 }
