@@ -25,6 +25,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool soundplayed;
         private bool alreadyfind;
         private bool filled;
+        private bool flashlightFound;
         [HideInInspector] public bool islooking;
         [HideInInspector] public bool photo_changed;
         [HideInInspector] public bool photo_pickedup;
@@ -48,6 +49,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         [SerializeField] public Text prompt;
         public GameObject lockUI;
+        private GameObject Flashlight;
         //LayoutGroup inventoryUI;
         [HideInInspector] public int cd;
         private int cd_sound;
@@ -65,6 +67,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             photo_changed = false;
             islooking = false;
             photo_pickedup = false;
+            flashlightFound = false;
             cd = 30;
             cd_sound = 180;
             wait = 180;
@@ -83,6 +86,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             findpickup = audios[1];
             locked = audios[3];
 
+            foreach (Transform child in Camera.main.transform)
+            {
+                if (child.gameObject.name == "Flashlight_on")
+                {
+                    Flashlight = child.gameObject;
+                }
+            }
+
             //if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
             //{
             //    lv1_p = GetComponent<Lv1Progress>();
@@ -99,6 +110,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 cd_sound++;
             if (wait < 180)
                 wait++;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (flashlightFound)
+                {
+                    if (Flashlight.activeSelf)
+                    {
+                        Flashlight.SetActive(false);
+                    }
+                    else
+                    {
+                        Flashlight.SetActive(true);
+                    }
+
+                }
+            }
             if (checkingSafe)
             {
                 if (Input.GetKeyDown(KeyCode.E) && cd > 20)
@@ -416,6 +442,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             inSight = false;
                                             StartCoroutine(ShowPrompt(item.objName + " found", 2));
 
+                                            if (item.objName == "Flashlight")
+                                            {
+                                                flashlightFound = true;
+                                            }
                                             if (item.objName == "Diary")
                                             {
                                                 lv1_p.diaryFound = true;
