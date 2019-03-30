@@ -25,6 +25,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool soundplayed;
         private bool alreadyfind;
         private bool filled;
+        private bool flashlightFound;
         [HideInInspector] public bool islooking;
         [HideInInspector] public bool photo_changed;
         [HideInInspector] public bool photo_pickedup;
@@ -48,6 +49,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         [SerializeField] public Text prompt;
         public GameObject lockUI;
+        private GameObject Flashlight;
         //LayoutGroup inventoryUI;
         [HideInInspector] public int cd;
         private int cd_sound;
@@ -65,6 +67,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             photo_changed = false;
             islooking = false;
             photo_pickedup = false;
+            flashlightFound = false;
             cd = 30;
             cd_sound = 180;
             wait = 180;
@@ -83,6 +86,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             findpickup = audios[1];
             locked = audios[3];
 
+            foreach (Transform child in Camera.main.transform)
+            {
+                if (child.gameObject.name == "Flashlight_on")
+                {
+                    Flashlight = child.gameObject;
+                }
+            }
+
             //if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
             //{
             //    lv1_p = GetComponent<Lv1Progress>();
@@ -99,6 +110,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 cd_sound++;
             if (wait < 180)
                 wait++;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (flashlightFound)
+                {
+                    if (Flashlight.activeSelf)
+                    {
+                        Flashlight.SetActive(false);
+                    }
+                    else
+                    {
+                        Flashlight.SetActive(true);
+                    }
+
+                }
+            }
             if (checkingSafe)
             {
                 if (Input.GetKeyDown(KeyCode.E) && cd > 20)
@@ -129,10 +155,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
-                if (lv1_p.note2Found)
-                    prompt.text = "Press A/D to change angle. Press E to quit.";
-                else
+                if (lv1_p && !lv1_p.note2Found)
                     prompt.text = "Press E to quit.";
+                else
+                    prompt.text = "Press A/D to change angle. Press E to quit.";
                 target.transform.LookAt(mirror.gameObject.transform);
                 Vector3 direction = transform.position- mirror.transform.position;
                 float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), mirror.transform.up, Vector3.up);
@@ -226,7 +252,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (hit.collider.tag.Contains("Player"))
                             {
                                 inSight = true;
-                                if (lv1_p.note2Found)
+                                if (lv1_p && !lv1_p.note2Found)
+                                    Debug.Log("press E");
+                                else
                                     prompt.text = "Press E to inspect.";
                                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                                 {
@@ -237,10 +265,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     transform.position = (new Vector3(tmp.x, transform.position.y, tmp.z));
                                     target.transform.LookAt(col.gameObject.transform);
                                     GetComponent<RigidbodyFirstPersonController>().enableInput = false;
-                                    if (lv1_p.note2Found)
-                                        prompt.text = "Press A/D to change angle. Press E to quit.";
+                                    if (lv1_p && !lv1_p.note2Found)
+                                        prompt.text = "Press E to quit."; 
                                     else
-                                        prompt.text = "Press E to quit.";
+                                        prompt.text = "Press A/D to change angle. Press E to quit.";
                                     return;
 
                                 }
@@ -270,7 +298,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (hit.collider.Equals(col)) {
                         if (itemChecking.name.Equals("Sink") && filled)
                         {
-                            //inSight = true;
+                            inSight = true;
 
                             rend = itemChecking.GetComponentsInChildren<Renderer>();
                             foreach (Renderer r in rend)
@@ -282,6 +310,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 lv1_p.filled_water.GetComponent<Renderer>().material.shader = shader2;
                                 lv1_p.changephoto = true;
                             }
+
                             itemChecking = null;
                         }
                         else
@@ -347,7 +376,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     {
 
                                         StartCoroutine(ShowPrompt(i.promptForRequirement, 2));
-                                        if (i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key"))
+                                        if (i.requirement.gameObject.name.Equals("key") || i.requirement.gameObject.name.Equals("Main Key") || i.requirement.gameObject.name.Equals("Office key"))
                                         {
                                             locked.Play();
                                         }
@@ -382,7 +411,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
                             {
-                                //findpickup.Play();
+                                findpickup.Play();
                                 cd_sound = 0;
                                 soundplayed = true;
                             }
@@ -415,6 +444,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             inSight = false;
                                             StartCoroutine(ShowPrompt(item.objName + " found", 2));
 
+                                            if (item.objName == "Flashlight")
+                                            {
+                                                flashlightFound = true;
+                                            }
                                             if (item.objName == "Diary")
                                             {
                                                 lv1_p.diaryFound = true;
@@ -430,10 +463,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             {
                                                 photo_pickedup = true;
                                                 col.gameObject.transform.parent.gameObject.SetActive(false);
+                                                if (Scene_num == 1)
+                                                {
+                                                    lv1_p.sink.gameObject.GetComponent<Collider>().enabled = true;
+                                                }
                                             }
 
                                             itemChecking = null;
-                                            //putin.Play();
+                                            putin.Play();
                                             StartCoroutine(PopInventory());
                                             break;
 
