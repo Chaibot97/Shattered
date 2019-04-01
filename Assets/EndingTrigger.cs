@@ -21,9 +21,7 @@ public class EndingTrigger : MonoBehaviour {
         while (!Input.anyKey)
         {
             yield return new WaitForEndOfFrame();
-            Debug.Log("no");
         }
-        Debug.Log("yes");
         if (sl._GM)
             sl._GM.sceneReached = 0;
         StartCoroutine(sl.LoadNextSceneWithFading());

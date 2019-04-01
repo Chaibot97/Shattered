@@ -57,6 +57,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         private int playerLayerMask= 1<<9;
         public Lv1Progress lv1_p;
+
+        private bool ended=false;
         private void Start()
         {
             //Debug.Log(LayerMask.GetMask("Room"));
@@ -100,6 +102,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
       
         private void LateUpdate()
         {
+            if (ended)
+                return;
             if(cd<30)
                 cd++;
             if (cd_sound < 180)
@@ -220,6 +224,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         void OnTriggerStay(Collider col)
         {
+            if (ended)
+                return;
             if (col.tag == "Note" || col.tag.Contains("Pickupable"))
             {
                 Debug.Log(col.name + " " + itemChecking + " " + checkingInventory + " " + checkingSafe);
@@ -579,10 +585,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                             {
                                 col.enabled = false;
+                                ended = true;
                                 prompt.text = "";
                                 GetComponent<RigidbodyFirstPersonController>().enableInput = false;
                                 GetComponentInChildren<Camera>().enabled = false;
                                 col.GetComponent<EndingTrigger>().End();
+                                
 
 
                             }
