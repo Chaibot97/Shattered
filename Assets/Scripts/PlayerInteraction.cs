@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Lv1Progress lv1_p;
         private void Start()
         {
-            Debug.Log(LayerMask.GetMask("Room"));
+            //Debug.Log(LayerMask.GetMask("Room"));
             holding = false;
             soundplayed = false;
             alreadyfind = false;
@@ -94,10 +94,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
 
-            //if (SceneManager.GetActiveScene().name.Equals("FirstLevel"))
-            //{
-            //    lv1_p = GetComponent<Lv1Progress>();
-            //}
             book.SetActive(false);
         }
 
@@ -550,6 +546,43 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 inSight = false;
                                 prompt.text = "";
                                 col.GetComponent<Teleporter>().Teleport();
+
+
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    prompt.text = "";
+                }
+
+            }
+            else if (col.gameObject.tag.Contains("Ending"))
+            {
+                itemChecking = col;
+                //Debug.Log(col.name);
+                Vector3 direction = col.transform.position - target.transform.position;
+                float angle = Vector3.Angle(direction, target.transform.forward);
+                prompt.text = "";
+                if (angle <= pickUpFOV * 0.8f)
+                {
+                    RaycastHit hit;
+                    Debug.DrawRay(col.transform.position, col.transform.up, Color.red);
+                    if (Physics.Raycast(col.transform.position, col.transform.up, out hit, 1))
+                    {
+                        if (hit.collider.tag.Contains("Player"))
+                        {
+                            inSight = true;
+
+                            prompt.text = "Press E to inspect.";
+                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                            {
+                                col.enabled = false;
+                                prompt.text = "";
+                                GetComponent<RigidbodyFirstPersonController>().enableInput = false;
+                                GetComponentInChildren<Camera>().enabled = false;
+                                col.GetComponent<EndingTrigger>().End();
 
 
                             }
