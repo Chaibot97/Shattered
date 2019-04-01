@@ -1451,6 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptForRequirement: 
+  promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 0}
   objToHide: {fileID: 0}
@@ -1459,6 +1460,8 @@ MonoBehaviour:
   once: 0
   disableCollider: 0
   delay: 0
+  TriggerObjs: []
+  TriggerFunctions: []
 --- !u!1001 &554314791
 Prefab:
   m_ObjectHideFlags: 0
