@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33619893153431758}
   - component: {fileID: 23725873490230780}
   - component: {fileID: 64492541714670694}
+  - component: {fileID: 114220189119851096}
   m_Layer: 0
-  m_Name: hammer:pCube65
-  m_TagString: Untagged
+  m_Name: Thor's Hammer
+  m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,3 +128,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 500fbee845cd1448bb6491a66a42736f, type: 3}
+--- !u!114 &114220189119851096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333825691884276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a22842341e4a84f8168b7da1c746ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallSprite: {fileID: 21300000, guid: 93185afdb9e65754fbeb6aaf92bbe361, type: 3}
+  largeSprite: {fileID: 0}
+  TriggerObjs: []
+  TriggerFunctions: []
