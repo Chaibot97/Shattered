@@ -1108,6 +1108,7 @@ MonoBehaviour:
   promptAfter: Thank you for playing with me. BYEBYEBYE...
   target: {fileID: 0}
   requirement: {fileID: 148911143}
+  destrayRequired: 1
   objToHide: {fileID: 131675446}
   interactOption: 1
   objToReveal: {fileID: 588667823}
@@ -1832,6 +1833,7 @@ MonoBehaviour:
   promptAfter: Come and find me.
   target: {fileID: 0}
   requirement: {fileID: 1901572376}
+  destrayRequired: 0
   objToHide: {fileID: 250578741}
   interactOption: 1
   objToReveal: {fileID: 2042715815}
@@ -2441,6 +2443,7 @@ MonoBehaviour:
   promptAfter: Let's play hide and seek.
   target: {fileID: 0}
   requirement: {fileID: 587672573}
+  destrayRequired: 1
   objToHide: {fileID: 0}
   interactOption: 0
   objToReveal: {fileID: 0}
@@ -3405,6 +3408,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 218010509}
+  destrayRequired: 1
   objToHide: {fileID: 0}
   interactOption: 0
   objToReveal: {fileID: 0}
@@ -4697,6 +4701,7 @@ MonoBehaviour:
   promptAfter: Find me in a higher place.
   target: {fileID: 0}
   requirement: {fileID: 0}
+  destrayRequired: 1
   objToHide: {fileID: 795277046}
   interactOption: 1
   objToReveal: {fileID: 1746561566}
@@ -9074,6 +9079,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 1332952129}
   requirement: {fileID: 1262449940}
+  destrayRequired: 1
   objToHide: {fileID: 1554472002}
   interactOption: 1
   objToReveal: {fileID: 1592217219}
@@ -9336,7 +9342,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1968339717}
   m_Father: {fileID: 1479591840}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9857,7 +9864,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 8d1110827eba64d8b99fca84bc962bf2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.14
+      value: 10.122
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8d1110827eba64d8b99fca84bc962bf2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9865,7 +9872,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8d1110827eba64d8b99fca84bc962bf2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.367
+      value: 7.208
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8d1110827eba64d8b99fca84bc962bf2, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10268,6 +10275,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 0}
+  destrayRequired: 1
   objToHide: {fileID: 0}
   interactOption: 1
   objToReveal: {fileID: 969843175}
@@ -10489,6 +10497,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28e416b0023ba7741baf3f9a46b6a2ed, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1812494312 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114712821376369868, guid: 28e416b0023ba7741baf3f9a46b6a2ed,
+    type: 2}
+  m_PrefabInternal: {fileID: 1812494311}
+  m_Script: {fileID: 11500000, guid: 1c1c90356c58c4495a51e2123a99719a, type: 3}
 --- !u!1 &1830059444 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100016, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
@@ -11109,7 +11123,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.554
+      value: 2.024
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11117,7 +11131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 6.745
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -11125,7 +11139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11133,7 +11147,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_RootOrder
@@ -11141,7 +11155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: b39020a8c92614216ae0d54d4894d11f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11611,6 +11625,127 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1958497111}
+--- !u!1 &1968339716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1968339717}
+  - component: {fileID: 1968339720}
+  - component: {fileID: 1968339719}
+  - component: {fileID: 1968339718}
+  m_Layer: 5
+  m_Name: ExitButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1968339717
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968339716}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1602298607}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 576, y: -540}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &1968339718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968339716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1968339719}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1812494312}
+        m_MethodName: ToggleInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1968339719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968339716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: dd6ae73324f9de84798dd2a0fae24aa8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1968339720
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968339716}
 --- !u!1001 &1991335820
 Prefab:
   m_ObjectHideFlags: 0
@@ -11837,6 +11972,7 @@ MonoBehaviour:
   promptAfter: Come and watch TV with me.
   target: {fileID: 0}
   requirement: {fileID: 54338124}
+  destrayRequired: 1
   objToHide: {fileID: 2042715815}
   interactOption: 1
   objToReveal: {fileID: 795277046}
@@ -12621,6 +12757,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 95339978}
   requirement: {fileID: 88401795}
+  destrayRequired: 1
   objToHide: {fileID: 0}
   interactOption: 1
   objToReveal: {fileID: 0}

@@ -12,7 +12,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private readonly int pickUpFOV = 60;
         //[SerializeField] AudioClip takeItem;
         //[SerializeField] AudioClip teleport;
-        private Transform target;
+        public Transform target;
         private bool holding;
 
         public Collider itemChecking;
@@ -77,7 +77,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             cd = 30;
             cd_sound = 180;
             wait = 180;
-            target = Camera.main.transform;
+            if(!target) target = Camera.main.transform;
             shader1 = Shader.Find("Standard (Roughness setup)");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
             inventory = new List<GameObject>(5);
@@ -385,8 +385,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             //lv1_p.finished = true;
                                             StartCoroutine(FindObjectOfType<SceneLoader>().LoadNextSceneWithFading());
                                         }
-
-                                        DestroyObj(inventory.IndexOf(i.requirement));
+                                        if (i.destrayRequired)
+                                            DestroyObj(inventory.IndexOf(i.requirement));
                                         i.Interact();
                                         i.requirement = null;
                                         itemChecking = null;
@@ -814,7 +814,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             StartCoroutine(ShowPrompt(text));
         }
 
-        private IEnumerator ShowPrompt(string text, float sec=2)
+        public void SetPrompt(string text)
+        {
+            prompt.text = text;
+        }
+            private IEnumerator ShowPrompt(string text, float sec=2)
         {
             prompt.text = text;
             yield return new WaitForSeconds(sec);

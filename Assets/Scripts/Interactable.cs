@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour {
 
     public GameObject target=null;
     public GameObject requirement = null;
+    public bool destrayRequired = true;
     public GameObject objToHide = null;
     private Lv1Progress lv1_p;
     
