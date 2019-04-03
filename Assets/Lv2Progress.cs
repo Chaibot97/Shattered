@@ -10,7 +10,11 @@ public class Lv2Progress : MonoBehaviour {
     public void BunnyHop()
     {
         StartCoroutine(SwitchBunnys());
-        StartCoroutine(TurnOff());
+    }
+
+    public void TurnOff()
+    {
+        StartCoroutine(TurnOffHelper());
     }
 
     IEnumerator SwitchBunnys()
@@ -26,9 +30,9 @@ public class Lv2Progress : MonoBehaviour {
         }
     }
 
-    IEnumerator TurnOff()
+    IEnumerator TurnOffHelper()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1f);
         Lights.SetActive(false);
         yield break;
 

@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.05490196, g: 0.05490196, b: 0.0627451, a: 1}
+  m_AmbientSkyColor: {r: 0.03137255, g: 0.03137255, b: 0.03137255, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -565,6 +565,30 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: a5b4b1f498896f14897515393652bdab, type: 3}
   m_PrefabInternal: {fileID: 149127054}
+--- !u!65 &67667842
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67667841}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -0, y: 0.83066833, z: 3.158426}
+  m_Center: {x: -0.72511053, y: 0.24355175, z: 1.964992}
+--- !u!65 &67667843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67667841}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -0, y: 0.8897418, z: 3.0147045}
+  m_Center: {x: 0.7871046, y: 0.27311575, z: 2.0368538}
 --- !u!64 &67667845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1023,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptForRequirement: Find the key inside my body.
-  promptAfter: ByeByeBye....
+  promptAfter: Thank you for playing with me. BYEBYEBYE...
   target: {fileID: 0}
   requirement: {fileID: 148911143}
   objToHide: {fileID: 131675446}
@@ -1661,7 +1685,6 @@ MonoBehaviour:
   - {fileID: 790508015}
   - {fileID: 1405648244}
   - {fileID: 250578741}
-  - {fileID: 2042715815}
   Lights: {fileID: 1848499835}
   filter: {fileID: 1637002929}
 --- !u!1001 &247155409
@@ -1736,6 +1759,45 @@ MeshCollider:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
   m_PrefabInternal: {fileID: 470046659}
+--- !u!114 &250578742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250578741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptForRequirement: How can you play with me without a FLASH LIGHT?
+  promptAfter: Come and find me.
+  target: {fileID: 0}
+  requirement: {fileID: 1901572376}
+  objToHide: {fileID: 250578741}
+  interactOption: 1
+  objToReveal: {fileID: 2042715815}
+  once: 0
+  disableCollider: 1
+  delay: 0.2
+  TriggerObjs:
+  - {fileID: 1637002927}
+  - {fileID: 236332029}
+  TriggerFunctions:
+  - blink
+  - TurnOff
+--- !u!65 &250578743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250578741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.011836723, y: 0.011884225, z: 0.004805933}
+  m_Center: {x: 0.0000000015534191, y: 0.0027016446, z: 0.0000000033657417}
 --- !u!1001 &268786286
 Prefab:
   m_ObjectHideFlags: 0
@@ -2734,31 +2796,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8380017
+      value: 3.774
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.732
+      value: 0.471
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.92
+      value: 1.324
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.2783575
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.96047753
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_RootOrder
@@ -2786,7 +2848,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 0d56935a02b9547b9899724dd4fe6249, type: 2}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 32.324
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2803,6 +2865,10 @@ Prefab:
     - target: {fileID: 100000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_Name
       value: bunny3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
@@ -4303,6 +4369,30 @@ MeshCollider:
 GameObject:
   m_PrefabParentObject: {fileID: 100006, guid: a5b4b1f498896f14897515393652bdab, type: 3}
   m_PrefabInternal: {fileID: 149127054}
+--- !u!65 &714660752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714660751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -0, y: 1.6137681, z: 2.624042}
+  m_Center: {x: 0.5637135, y: 0.9217742, z: 0.65916854}
+--- !u!65 &714660753
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714660751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -0, y: 1.6910031, z: 2.6247828}
+  m_Center: {x: -0.49843842, y: 0.960379, z: 0.65955895}
 --- !u!64 &714660755
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4399,7 +4489,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1e27fbcada7d5450cb112ecf56c83751, type: 3}
       propertyPath: m_Name
@@ -5534,7 +5624,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 0
 --- !u!4 &969843176
 Transform:
@@ -5578,7 +5668,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f5fdc887a02de46b09d7b3febb41cb23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5663,7 +5753,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -9752,6 +9842,10 @@ Prefab:
     - target: {fileID: 100000, guid: 3673678f69ad6d140a31efad5b7cfc65, type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3673678f69ad6d140a31efad5b7cfc65, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3673678f69ad6d140a31efad5b7cfc65, type: 3}
