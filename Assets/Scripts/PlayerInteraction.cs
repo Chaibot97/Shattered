@@ -59,6 +59,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Lv1Progress lv1_p;
 
         private bool ended=false;
+
+
+        public string currentPrompt = "";
+        public bool tutorial = false;
         private void Start()
         {
             //Debug.Log(LayerMask.GetMask("Room"));
@@ -97,6 +101,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             book.SetActive(false);
+            if (SceneManager.GetActiveScene().buildIndex==1)
+            {
+                tutorial = true;
+                prompt.text = currentPrompt = "Explore the room.";
+            }
         }
 
       
@@ -178,7 +187,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
                 {
                     cd = 0;
-                    prompt.text = "";
+                    prompt.text = currentPrompt;
                     checkingMirror = false;
                     mirror.GetComponent<MirrorReflection>().m_TextureSize = 32;
                     GetComponent<RigidbodyFirstPersonController>().enableInput = true;
@@ -243,7 +252,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     Vector3 direction = col.transform.position - target.transform.position;
                     float angle = Vector3.Angle(direction, target.transform.forward);
-                    prompt.text = "";
+                    prompt.text = currentPrompt;
                     if (angle <= pickUpFOV * 0.8f)
                     {
                         RaycastHit hit;
@@ -279,7 +288,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     }
                     else
                     {
-                        prompt.text = "";
+                        prompt.text = currentPrompt;
                     }
                 }
 
@@ -288,7 +297,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Vector3 direction = col.transform.position.normalized - target.transform.position.normalized;
                 float angle = Vector3.Angle(direction, target.transform.forward);
                 // Debug.Log(angle);
-
+                
                 itemChecking = col;
 
                 RaycastHit hit;
@@ -298,6 +307,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     //Debug.Log(hit.collider.name);
                     if (hit.collider.Equals(col)) {
+                        if (tutorial && inventory.Contains(col.gameObject.GetComponent<Interactable>().requirement))
+                        {
+                            prompt.text = currentPrompt = "Press E to interact.";
+                        }
                         if (itemChecking.name.Equals("Sink") && filled)
                         {
                             inSight = true;
@@ -354,6 +367,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     }
                                     else if (inventory.Contains(i.requirement))
                                     {
+                                        if (tutorial)
+                                        {
+                                            prompt.text = currentPrompt = "Explore the room";
+                                        }
                                         if (col.gameObject.name.Equals("Sink"))
                                         {
                                             Debug.Log("filled");
@@ -409,6 +426,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     {
                         //Debug.Log(hit.collider.name);
                         if (hit.collider.Equals(col)) {
+                            if (tutorial)
+                            {
+                                prompt.text = currentPrompt = "Press E to pick up the "+col.name+".";
+                            }
                             inSight = true;
                             rend = col.GetComponentsInChildren<Renderer>();
                             if (!soundplayed && cd_sound == 180 && !alreadyfind)
@@ -474,6 +495,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             itemChecking = null;
                                             putin.Play();
                                             StartCoroutine(PopInventory());
+                                            if (tutorial)
+                                            {
+                                                currentPrompt = "Press TAB to toggle inventory.";
+                                            }
                                             break;
 
                                         }
@@ -532,7 +557,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 Vector3 direction = col.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
-                prompt.text = "";
+                prompt.text = currentPrompt;
                 if (angle <= pickUpFOV * 0.8f)
                 {
                     RaycastHit hit;
@@ -550,7 +575,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                 cd = 0;
                                 itemChecking = null;
                                 inSight = false;
-                                prompt.text = "";
+                                prompt.text = currentPrompt;
                                 col.GetComponent<Teleporter>().Teleport();
 
 
@@ -560,7 +585,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 else
                 {
-                    prompt.text = "";
+                    prompt.text = currentPrompt;
                 }
 
             }
@@ -570,7 +595,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //Debug.Log(col.name);
                 Vector3 direction = col.transform.position - target.transform.position;
                 float angle = Vector3.Angle(direction, target.transform.forward);
-                prompt.text = "";
+                prompt.text = currentPrompt;
                 if (angle <= pickUpFOV * 0.8f)
                 {
                     RaycastHit hit;
@@ -586,7 +611,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             {
                                 col.enabled = false;
                                 ended = true;
-                                prompt.text = "";
+                                prompt.text = currentPrompt;
                                 GetComponent<RigidbodyFirstPersonController>().enableInput = false;
                                 GetComponentInChildren<Camera>().enabled = false;
                                 col.GetComponent<EndingTrigger>().End();
@@ -599,7 +624,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 else
                 {
-                    prompt.text = "";
+                    prompt.text = currentPrompt;
                 }
 
             }
@@ -619,7 +644,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 if (col.gameObject.tag.Equals("Mirror")|| col.gameObject.tag.Contains("Teleport"))
                 {
-                    prompt.text="";
+                    prompt.text=currentPrompt;
                 }
             }
         }
@@ -647,10 +672,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (col.gameObject.tag.Equals("Mirror") || col.gameObject.tag.Contains("Teleport"))
             {
-                prompt.text = "";
+                prompt.text = currentPrompt;
                 inSight = false;
                 itemChecking = null;
             }
+            //if (tutorial)
+            //{
+            //    prompt.text = currentPrompt;
+            //}
         }
         //private void HoldItem(Collider col)
         //{
@@ -746,6 +775,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 PlayerEnable(false);
                 inventoryAnim.SetBool("open", true);
+                if (tutorial)
+                {
+                    prompt.text = currentPrompt = "Click on the item icon to inspect it.";
+                }
                 //inspectorAnim.SetBool("open", true);
 
             }
@@ -756,6 +789,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayerEnable(true);
                 inventoryAnim.SetBool("open", false);
                 //inspectorAnim.SetBool("open", false);
+                if (tutorial)
+                    prompt.text = currentPrompt = "Explore the room.";
 
             }
             //yield return new WaitForSeconds(1);
@@ -764,7 +799,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private IEnumerator MirrorDone(Collider mirror, float sec)
         {
             mirror.tag = "Untagged";
-            prompt.text = "";
+            prompt.text = currentPrompt;
             checkingMirror = false;
             target.transform.LookAt(mirror.gameObject.transform);
             StartCoroutine(ShowPrompt("Something happened...", sec));
@@ -783,7 +818,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             prompt.text = text;
             yield return new WaitForSeconds(sec);
-            prompt.text = "";
+            prompt.text = currentPrompt;
         }
 
         private IEnumerator PopInventory( float sec = 2)
