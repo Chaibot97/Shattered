@@ -835,6 +835,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
              
         }
 
+        public void HideLockUI()
+        {
+            checkingSafe = false;
+            lockUI.SetActive(false);
+            PlayerEnable(true);
+        }
+
     }
 }
 
