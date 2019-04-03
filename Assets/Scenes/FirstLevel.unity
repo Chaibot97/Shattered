@@ -1399,6 +1399,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 0}
+  destrayRequired: 1
   objToHide: {fileID: 0}
   interactOption: 0
   objToReveal: {fileID: 0}
@@ -9369,7 +9370,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1808802352}
-        m_MethodName: HideLockUI
+        m_MethodName: ToggleInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
