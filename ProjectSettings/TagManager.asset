@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pickupable
+  - ItemUI
+  - Interactable
+  - Mirror
+  - TAZOFX
+  - Water
+  - Sink
+  - Book
+  - Note
+  - Safe
+  - PickupableBook
+  - Teleporter
+  - Ending
   layers:
   - Default
   - TransparentFX
@@ -14,13 +27,13 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Lighting
+  - Room
+  - Itself
+  - VisibleInMirror
+  - Ceiling
+  - Nottobelight
   - 
   - 
   - 
