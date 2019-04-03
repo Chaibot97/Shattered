@@ -1239,6 +1239,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1717586225632434, guid: b47aeca8fc7c7d44996ea34910d17ecc, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903624195370194, guid: b47aeca8fc7c7d44996ea34910d17ecc, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b47aeca8fc7c7d44996ea34910d17ecc, type: 2}
   m_IsPrefabParent: 0
@@ -3531,7 +3539,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294959103
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3568,6 +3576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filter: {fileID: 1515422019}
+  m1: {fileID: 1476005337}
+  m2: {fileID: 1959373035}
 --- !u!114 &1057379384 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114043722286334626, guid: 4062e67c829afe54f852e56cd690d4f8,
@@ -3691,6 +3701,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1134398730 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1717586225632434, guid: b47aeca8fc7c7d44996ea34910d17ecc,
+    type: 2}
+  m_PrefabInternal: {fileID: 414887227}
 --- !u!1 &1158855984
 GameObject:
   m_ObjectHideFlags: 0
@@ -5165,7 +5180,7 @@ Prefab:
     - target: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
         type: 2}
       propertyPath: m_TextureSize
-      value: 1024
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
         type: 2}
@@ -5221,6 +5236,15 @@ Prefab:
       propertyPath: m_TagString
       value: Ending
       objectReference: {fileID: 0}
+    - target: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193098334994854, guid: 098444618fede1c4195511f3af4965eb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64951455124221964, guid: 098444618fede1c4195511f3af4965eb, type: 2}
     - {fileID: 65391760468940224, guid: 098444618fede1c4195511f3af4965eb, type: 2}
@@ -5249,6 +5273,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.802291, y: 0.34116873, z: 6.775808}
   m_Center: {x: 0.27936667, y: 0.12876603, z: -0.050735023}
+--- !u!114 &1476005337 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1476005332}
+  m_Script: {fileID: 11500000, guid: d0d781f29a0f3464d850cfb73c1c5215, type: 3}
 --- !u!114 &1476005340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5261,9 +5291,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndingCamera: {fileID: 1057152247}
-  delay: 3
+  delay: 16
   sl: {fileID: 1057379384}
   prompt: {fileID: 1375168744}
+  man: {fileID: 1134398730}
 --- !u!1001 &1492260359
 Prefab:
   m_ObjectHideFlags: 0
@@ -6858,7 +6889,7 @@ Prefab:
     - target: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
         type: 2}
       propertyPath: m_TextureSize
-      value: 32
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
         type: 2}
@@ -6918,6 +6949,15 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1193098334994854, guid: 098444618fede1c4195511f3af4965eb, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64951455124221964, guid: 098444618fede1c4195511f3af4965eb, type: 2}
     - {fileID: 65391760468940224, guid: 098444618fede1c4195511f3af4965eb, type: 2}
@@ -6946,6 +6986,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.802291, y: 0.34116873, z: 6.775808}
   m_Center: {x: 0.27936667, y: 0.12876603, z: -0.050735023}
+--- !u!114 &1959373035 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114316177799673570, guid: 098444618fede1c4195511f3af4965eb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1959373030}
+  m_Script: {fileID: 11500000, guid: d0d781f29a0f3464d850cfb73c1c5215, type: 3}
 --- !u!1 &1983175066
 GameObject:
   m_ObjectHideFlags: 0
