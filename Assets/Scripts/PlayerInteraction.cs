@@ -854,6 +854,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             PlayerEnable(true);
         }
 
+        public void disableControl()
+        {
+            GetComponent<RigidbodyFirstPersonController>().enableInput = false;
+        }
+        public void enableControl()
+        {
+            GetComponent<RigidbodyFirstPersonController>().enableInput = true;
+        }
     }
 }
 
