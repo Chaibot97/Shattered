@@ -1200,6 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 578597393}
+  Paused: 0
 --- !u!1001 &116696246
 Prefab:
   m_ObjectHideFlags: 0
@@ -1324,7 +1325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptForRequirement: Find the key inside my body.
-  promptAfter: Thank you for playing with me. BYEBYEBYE...
+  promptAfter: There, you found me. Thank you for playing with me. Here the key you
+    want. Can you play more with me afterwards?
   target: {fileID: 0}
   requirement: {fileID: 148911143}
   destrayRequired: 1
@@ -3065,7 +3067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptForRequirement: Where's my ear?
-  promptAfter: Let's play hide and seek.
+  promptAfter: Let's play hide and seek, just like old times.
   target: {fileID: 0}
   requirement: {fileID: 587672573}
   destrayRequired: 1
@@ -5651,8 +5653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptForRequirement: HHA
-  promptAfter: Find me in a higher place.
+  promptForRequirement: 
+  promptAfter: "Alright, you got me, but that was just the warm-up. Now I\u2019m gonna
+    be hiding above you. Try to find me!"
   target: {fileID: 0}
   requirement: {fileID: 0}
   destrayRequired: 1
@@ -7736,7 +7739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13682,7 +13685,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -13970,7 +13973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptForRequirement: I want candy!
-  promptAfter: Come and watch TV with me.
+  promptAfter: "What turns everything around but doesn\u2019t move?"
   target: {fileID: 0}
   requirement: {fileID: 54338124}
   destrayRequired: 1
