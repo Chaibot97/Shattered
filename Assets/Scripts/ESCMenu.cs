@@ -2,25 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ESCMenu : MonoBehaviour {
 
      
      public GameObject Menu;
-     bool Paused = false;
- 
+     public bool Paused = false;
+
+     UnityStandardAssets.Characters.FirstPerson.PlayerInteraction player;
+
      void Start(){
          Menu.gameObject.SetActive (false);
+        player = GameObject.FindObjectOfType<UnityStandardAssets.Characters.FirstPerson.PlayerInteraction>();
      }
  
      void Update () {
          if (Input.GetKeyDown (KeyCode.Escape)) {
-             if(Paused == true){
+             if(Paused == true )
+            {
 				Time.timeScale = 1.0f;
 				Menu.gameObject.SetActive (false);
 				Cursor.visible = false;
 				Cursor.lockState = CursorLockMode.Locked;
 				Paused = false;
-             } else {
+                
+             } else if(!player.gamePaused) {
 				Time.timeScale = 0.0f;
 				Menu.gameObject.SetActive (true);
 				Cursor.visible = true;

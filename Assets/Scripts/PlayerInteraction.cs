@@ -64,6 +64,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public string currentPrompt = "";
         public bool tutorial = false;
+
+
+        public bool gamePaused=false;
+
         private void Start()
         {
             //Debug.Log(LayerMask.GetMask("Room"));
@@ -144,11 +148,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             if (checkingSafe)
             {
-                if (Input.GetKeyDown(KeyCode.E) && cd > 20)
+                if ((Input.GetKeyDown(KeyCode.E)|| Input.GetKeyDown(KeyCode.Escape)) && cd > 20)
                 {
                     checkingSafe = false;
                     lockUI.SetActive(false);
                     PlayerEnable(true);
+                    gamePaused = false;
                 }
                 if (lockUI.GetComponent<Lock>().unlocked)
                 {
@@ -157,13 +162,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayerEnable(true);
                     itemChecking.GetComponent<Collider>().enabled = false;
                     itemChecking.GetComponent<Animator>().SetBool("lock", true);
+                    gamePaused = false;
                 }
             }
             else if (!checkingMirror)
             {
                 if (!islooking)
                 {
-                    if (Input.GetKeyDown(KeyCode.Tab))
+                    if (Input.GetKeyDown(KeyCode.Tab)||(Input.GetKeyDown(KeyCode.Escape) && gamePaused))
                     {
                         ToggleInventory();
                     }
@@ -356,6 +362,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     lockUI.SetActive(true);
                                     PlayerEnable(false);
                                     checkingSafe = true;
+                                    gamePaused = true;
                                 }
                                 else
                                 {
@@ -787,6 +794,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     prompt.text = currentPrompt = "Click on the item icon to inspect it.";
                 }
+                gamePaused = true;
                 //inspectorAnim.SetBool("open", true);
 
             }
@@ -799,7 +807,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //inspectorAnim.SetBool("open", false);
                 if (tutorial)
                     prompt.text = currentPrompt = "Explore the room.";
-
+                gamePaused = false;
             }
             //yield return new WaitForSeconds(1);
         }
