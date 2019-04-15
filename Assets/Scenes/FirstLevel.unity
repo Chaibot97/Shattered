@@ -7887,6 +7887,16 @@ Prefab:
       propertyPath: objToReveal
       value: 
       objectReference: {fileID: 511758175}
+    - target: {fileID: 114890701102862722, guid: 36aed18a8b7bc8748a59d06282fc25ef,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 265591084}
+    - target: {fileID: 114890701102862722, guid: 36aed18a8b7bc8748a59d06282fc25ef,
+        type: 2}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36aed18a8b7bc8748a59d06282fc25ef, type: 2}
   m_IsPrefabParent: 0
@@ -8326,6 +8336,11 @@ Prefab:
       propertyPath: objToReveal
       value: 
       objectReference: {fileID: 294551861}
+    - target: {fileID: 114779462217717258, guid: 441a6c907d1b3d74b8f2663e6c7b6c24,
+        type: 2}
+      propertyPath: promptForRequirement
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 441a6c907d1b3d74b8f2663e6c7b6c24, type: 2}
   m_IsPrefabParent: 0
@@ -8910,10 +8925,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1789872602880430, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675879575782858, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675879575782858, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_Name
+      value: Photoburn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525888803255602, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675879575782858, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64884012376246718, guid: 400fa359eb77d1f4fbc005a43f7656b3,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95958415212851636, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+    - {fileID: 114743708142827396, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1859517609
