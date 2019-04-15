@@ -1399,6 +1399,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 0}
+  destrayRequired: 1
   objToHide: {fileID: 0}
   interactOption: 0
   objToReveal: {fileID: 0}
@@ -1867,6 +1868,34 @@ Transform:
   m_PrefabParentObject: {fileID: 4796429251580312, guid: 16fb19aaced08274197abcd0afe7e582,
     type: 2}
   m_PrefabInternal: {fileID: 32117351}
+--- !u!1 &265591084 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1789872602880430, guid: 400fa359eb77d1f4fbc005a43f7656b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1847994993}
+--- !u!4 &265591085 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1847994993}
+--- !u!95 &265591086
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 265591084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 098c7948ecb3964439ec91e7be97655e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &273941536 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224161292094476846, guid: c6c94ad2f0df6ae4dbd2b3e6a1eb55e3,
@@ -2815,7 +2844,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 571380030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3727ea62ce808438d91f8bfc2f7938, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &573413513
@@ -2915,6 +2944,7 @@ Transform:
   - {fileID: 1775142068}
   - {fileID: 928818505}
   - {fileID: 880353886}
+  - {fileID: 265591085}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9034,6 +9064,73 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c97b254e5bdc92d479069698da0b9e0d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1847994993
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 581217106}
+    m_Modifications:
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -29.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -47.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.13232018
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.694616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.13232021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.694616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.42175466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.4217545
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.42175508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -21.571001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4332741317174132, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789872602880430, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 95958415212851636, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 400fa359eb77d1f4fbc005a43f7656b3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1859517609
 Prefab:
   m_ObjectHideFlags: 0
@@ -9369,7 +9466,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1808802352}
-        m_MethodName: HideLockUI
+        m_MethodName: ToggleInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

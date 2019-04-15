@@ -6,7 +6,15 @@ public class Lv2Progress : MonoBehaviour {
     public GameObject oldBunny;
     public GameObject[] bunnys;
     public GameObject Lights;
+    private AudioSource turnoff;
+    private AudioSource laugh;
     public Filter filter;
+
+    private void Start()
+    {
+        turnoff = GetComponents<AudioSource>()[1];
+        laugh = GetComponents<AudioSource>()[2];
+    }
     public void BunnyHop()
     {
         StartCoroutine(SwitchBunnys());
@@ -33,7 +41,10 @@ public class Lv2Progress : MonoBehaviour {
     IEnumerator TurnOffHelper()
     {
         yield return new WaitForSeconds(1f);
+        turnoff.Play();
         Lights.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        laugh.Play();
         yield break;
 
     }

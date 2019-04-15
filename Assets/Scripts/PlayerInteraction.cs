@@ -22,6 +22,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource putin;
         private AudioSource findpickup;
         private AudioSource locked;
+        private AudioSource flsound;
         private bool soundplayed;
         private bool alreadyfind;
         private bool filled;
@@ -91,6 +92,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             putin = audios[2];
             findpickup = audios[1];
             locked = audios[3];
+            if(Scene_num == 2)
+            {
+                flsound = audios[4];
+            }
+            
+
 
             foreach (Transform child in Camera.main.transform)
             {
@@ -131,6 +138,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     {
                         Flashlight.SetActive(true);
                     }
+                    flsound.Play();
 
                 }
             }
@@ -846,6 +854,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             PlayerEnable(true);
         }
 
+        public void disableControl()
+        {
+            GetComponent<RigidbodyFirstPersonController>().enableInput = false;
+        }
+        public void enableControl()
+        {
+            GetComponent<RigidbodyFirstPersonController>().enableInput = true;
+        }
     }
 }
 
