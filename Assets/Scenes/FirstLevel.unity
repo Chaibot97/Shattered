@@ -2988,9 +2988,139 @@ Prefab:
       propertyPath: m_RootOrder
       value: 51
       objectReference: {fileID: 0}
+    - target: {fileID: 1575953485180418, guid: 29864924c15e87b47b0dbbd02f1b1533, type: 2}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29864924c15e87b47b0dbbd02f1b1533, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &636604497 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1575953485180418, guid: 29864924c15e87b47b0dbbd02f1b1533,
+    type: 2}
+  m_PrefabInternal: {fileID: 636604496}
+--- !u!114 &636604498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636604497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptForRequirement: 
+  promptAfter: 
+  target: {fileID: 0}
+  requirement: {fileID: 0}
+  destrayRequired: 1
+  objToHide: {fileID: 0}
+  interactOption: 0
+  objToReveal: {fileID: 0}
+  once: 0
+  disableCollider: 0
+  delay: 0
+  TriggerObjs:
+  - {fileID: 636604497}
+  TriggerFunctions:
+  - PlaySound
+--- !u!82 &636604499
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636604497}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a0fe2ff4905c6984dbff1ce852580715, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &637751318
 Prefab:
   m_ObjectHideFlags: 0
@@ -6497,6 +6627,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 1879363940687960, guid: 4b56f31bcea59934f8f4a51a66ecabef, type: 2}
+      propertyPath: m_Name
+      value: Plug
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b56f31bcea59934f8f4a51a66ecabef, type: 2}
   m_IsPrefabParent: 0
@@ -7069,6 +7203,11 @@ Prefab:
         type: 2}
       propertyPath: disableCollider
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114797477608872752, guid: cfa114d9309bed04ab2e67ab9ed6335d,
+        type: 2}
+      propertyPath: promptForRequirement
+      value: 'It''s locked. Is anyone taking a shower? '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfa114d9309bed04ab2e67ab9ed6335d, type: 2}
@@ -8339,7 +8478,7 @@ Prefab:
     - target: {fileID: 114779462217717258, guid: 441a6c907d1b3d74b8f2663e6c7b6c24,
         type: 2}
       propertyPath: promptForRequirement
-      value: 
+      value: The water keeps running
       objectReference: {fileID: 0}
     - target: {fileID: 114779462217717258, guid: 441a6c907d1b3d74b8f2663e6c7b6c24,
         type: 2}
@@ -10276,6 +10415,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114200254080071438, guid: 6be0db6e73b143c4b9b95528dc6a7b83,
+        type: 2}
+      propertyPath: promptAfter
+      value: 'Hello? Anyone in there? '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6be0db6e73b143c4b9b95528dc6a7b83, type: 2}
   m_IsPrefabParent: 0
@@ -10608,9 +10752,43 @@ Prefab:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 1707749874020982, guid: 809d8112750f23946b7f8d1b37c3d1fd, type: 2}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 809d8112750f23946b7f8d1b37c3d1fd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2112929899 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1707749874020982, guid: 809d8112750f23946b7f8d1b37c3d1fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 2112929898}
+--- !u!114 &2112929900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2112929899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptForRequirement: 
+  promptAfter: "I wish I could turn this stupid music off, ah. It\u2019s hurting my
+    head. "
+  target: {fileID: 0}
+  requirement: {fileID: 0}
+  destrayRequired: 1
+  objToHide: {fileID: 0}
+  interactOption: 0
+  objToReveal: {fileID: 0}
+  once: 0
+  disableCollider: 0
+  delay: 0
+  TriggerObjs: []
+  TriggerFunctions: []
 --- !u!1 &2127488302
 GameObject:
   m_ObjectHideFlags: 0

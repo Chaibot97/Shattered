@@ -125,4 +125,9 @@ public class Interactable : MonoBehaviour {
     {
         gameObject.tag = "Interactable";
     }
+
+    public void PlaySound()
+    {
+        GetComponent<AudioSource>().Play();
+    }
 }
