@@ -823,14 +823,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void Prompt(string text)
         {
-            StartCoroutine(ShowPrompt(text));
+            StartCoroutine(ShowPrompt(text,3));
         }
 
         public void SetPrompt(string text)
         {
             prompt.text = text;
         }
-            private IEnumerator ShowPrompt(string text, float sec=2)
+
+        private IEnumerator ShowPrompt(string text, float sec=2)
         {
             prompt.text = text;
             yield return new WaitForSeconds(sec);

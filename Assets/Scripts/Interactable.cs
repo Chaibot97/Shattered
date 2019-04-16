@@ -74,7 +74,7 @@ public class Interactable : MonoBehaviour {
         }
         if (promptAfter.Length != 0) 
         {
-            GameObject.FindGameObjectWithTag("Player").BroadcastMessage("Prompt", promptAfter);
+            GameObject.FindGameObjectWithTag("Player").BroadcastMessage("Prompt",  promptAfter);
         }
         Trigger();
 
@@ -119,5 +119,10 @@ public class Interactable : MonoBehaviour {
                 TriggerObjs[i].BroadcastMessage(TriggerFunctions[i]);
             }
         }
+    }
+
+    public void EnableInteraction()
+    {
+        gameObject.tag = "Interactable";
     }
 }
