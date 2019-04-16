@@ -9,24 +9,28 @@ public class TittleScreen : MonoBehaviour {
     public GameManager _GM;
     public Button resume;
     public Button start;
-
+    public GameObject panel;
     void Start()
     {
         _GM = GameObject.Find("_GM").GetComponent<GameManager>();
-        start.onClick.AddListener(StartGame);
         Debug.Log(_GM.sceneReached);
         if (_GM.sceneReached != 0)
         {
             resume.gameObject.SetActive(true);
+            start.onClick.AddListener(QueryStartGame);
         }
         else
         {
             resume.gameObject.SetActive(false);
+            start.onClick.AddListener(StartGame);
         }
         resume.onClick.AddListener(ResumeGame); 
     }
-
-    void StartGame()
+    void QueryStartGame()
+    {
+        panel.SetActive(true);
+    }
+    public void StartGame()
     {
         VideoPlayer video = GetComponent<VideoPlayer>();
         video.Play();
