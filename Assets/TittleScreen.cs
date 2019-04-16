@@ -30,7 +30,7 @@ public class TittleScreen : MonoBehaviour {
     {
         VideoPlayer video = GetComponent<VideoPlayer>();
         video.Play();
-        StartCoroutine(GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadSceneWithMovieHelper(1,6));
+        StartCoroutine(GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadSceneWithMovieHelper(1,4));
     }
     void ResumeGame()
     {
