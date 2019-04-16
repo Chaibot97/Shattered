@@ -28,6 +28,7 @@ public class SceneLoader : MonoBehaviour {
         if (_GM && level > _GM.sceneReached)
         {
             _GM.sceneReached = level;
+            PlayerPrefs.SetInt("sceneReached", level);
         }
         SceneManager.LoadScene(level);     
     }

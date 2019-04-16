@@ -33,6 +33,7 @@ public class EndingTrigger : MonoBehaviour {
         }
         if (sl._GM)
             sl._GM.sceneReached = 0;
+        PlayerPrefs.SetInt("sceneReached", 0);
         StartCoroutine(sl.LoadNextSceneWithFading());
     }
 }
