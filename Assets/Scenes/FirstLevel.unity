@@ -8341,6 +8341,11 @@ Prefab:
       propertyPath: promptForRequirement
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114779462217717258, guid: 441a6c907d1b3d74b8f2663e6c7b6c24,
+        type: 2}
+      propertyPath: disableCollider
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 441a6c907d1b3d74b8f2663e6c7b6c24, type: 2}
   m_IsPrefabParent: 0
@@ -9711,7 +9716,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1112935441389196, guid: 729f6317ffa8d1947bd9885c9f39ecc4, type: 2}
       propertyPath: m_Name
-      value: Photo_changed
+      value: Photo
       objectReference: {fileID: 0}
     - target: {fileID: 1909089551969788, guid: 729f6317ffa8d1947bd9885c9f39ecc4, type: 2}
       propertyPath: m_IsActive
