@@ -125,7 +125,7 @@ public class Lv1Progress : MonoBehaviour
             {
                 foreach (Transform child in Photo.transform)
                 {
-                    if (child.gameObject.name == "Photo_changed")
+                    if (child.gameObject.name == "Photo")
                     {
                         child.gameObject.tag = "Pickupable";
                     }
@@ -138,7 +138,7 @@ public class Lv1Progress : MonoBehaviour
                 Player.enableInput = true;
                 if (PInteract.photo_changed)
                 {
-                    sink.gameObject.GetComponent<Collider>().enabled = false;
+                    sink.gameObject.tag = "Untagged";
                 }
                 if (firsttime)
                 {

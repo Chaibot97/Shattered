@@ -500,11 +500,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
                                             {
                                                 photo_pickedup = true;
-                                                col.gameObject.transform.parent.gameObject.SetActive(false);
-                                                if (Scene_num == 1)
-                                                {
-                                                    lv1_p.sink.gameObject.GetComponent<Collider>().enabled = true;
-                                                }
+                                                col.gameObject.transform.parent.gameObject.SetActive(false);                                                
                                             }
 
                                             itemChecking = null;
