@@ -589,9 +589,9 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!1 &32775702 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1611193539388992, guid: 80ac1eaaad8782b40b763d870b469f59,
+  m_PrefabParentObject: {fileID: 1059608619860874, guid: a241fcd34ab83314fbf2282e26c65acd,
     type: 2}
-  m_PrefabInternal: {fileID: 1416875157}
+  m_PrefabInternal: {fileID: 1070523845}
 --- !u!1 &41825994 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1852923146071626, guid: 36aed18a8b7bc8748a59d06282fc25ef,
@@ -1362,52 +1362,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143487007}
---- !u!1 &146900140 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1119207769228182, guid: a241fcd34ab83314fbf2282e26c65acd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1070523845}
---- !u!65 &146900141
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 146900140}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.403488, y: 0.15851046, z: 0.010585329}
-  m_Center: {x: 0.00000023221047, y: 0.024424348, z: -0.008187698}
 --- !u!4 &146900145 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4757323647316160, guid: a241fcd34ab83314fbf2282e26c65acd,
     type: 2}
   m_PrefabInternal: {fileID: 1070523845}
---- !u!114 &146900146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 146900140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeafc3b4307de564c9d0fc45c4123867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptForRequirement: 
-  promptAfter: 
-  target: {fileID: 0}
-  requirement: {fileID: 0}
-  destrayRequired: 1
-  objToHide: {fileID: 0}
-  interactOption: 0
-  objToReveal: {fileID: 0}
-  once: 0
-  disableCollider: 1
-  delay: 0
-  TriggerObjs: []
-  TriggerFunctions: []
 --- !u!1001 &149304858
 Prefab:
   m_ObjectHideFlags: 0
@@ -5264,32 +5223,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 1119207769228182, guid: a241fcd34ab83314fbf2282e26c65acd, type: 2}
-      propertyPath: m_TagString
-      value: Interactable
-      objectReference: {fileID: 0}
-    - target: {fileID: 64885185792409224, guid: a241fcd34ab83314fbf2282e26c65acd,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 95522442412585012, guid: a241fcd34ab83314fbf2282e26c65acd,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8e640c8214eb93a479266ecf7663f2b5, type: 2}
-    - target: {fileID: 4757323647316160, guid: a241fcd34ab83314fbf2282e26c65acd, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 20.64548
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757323647316160, guid: a241fcd34ab83314fbf2282e26c65acd, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 22.980434
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757323647316160, guid: a241fcd34ab83314fbf2282e26c65acd, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 20.645468
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a241fcd34ab83314fbf2282e26c65acd, type: 2}
   m_IsPrefabParent: 0
@@ -7251,48 +7184,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4119440036771042, guid: 3f0db00acbe1c8a498b86053979ef3b4,
     type: 2}
   m_PrefabInternal: {fileID: 1415462437}
---- !u!1001 &1416875157
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 146900145}
-    m_Modifications:
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.07580199
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.04712501
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.1569
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4398512118278248, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 80ac1eaaad8782b40b763d870b469f59, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1417312772
 Prefab:
   m_ObjectHideFlags: 0
@@ -8087,7 +7978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.2783019, b: 0.2783019, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8095,7 +7986,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ddf276f974019e746af8029648791ff4, type: 3}
+    m_Font: {fileID: 12800000, guid: 95585ad96aaf5064fb933e9fc5560795, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
