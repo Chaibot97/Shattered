@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4159261891006562}
   - component: {fileID: 33342495105886878}
   - component: {fileID: 23585114010046258}
+  - component: {fileID: 64775932649622042}
   m_Layer: 0
   m_Name: big_mirror_obj5aee708a_476d_4605_a7b8_9935ec904999:Line03
   m_TagString: Untagged
@@ -292,6 +293,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496209135168430}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &64775932649622042
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818727569383634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 27700d1ce3842a34f909a134a10d944b, type: 3}
 --- !u!65 &65075020574680330
 BoxCollider:
   m_ObjectHideFlags: 1
