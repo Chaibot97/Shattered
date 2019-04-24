@@ -187,7 +187,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), mirror.transform.up, Vector3.up);
                 if (mirror.GetComponent<MirrorTrigger>().reveal(angle))
                 {
-                    StartCoroutine(MirrorDone(mirror,1));
+                    StartCoroutine(MirrorDone(mirror,3));
                 }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
