@@ -814,7 +814,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             prompt.text = currentPrompt;
             checkingMirror = false;
             target.transform.LookAt(mirror.gameObject.transform);
-            StartCoroutine(ShowPrompt("Something happened...", sec));
+            StartCoroutine(ShowPrompt(mirror.GetComponent<MirrorTrigger>().prompt, sec));
             yield return new WaitForSeconds(sec);
             GetComponent<RigidbodyFirstPersonController>().enableInput = true;
             itemChecking = null;
