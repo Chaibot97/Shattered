@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114679657335661932}
   - component: {fileID: 11400006}
   - component: {fileID: 12410568}
+  - component: {fileID: 114791381469871642}
   m_Layer: 9
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -66,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 6.791, y: 1.398, z: -7.358}
-  m_LocalScale: {x: 1, y: 1.6, z: 1}
+  m_LocalScale: {x: 1, y: 1.85, z: 1}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -97,12 +98,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294958591
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
-  m_AllowMSAA: 1
+  m_HDR: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -693,7 +694,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fddd0687d3ebd264dab628a8968ae471, type: 3}
   m_Name: 
@@ -706,6 +707,8 @@ MonoBehaviour:
   safeFound: 0
   safeUnlocked: 0
   finished: 0
+  changephoto: 0
+  photoFound: 0
   page3content: {fileID: 0}
   page4content: {fileID: 0}
   page5content: {fileID: 0}
@@ -713,7 +716,15 @@ MonoBehaviour:
   page7content: {fileID: 0}
   page8content: {fileID: 0}
   firePlace: {fileID: 0}
+  sink: {fileID: 0}
+  filled_water: {fileID: 0}
+  SecondCamera: {fileID: 0}
+  PrimaryCamera: {fileID: 2000000}
+  Photo: {fileID: 0}
+  freeze: 0
   sl: {fileID: 0}
+  PInteract: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &114679657335661932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,6 +744,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5a9383dda6cabc047b7a297602e93eb4, type: 3}
   - {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
   rigidbodyFirstPersonController: {fileID: 11400004}
+--- !u!114 &114791381469871642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: a9ef1b0fa90a57e4bbb2eb1ecbc0cc0b, type: 2}
 --- !u!114 &114930437881059852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -744,14 +767,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1c90356c58c4495a51e2123a99719a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filled_water: {fileID: 0}
-  SecondCamera: {fileID: 0}
-  PrimaryCamera: {fileID: 2000000}
-  Photo: {fileID: 0}
+  target: {fileID: 0}
+  itemChecking: {fileID: 0}
+  islooking: 0
+  photo_changed: 0
+  photo_pickedup: 0
+  inventory: []
+  Scene_num: 1
   book: {fileID: 0}
   inspector: {fileID: 0}
   inventoryUI: {fileID: 0}
-  inspectorUI: {fileID: 0}
   UIMask: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   prompt: {fileID: 0}
   lockUI: {fileID: 0}
+  cd: 0
+  lv1_p: {fileID: 0}
+  currentPrompt: 
+  tutorial: 0
+  gamePaused: 0

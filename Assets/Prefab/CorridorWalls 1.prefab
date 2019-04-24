@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4147828672304480}
   - component: {fileID: 33875900509272452}
   - component: {fileID: 23784749138688558}
+  - component: {fileID: 64917013702873546}
   m_Layer: 0
   m_Name: pCube20
   m_TagString: Untagged
@@ -691,6 +692,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1765027793840348}
   m_Mesh: {fileID: 4300000, guid: 37c36324d9dc049638979a918ac1a2b3, type: 3}
+--- !u!64 &64917013702873546
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172714591626274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 796a85fd3b67e004194b2651a0f6a12a, type: 3}
 --- !u!95 &95210511260905546
 Animator:
   serializedVersion: 3
@@ -773,8 +788,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 16.04
-  m_Range: 6.38
+  m_Intensity: 4.07
+  m_Range: 5.02
   m_SpotAngle: 122
   m_CookieSize: 10
   m_Shadows:
@@ -808,9 +823,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.69
-  m_Range: 1.24
+  m_Color: {r: 1, g: 0.9639439, b: 0.8537736, a: 1}
+  m_Intensity: 3.7
+  m_Range: 1.87
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -844,9 +859,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.69
-  m_Range: 1.24
+  m_Color: {r: 1, g: 0.9639439, b: 0.8537736, a: 1}
+  m_Intensity: 3.7
+  m_Range: 1.87
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -880,9 +895,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.69
-  m_Range: 1.24
+  m_Color: {r: 1, g: 0.9639439, b: 0.8537736, a: 1}
+  m_Intensity: 3.7
+  m_Range: 1.87
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -916,9 +931,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.69
-  m_Range: 1.24
+  m_Color: {r: 1, g: 0.9639439, b: 0.8537736, a: 1}
+  m_Intensity: 3.7
+  m_Range: 1.87
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -952,9 +967,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.69
-  m_Range: 1.24
+  m_Color: {r: 1, g: 0.9639439, b: 0.8537736, a: 1}
+  m_Intensity: 3.7
+  m_Range: 1.87
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -988,9 +1003,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.69
-  m_Range: 1.24
+  m_Color: {r: 1, g: 0.9639439, b: 0.8537736, a: 1}
+  m_Intensity: 3.7
+  m_Range: 1.87
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1025,8 +1040,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7.11
-  m_Range: 7.1
+  m_Intensity: 4.07
+  m_Range: 5.02
   m_SpotAngle: 113.1
   m_CookieSize: 10
   m_Shadows:
