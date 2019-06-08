@@ -24,6 +24,10 @@ public class Lv2Progress : MonoBehaviour {
     {
         StartCoroutine(TurnOffHelper());
     }
+    public void TurnOn()
+    {
+        StartCoroutine(TurnOnHelper());
+    }
 
     IEnumerator SwitchBunnys()
     {
@@ -45,6 +49,17 @@ public class Lv2Progress : MonoBehaviour {
         Lights.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         laugh.Play();
+        yield break;
+
+    }
+
+    IEnumerator TurnOnHelper()
+    {
+        yield return new WaitForSeconds(1f);
+        turnoff.Play();
+        Lights.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        GameObject.FindGameObjectWithTag("Player").BroadcastMessage("Prompt", "Can you play more with me afterwards?");
         yield break;
 
     }

@@ -8,10 +8,14 @@ public class EndingTrigger : MonoBehaviour {
     public SceneLoader sl;
     public Text prompt;
     public GameObject man;
+    public GameObject bgm;
+    public GameObject music;
 
     public void End()
     {
         man.SetActive(true);
+        bgm.SetActive(false);
+        music.SetActive(true);
         GetComponent<MirrorReflection>().m_TextureSize = 1024;
         EndingCamera.enabled = true;
         StartCoroutine(EndRoutine());
@@ -29,6 +33,7 @@ public class EndingTrigger : MonoBehaviour {
         }
         if (sl._GM)
             sl._GM.sceneReached = 0;
+        PlayerPrefs.SetInt("sceneReached", 0);
         StartCoroutine(sl.LoadNextSceneWithFading());
     }
 }

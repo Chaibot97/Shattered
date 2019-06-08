@@ -187,7 +187,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 float angle = Vector3.SignedAngle(new Vector3(direction.x, 0, direction.z), mirror.transform.up, Vector3.up);
                 if (mirror.GetComponent<MirrorTrigger>().reveal(angle))
                 {
-                    StartCoroutine(MirrorDone(mirror,1));
+                    StartCoroutine(MirrorDone(mirror,3));
                 }
                 if (Input.GetKey(KeyCode.D)&& angle<35)
                 {
@@ -500,11 +500,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             if (col.gameObject.transform.parent.gameObject.name.Equals("photo 1"))
                                             {
                                                 photo_pickedup = true;
-                                                col.gameObject.transform.parent.gameObject.SetActive(false);
-                                                if (Scene_num == 1)
-                                                {
-                                                    lv1_p.sink.gameObject.GetComponent<Collider>().enabled = true;
-                                                }
+                                                col.gameObject.transform.parent.gameObject.SetActive(false);                                                
                                             }
 
                                             itemChecking = null;
@@ -818,7 +814,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             prompt.text = currentPrompt;
             checkingMirror = false;
             target.transform.LookAt(mirror.gameObject.transform);
-            StartCoroutine(ShowPrompt("Something happened...", sec));
+            StartCoroutine(ShowPrompt(mirror.GetComponent<MirrorTrigger>().prompt, sec));
             yield return new WaitForSeconds(sec);
             GetComponent<RigidbodyFirstPersonController>().enableInput = true;
             itemChecking = null;
@@ -827,14 +823,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void Prompt(string text)
         {
-            StartCoroutine(ShowPrompt(text));
+            StartCoroutine(ShowPrompt(text,3));
         }
 
         public void SetPrompt(string text)
         {
             prompt.text = text;
         }
-            private IEnumerator ShowPrompt(string text, float sec=2)
+
+        private IEnumerator ShowPrompt(string text, float sec=2)
         {
             prompt.text = text;
             yield return new WaitForSeconds(sec);

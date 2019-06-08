@@ -34,10 +34,12 @@ public class Lv1Progress : MonoBehaviour
     public UnityStandardAssets.Characters.FirstPerson.PlayerInteraction PInteract;
     public UnityStandardAssets.Characters.FirstPerson.RigidbodyFirstPersonController Player;
     private bool diaryComplete;
+    private bool firsttime;
     public bool DiaryComplete { get { return diaryComplete; } }
     private void Start()
     {
         freeze = 360;
+        firsttime = true;
     }
     private void Update()
     {
@@ -119,11 +121,11 @@ public class Lv1Progress : MonoBehaviour
 
 
             }
-            if (freeze >= 360 && PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && PInteract.islooking)
+            if ((freeze >= 360 && PInteract.cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)) && PInteract.islooking && !firsttime) || (freeze >= 360 && PInteract.cd >= 30 && PInteract.islooking && firsttime))
             {
                 foreach (Transform child in Photo.transform)
                 {
-                    if (child.gameObject.name == "Photo_changed")
+                    if (child.gameObject.name == "Photo")
                     {
                         child.gameObject.tag = "Pickupable";
                     }
@@ -136,7 +138,11 @@ public class Lv1Progress : MonoBehaviour
                 Player.enableInput = true;
                 if (PInteract.photo_changed)
                 {
-                    sink.gameObject.GetComponent<Collider>().enabled = false;
+                    sink.gameObject.tag = "Untagged";
+                }
+                if (firsttime)
+                {
+                    firsttime = false;
                 }
                 
             }

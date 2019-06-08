@@ -10,6 +10,7 @@ public class Teleporter : MonoBehaviour
     public void Teleport()
     {
         StartCoroutine(TeleportHelper());
+        gameObject.GetComponent<AudioSource>().Play();
     }
     public IEnumerator TeleportHelper()
     {

@@ -6,6 +6,7 @@ public class MirrorTrigger : MonoBehaviour {
 
     public GameObject obj;
     public Filter filter;
+    public string prompt="";
     private float angle;
     private bool done=false;
     public float Angle { get { return angle; } }
