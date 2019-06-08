@@ -83,7 +83,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             cd_sound = 180;
             wait = 180;
             if(!target) target = Camera.main.transform;
-            shader1 = Shader.Find("Standard (Roughness setup)");
+            shader1 = Shader.Find("Autodesk Interactive");
             shader2 = Shader.Find("Shader_highlight/0.TheFirstShader");
             inventory = new List<GameObject>(5);
             for (int i = 0; i < 5; i++) 
