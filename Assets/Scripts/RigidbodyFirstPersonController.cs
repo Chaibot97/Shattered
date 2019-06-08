@@ -91,9 +91,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
 
-        public bool enableXmove = true;
-        public bool enableYmove = true; 
-        public bool enableMouse = true;
+        public bool enableInput = true;
 
         public Vector3 Velocity
         {
@@ -161,13 +159,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 if (m_RigidBody.velocity.sqrMagnitude <
                     (movementSettings.CurrentTargetSpeed*movementSettings.CurrentTargetSpeed))
                 {
-                    m_RigidBody.AddForce(desiredMove*SlopeMultiplier(), ForceMode.Impulse);
+                    m_RigidBody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
                 }
             }
 
             if (m_IsGrounded)
             {
-                m_RigidBody.drag = 5f;
+                m_RigidBody.drag = 7f;
 
                 // if (m_Jump)
                 // {
@@ -179,7 +177,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 // if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
                 // {
-                //     m_RigidBody.Sleep();
+                    // m_RigidBody.Sleep();
                 // }
             }
             else
@@ -224,13 +222,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     x = CrossPlatformInputManager.GetAxis("Horizontal"),
                     y = CrossPlatformInputManager.GetAxis("Vertical")
                 };
-            if (!enableXmove)
+            if (!enableInput)
             {
-                input[0] = 0;
-            }
-            if (!enableYmove)
-            {
-                input[1] = 0;
+                input = new Vector2(0, 0);
             }
             movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
@@ -239,19 +233,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            if (!enableMouse)
-            {
-                return;
-            }
+           
             //avoids the mouse looking if the game is effectively paused
             if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
-
+            if (!enableInput)
+                return;
             mouseLook.LookRotation (transform, cam.transform);
 
-            if (m_IsGrounded || advancedSettings.airControl)
+            
+            if ( m_IsGrounded || advancedSettings.airControl)
             {
                 // Rotate the rigidbody velocity to match the new direction that the character is looking
                 Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRotation, Vector3.up);
