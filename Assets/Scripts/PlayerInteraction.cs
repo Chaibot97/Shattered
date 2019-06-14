@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     public class PlayerInteraction : MonoBehaviour {
@@ -198,7 +198,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     GetComponent<Rigidbody>().AddForce(transform.right * -1f, ForceMode.Impulse);
                 }
 
-                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                if (cd >= 30 && CrossPlatformInputManager.GetButtonUp("Interact"))
                 {
                     cd = 0;
                     prompt.text = currentPrompt;
@@ -281,7 +281,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                     Debug.Log("press E");
                                 else
                                     prompt.text = "Press E to inspect.";
-                                if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                                if (cd >= 30 && CrossPlatformInputManager.GetButtonUp("Interact"))
                                 {
                                     cd = 0;
                                     itemChecking = col;
@@ -354,7 +354,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             {
                                 r.material.shader = shader2;
                             }
-                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
+                            if (cd >= 30 && CrossPlatformInputManager.GetButtonUp("Interact"))
                             {
                                 cd = 0;
                                 if (col.gameObject.tag.Equals("Safe"))
@@ -458,7 +458,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             {
                                 r.material.shader = shader2;
                             }
-                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.E)))
+                            if (cd >= 30 && CrossPlatformInputManager.GetButtonUp("Interact"))
                             {
                                 cd = 0;
                                 if (col.gameObject.tag.Contains("Pickupable"))
@@ -581,7 +581,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             inSight = true;
 
                             prompt.text = "Press E to inspect.";
-                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                            if (cd >= 30 && CrossPlatformInputManager.GetButtonUp("Interact"))
                             {
                                 cd = 0;
                                 itemChecking = null;
@@ -618,7 +618,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                             inSight = true;
 
                             prompt.text = "Press E to inspect.";
-                            if (cd >= 30 && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+                            if (cd >= 30 && CrossPlatformInputManager.GetButtonUp("Interact"))
                             {
                                 col.enabled = false;
                                 ended = true;
