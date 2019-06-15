@@ -10,6 +10,7 @@ public class TittleScreen : MonoBehaviour {
     public Button resume;
     public Button start;
     public GameObject panel;
+    public GameObject queryBox;
     void Start()
     {
         _GM = GameObject.Find("_GM").GetComponent<GameManager>();
@@ -28,7 +29,8 @@ public class TittleScreen : MonoBehaviour {
     }
     void QueryStartGame()
     {
-        panel.SetActive(true);
+        panel.SetActive(false);
+        queryBox.SetActive(true);
     }
     public void StartGame()
     {
