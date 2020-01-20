@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour {
 
     public GameObject target=null;
     public GameObject requirement = null;
-    public bool destrayRequired = true;
+    public bool destroyRequired = true;
     public GameObject objToHide = null;
     private Lv1Progress lv1_p;
     
@@ -98,7 +98,7 @@ public class Interactable : MonoBehaviour {
                 Renderer[] rend = gameObject.GetComponentsInChildren<Renderer>();
                 foreach (Renderer r in rend)
                 {
-                    r.material.shader = Shader.Find("Standard (Roughness setup)");
+                    r.material.shader = Shader.Find("Autodesk Interactive");
                 }
                 if (disableCollider)
                 {

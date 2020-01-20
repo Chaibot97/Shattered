@@ -400,7 +400,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                             //lv1_p.finished = true;
                                             StartCoroutine(FindObjectOfType<SceneLoader>().LoadNextSceneWithFading());
                                         }
-                                        if (i.destrayRequired)
+                                        if (i.destroyRequired)
                                             DestroyObj(inventory.IndexOf(i.requirement));
                                         i.Interact();
                                         i.requirement = null;

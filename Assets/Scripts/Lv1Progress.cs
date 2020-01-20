@@ -116,7 +116,7 @@ public class Lv1Progress : MonoBehaviour
                 }
                 SecondCamera.gameObject.SetActive(true);
                 PrimaryCamera.gameObject.SetActive(false);
-                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Standard (Roughness setup)");
+                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Autodesk Interactive");
                 PInteract.islooking = true;
 
 
@@ -133,7 +133,7 @@ public class Lv1Progress : MonoBehaviour
                 PInteract.cd = 0;
                 SecondCamera.gameObject.SetActive(false);
                 PrimaryCamera.gameObject.SetActive(true);
-                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Standard (Roughness setup)");
+                filled_water.GetComponent<Renderer>().material.shader = Shader.Find("Autodesk Interactive");
                 PInteract.islooking = false;
                 Player.enableInput = true;
                 if (PInteract.photo_changed)

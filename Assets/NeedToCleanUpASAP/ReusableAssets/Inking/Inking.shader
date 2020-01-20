@@ -53,5 +53,5 @@
 		}
 
 			//“备胎”为普通漫反射
-			Fallback "Standard (Roughness setup)"
+			Fallback "Autodesk Interactive"
 }
