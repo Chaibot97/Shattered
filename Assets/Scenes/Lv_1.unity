@@ -1939,7 +1939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 000e64ce0b290cc4a8344c30012a3a05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39930964
+      value: 0.311
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 000e64ce0b290cc4a8344c30012a3a05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3411,7 +3411,7 @@ MonoBehaviour:
   promptAfter: 
   target: {fileID: 0}
   requirement: {fileID: 0}
-  destrayRequired: 1
+  destroyRequired: 1
   objToHide: {fileID: 0}
   interactOption: 0
   objToReveal: {fileID: 0}
@@ -8339,6 +8339,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2120539623906046279, guid: a89551fc00cd50348b0e9ef0eb1912f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6d57fce4fc980e45ba20c99e0fb7c15, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89551fc00cd50348b0e9ef0eb1912f0, type: 3}
 --- !u!4 &1534148480 stripped
@@ -8414,6 +8419,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2120539623906046279, guid: a89551fc00cd50348b0e9ef0eb1912f0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6d57fce4fc980e45ba20c99e0fb7c15, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89551fc00cd50348b0e9ef0eb1912f0, type: 3}
 --- !u!1001 &1541562397
@@ -10683,6 +10693,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3346343171232689751, guid: 91079c63ce26a0642babbd1912fc3909,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d726bd6ef7d5e76489af69aa282bb045, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91079c63ce26a0642babbd1912fc3909, type: 3}
 --- !u!1 &1921163929
@@ -12237,7 +12252,7 @@ MonoBehaviour:
     head. "
   target: {fileID: 0}
   requirement: {fileID: 0}
-  destrayRequired: 1
+  destroyRequired: 1
   objToHide: {fileID: 0}
   interactOption: 0
   objToReveal: {fileID: 0}
