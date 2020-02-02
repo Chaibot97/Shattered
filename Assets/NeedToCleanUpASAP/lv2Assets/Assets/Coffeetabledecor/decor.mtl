@@ -1,20 +1,32 @@
-newmtl Collection:___Default
+newmtl Bed:initialShadingGroup
 illum 4
-Kd 0.76 0.76 0.76
+Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-Ni 1.50
-Ks 1.06 1.06 1.06
-Ns 38.00
-newmtl Collection:___Default2
+Ni 1.00
+newmtl Flashlight:initialShadingGroup
 illum 4
-Kd 0.89 0.89 0.89
+Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Lee_Broom_Fulcrum_Chandelier_5_Tier_mat_3_:Lee_Broom_Fulcrum_Chandelier_5_Tier_mat3_mtl_1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
 Ni 1.50
-Ks 0.55 0.55 0.55
-Ns 26.00
-newmtl Collection:___Default4
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Lee_Broom_Fulcrum_Chandelier_5_Tier_mat_3_:Lee_Broom_Fulcrum_Chandelier_5_Tier_mat3_mtl_2
+illum 4
+Kd 1.00 0.92 0.78
+Ka 1.00 0.92 0.78
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Lee_Broom_Fulcrum_Chandelier_5_Tier_mat_3_:Lee_Broom_Fulcrum_Chandelier_5_Tier_mat3_mtl_3
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
@@ -22,38 +34,55 @@ Tf 1.00 1.00 1.00
 Ni 1.50
 Ks 0.00 0.00 0.00
 Ns 10.00
-newmtl DoorSG
+newmtl Lee_Broom_Fulcrum_Chandelier_5_Tier_mat_3_:Lee_Broom_Fulcrum_Chandelier_5_Tier_mat3_mtl_4
+illum 4
+Kd 0.89 0.87 0.87
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Lee_Broom_Fulcrum_Chandelier_5_Tier_mat_3_:Lee_Broom_Fulcrum_Chandelier_5_Tier_mat3_mtl_8
+illum 4
+Kd 0.89 0.87 0.87
+Ka 0.59 0.59 0.59
+Tf 0.16 0.16 0.16
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl Piggybank:initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl Pillow_Obj:wire_006134006
-illum 4
-Kd 0.02 0.53 0.02
-Ka 0.02 0.53 0.02
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.35 0.35 0.35
-Ns 32.00
-newmtl book1:texturedFacets17
+newmtl Shelf:initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl cabinet:initialShadingGroup
+newmtl Wallroom1:initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl chair:initialShadingGroup
+newmtl blinn1SG
 illum 4
 Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl book:blinn8SG
+illum 4
+Kd 0.04 0.32 0.36
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 0.06
 newmtl coffeetable:blinn20SG
 illum 4
 Kd 0.54 0.22 0.00
@@ -62,7 +91,7 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 0.50 0.50 0.50
 Ns 0.06
-newmtl coffeetable:blinn26SG
+newmtl decor:blinn26SG
 illum 4
 Kd 0.34 0.41 0.06
 Ka 0.00 0.00 0.00
@@ -70,9 +99,17 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 0.50 0.50 0.50
 Ns 0.06
-newmtl coffeetable:blinn27SG
+newmtl decor2:blinn27SG
 illum 4
 Kd 0.27 0.07 0.31
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 0.06
+newmtl gameboard:blinn32SG
+illum 4
+Kd 0.03 0.44 0.31
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
@@ -92,7 +129,37 @@ Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl plant:initialShadingGroup
+newmtl lambert2SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert7SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lamp:initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
@@ -106,3 +173,15 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 0.50 0.50 0.50
 Ns 0.06
+newmtl toybox:initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl toybox:texturedFacets13
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
