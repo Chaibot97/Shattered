@@ -2433,7 +2433,7 @@ MonoBehaviour:
   promptForRequirement: How can you play with me without a FLASH LIGHT?
   promptAfter: Come and find me.
   target: {fileID: 0}
-  requirement: {fileID: 1901572376}
+  requirement: {fileID: 0}
   destroyRequired: 1
   objToHide: {fileID: 250578741}
   interactOption: 1
@@ -8013,6 +8013,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 09963fa08252b46a79d8b4ded808968b, type: 3}
+--- !u!1 &1126717351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2428539344722968222, guid: 115da99eb42a641b58ae9de8be11c899,
+    type: 3}
+  m_PrefabInstance: {fileID: 1901572375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1126717353
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126717351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -7511281311570889493, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
 --- !u!1001 &1129905811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13173,31 +13193,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.16
+      value: -5.7570705
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.339
+      value: 2.9516058
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.33
+      value: -15.639208
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.18522765
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.20194672
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.70874494
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6500684
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_RootOrder
@@ -13215,48 +13235,29 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5201291
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -94.205
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 2.604
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 31.713001
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 900d85667b2b315409987fe3bbd89696, type: 2}
+    - target: {fileID: -6329961617330943269, guid: 115da99eb42a641b58ae9de8be11c899,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 900d85667b2b315409987fe3bbd89696, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
---- !u!1 &1901572376 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 115da99eb42a641b58ae9de8be11c899,
-    type: 3}
-  m_PrefabInstance: {fileID: 1901572375}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1901572377
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901572376}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 115da99eb42a641b58ae9de8be11c899, type: 3}
---- !u!114 &1901572381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901572376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a22842341e4a84f8168b7da1c746ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smallSprite: {fileID: 21300000, guid: c9839990e92cac54b877ac6c731ed215, type: 3}
-  largeSprite: {fileID: 21300000, guid: 43f12737acfd6d24cac36e5d7d6ef4ab, type: 3}
-  TriggerObjs: []
-  TriggerFunctions: []
 --- !u!1001 &1903178022
 PrefabInstance:
   m_ObjectHideFlags: 0
