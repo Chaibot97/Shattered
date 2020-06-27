@@ -1,20 +1,53 @@
-newmtl Box1579382SG
+newmtl blinn1SG
 illum 4
 Kd 0.50 0.50 0.50
-Ka 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.00 0.00 0.00
-Ns 510.00
-newmtl Circle200SG
+Ks 0.50 0.50 0.50
+newmtl ceiling:initialShadingGroup
 illum 4
-Kd 0.98 0.98 0.98
-Ka 0.98 0.98 0.98
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.07 0.07 0.07
-Ns 198.85
-newmtl Rectangle48SG
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.23 0.48 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl officeRoofLight:initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl officeRoofLight:lambert2SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl officeRoofLight:lambert3SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl officeRoofLight:lambert4SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl shelf:Rectangle48SG
 illum 4
 Kd 0.80 0.67 0.47
 Ka 0.80 0.67 0.47
@@ -22,31 +55,7 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 0.01 0.01 0.01
 Ns 145.03
-newmtl books_obj_05SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.50 0.50 0.50
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.00 0.00 0.00
-Ns 510.00
-newmtl books_obj_46SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.50 0.50 0.50
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.00 0.00 0.00
-Ns 510.00
-newmtl books_obj_95SG
-illum 4
-Kd 0.50 0.50 0.50
-Ka 0.50 0.50 0.50
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.00 0.00 0.00
-Ns 510.00
-newmtl initialShadingGroup
+newmtl shelf:initialShadingGroup
 illum 4
 Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00

@@ -14,7 +14,9 @@ public class TittleScreen : MonoBehaviour {
     void Start()
     {
         _GM = GameObject.Find("_GM").GetComponent<GameManager>();
-        Debug.Log(_GM.sceneReached);
+        VideoPlayer video = GetComponent<VideoPlayer>();
+        video.Play();
+        //Debug.Log(_GM.sceneReached);
         if (_GM.sceneReached != 0)
         {
             resume.gameObject.SetActive(true);
@@ -34,8 +36,7 @@ public class TittleScreen : MonoBehaviour {
     }
     public void StartGame()
     {
-        VideoPlayer video = GetComponent<VideoPlayer>();
-        video.Play();
+        
         StartCoroutine(GameObject.Find("SceneLoader").GetComponent<SceneLoader>().LoadSceneWithMovieHelper(1,4));
     }
     void ResumeGame()
