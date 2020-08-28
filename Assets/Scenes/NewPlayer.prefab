@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 8464762920285376537}
   - component: {fileID: 8464668051528332411}
   - component: {fileID: 8464871108129376741}
-  - component: {fileID: 9170111271653135266}
+  - component: {fileID: 7537846527567623843}
   m_Layer: 9
   m_Name: NewPlayer
   m_TagString: Player
@@ -731,7 +731,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &9170111271653135266
+--- !u!114 &7537846527567623843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9170111271653134941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8a78219e9bc45bbb81c2f9fdf0e2df, type: 3}
+  m_Script: {fileID: 11500000, guid: 39f9af735528f47ed88b322b329d80fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
@@ -752,11 +752,10 @@ MonoBehaviour:
   UIMask: {fileID: 0}
   inventoryUI: {fileID: 0}
   prompt: {fileID: 0}
-  book: {fileID: 0}
   lockUI: {fileID: 0}
+  Scene_num: 0
   islooking: 0
   photo_changed: 0
   photo_pickedup: 0
   inventory: []
-  Scene_num: 0
   cd: 0
